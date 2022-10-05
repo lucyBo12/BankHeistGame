@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CharacterLocomotion : MonoBehaviour
 {
+    //Properties
     public CharacterController controller;
     public float mouseOffset = 90;
     public float speed = 2f;
 
+    //Attributes
+    public float angle { get; private set; }
     private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
@@ -32,8 +35,9 @@ public class CharacterLocomotion : MonoBehaviour
         mousePosition.x = mousePosition.x - center.x;
         mousePosition.y = mousePosition.y - center.y;
 
-        var angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, -(angle + mouseOffset) + 180, 0);
+        angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
+        angle = -(angle + mouseOffset) + 180;
+        transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 
 

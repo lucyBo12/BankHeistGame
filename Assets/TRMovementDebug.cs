@@ -3,18 +3,24 @@ using UnityEngine;
 
 public class TRMovementDebug : MonoBehaviour
 {
-    public static TRMovementDebug instance;
-    private void Awake() => instance = this;
-
-    public Transform ball;
+    public int frameCap = 60;
     public TextMeshProUGUI debugTxt;
+    public CharacterLocomotion locomotion;
 
-    public void Message(string message) { 
-        debugTxt.text += message;
+
+    private void Start() => RefreshFPSCap();
+
+    private void LateUpdate() {
+        var txt = string.Empty;
+        txt += $"{locomotion.name} ({(locomotion.gameObject.activeSelf ? "Enabled" : "Disabled")}) \n" +
+            $"Position: {locomotion.transform.position} \n" +
+            $"Rotation: {locomotion.transform.rotation} \n" +
+            $"AngleToMouse: {locomotion.angle} \n" +
+            $"FPS: {(1f / Time.deltaTime).ToString("0")}";
+
+        debugTxt.text = txt;
     }
 
-    public void MoveBall(Vector3 pos) {
-        ball.position = pos;
-    }
-
+    [ContextMenu("RefreshFPSCap")]
+    private void RefreshFPSCap() => Application.targetFrameRate = frameCap;
 }

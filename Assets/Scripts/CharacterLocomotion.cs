@@ -26,8 +26,11 @@ public class CharacterLocomotion : MonoBehaviour
         Move(PlayerActions.Movement.ReadValue<Vector2>());
     }
 
-    private void Move(Vector2 input) => 
-        controller.Move((new Vector3(input.x, 0, input.y) * speed) * Time.deltaTime);
+    private void Move(Vector2 input) {
+        bool crouch = PlayerActions.Crouch.IsPressed();
+        controller.Move((new Vector3(input.x, 0, input.y) * (crouch ? (speed / 3) : speed)) * Time.deltaTime);
+    }
+        
 
     private void Aim(Vector2 mousePosition) {
         var center = Camera.main.WorldToScreenPoint(transform.position);

@@ -1,34 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterLocomotion : MonoBehaviour
 {
     //Properties
     public CharacterController controller;
-    public float mouseOffset = 90;
+    public Animator animator;
     public float speed = 2f;
 
     //Attributes
     public float angle { get; private set; }
+    public float currentSpeed { get; private set; }
     private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
-    private void Start()
-    {
+    private void Start() {
         var action = GameManager.Input.Player;
         action.Enable();
     }
 
-    private void Update()
-    {
+    private void Update() {
         Aim(PlayerActions.Aim.ReadValue<Vector2>());
         Move(PlayerActions.Movement.ReadValue<Vector2>());
     }
 
     private void Move(Vector2 input) {
-        bool crouch = PlayerActions.Crouch.IsPressed();
-        controller.Move((new Vector3(input.x, 0, input.y) * (crouch ? (speed / 3) : speed)) * Time.deltaTime);
+        currentSpeed = PlayerActions.Crouch.IsPressed() ? speed * 0.5f : speed;
+        controller.Move((new Vector3(input.x, 0, input.y) * currentSpeed) * Time.deltaTime);
+        AnimateMovement(input);
     }
         
 
@@ -38,9 +36,15 @@ public class CharacterLocomotion : MonoBehaviour
         mousePosition.x = mousePosition.x - center.x;
         mousePosition.y = mousePosition.y - center.y;
 
-        angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
-        angle = -(angle + mouseOffset) + 180;
+        angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+        angle = angle < 0 ? angle + 360 : angle;
         transform.rotation = Quaternion.Euler(0, angle, 0);
+    }
+
+    private void AnimateMovement(Vector2 input) {
+
+        animator.SetFloat("inputx", input.x, 0.1f, Time.deltaTime);
+        animator.SetFloat("inputy", input.y, 0.1f, Time.deltaTime);
     }
 
 

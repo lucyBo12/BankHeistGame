@@ -20,11 +20,12 @@ public class CharacterLocomotion : MonoBehaviour
 
     private void Update() {
         Move(PlayerActions.Movement.ReadValue<Vector2>());
-        Aim(PlayerActions.Aim.ReadValue<Vector2>());
+        Aim(PlayerActions.Look.ReadValue<Vector2>());
     }
 
     private void Move(Vector2 input) {
         currentSpeed = PlayerActions.Crouch.IsPressed() ? speed * 0.5f : speed;
+        animator.SetBool("crouch", PlayerActions.Crouch.IsPressed());
         controller.Move((new Vector3(input.x, 0, input.y) * currentSpeed) * Time.deltaTime);
         AnimateMovement(input);
     }
@@ -43,7 +44,7 @@ public class CharacterLocomotion : MonoBehaviour
 
     private void AnimateMovement(Vector2 input) {
 
-
+        animator.SetBool("isAiming", PlayerActions.Aim.IsPressed());
         animator.SetFloat("inputx", input.x, 0.1f, Time.deltaTime);
         animator.SetFloat("inputy", input.y, 0.1f, Time.deltaTime);
     }

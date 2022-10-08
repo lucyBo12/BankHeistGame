@@ -19,8 +19,8 @@ public class CharacterLocomotion : MonoBehaviour
     }
 
     private void Update() {
-        Aim(PlayerActions.Aim.ReadValue<Vector2>());
         Move(PlayerActions.Movement.ReadValue<Vector2>());
+        Aim(PlayerActions.Aim.ReadValue<Vector2>());
     }
 
     private void Move(Vector2 input) {
@@ -42,6 +42,7 @@ public class CharacterLocomotion : MonoBehaviour
     }
 
     private void AnimateMovement(Vector2 input) {
+
 
         animator.SetFloat("inputx", input.x, 0.1f, Time.deltaTime);
         animator.SetFloat("inputy", input.y, 0.1f, Time.deltaTime);

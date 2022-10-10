@@ -9,7 +9,10 @@ public class TRMovementDebug : MonoBehaviour
     public float fps;
 
 
-    private void Start() => UpdateFPS();
+    private void Start() { 
+        UpdateFPS();
+        GameManager.Input.Player.Enable();
+    }
 
     private void LateUpdate() {
         var txt = string.Empty;

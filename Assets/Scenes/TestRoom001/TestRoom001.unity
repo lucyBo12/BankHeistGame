@@ -3880,6 +3880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugTxt: {fileID: 199949138}
   locomotion: {fileID: 1488381016}
+  fps: 0
 --- !u!1001 &459128765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16348,6 +16349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 876917206655407520, guid: 2d196e76a748c6c41a0f8553ff8a2406, type: 3}
+      propertyPath: speed
+      value: 4.2
+      objectReference: {fileID: 0}
     - target: {fileID: 876917206655407520, guid: 2d196e76a748c6c41a0f8553ff8a2406, type: 3}
       propertyPath: animator
       value: 

@@ -12,7 +12,6 @@ using UnityEngine;
  * author: Joseph Denby
  * email: jd744@kent.ac.uk
  */
-[RequireComponent(typeof(CharacterController), typeof (Animator))]
 public class CharacterLocomotion : MonoBehaviour
 {
     //Variables

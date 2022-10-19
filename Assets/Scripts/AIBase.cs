@@ -14,12 +14,10 @@ public class AIBase : MonoBehaviour
 
 
     protected void Update() {
-        CurrentNode.CallUpdate();
     }
 
     private void Start()
     {
-        TaskCompletedEvent.Invoke();
     }
 
 }

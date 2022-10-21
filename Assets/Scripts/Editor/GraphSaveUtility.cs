@@ -1,0 +1,160 @@
+﻿using UnityEditor.Experimental.GraphView;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
+using UnityEditor;
+using UnityEngine;
+using System.Linq;
+
+public class GraphSaveUtility
+{
+    private AIGraphView _targetGraphView;
+    private AITree _AITreeCache;
+
+    private List<Edge> Edges => _targetGraphView.edges.ToList();
+    private List<AINode> Nodes => _targetGraphView.nodes.ToList().Cast<AINode>().ToList();
+
+    public static GraphSaveUtility GetInstance(AIGraphView targetGraphView)
+    {
+        return new GraphSaveUtility
+        {
+            _targetGraphView = targetGraphView
+        };
+    }
+
+    public void SaveGraph(string fileName)
+    {
+        var AITree = ScriptableObject.CreateInstance<AITree>();
+        if (!SaveNodes(AITree))
+        {
+            return;
+        } 
+        SaveExposedProperties(AITree);
+
+        if (!AssetDatabase.IsValidFolder("Assets/Resources/AITree"))
+        { AssetDatabase.CreateFolder("Assets", "Resources"); AssetDatabase.CreateFolder("Assets/Resources", "AITree"); }
+
+        AssetDatabase.CreateAsset(AITree, $"Assets/Resources/AITree/{fileName}.asset");
+        AssetDatabase.SaveAssets();
+    }
+
+    private bool SaveNodes(AITree AITree)
+    {
+        if (!Edges.Any())
+        {
+            EditorUtility.DisplayDialog("Error", "Can't save new tree without at least single connected node!", ok: "Ok");
+            return false;
+        }
+
+        var connectedPorts = Edges.Where(x => x.input.node != null).ToArray();
+        for (var i = 0; i < connectedPorts.Length; i++)
+        {
+            var outputNode = connectedPorts[i].output.node as AINode;
+            var inputNode = connectedPorts[i].input.node as AINode;
+
+            AITree.NodeLinks.Add(new NodeLinkData
+            {
+                BaseNodeGuid = outputNode.GUID,
+                PortName = connectedPorts[i].output.portName,
+                TargetNodeGuid = inputNode.GUID
+            }); ;
+        }
+
+        foreach (var AITreeNode in Nodes.Where(node => !node.EntryPoint))
+        {
+            AITree.AINodeData.Add(new AINodeData
+            {
+                Guid = AITreeNode.GUID,
+                Position = AITreeNode.GetPosition().position
+            });; ;
+        }
+
+        return true;
+    }
+
+    private void SaveExposedProperties(AITree AITree)
+    {
+        AITree.ExposedProperties.AddRange(_targetGraphView.ExposedProperties);
+    }
+
+    public void LoadGraph(string fileName)
+    {
+        _AITreeCache = Resources.Load<AITree>("AITree/" + fileName);
+        if (_AITreeCache == null)
+        {
+            EditorUtility.DisplayDialog("AITree Tree not found!", "Unity could not find the AITree Tree. This is a problem for Joe.", ok: "Oh shit.");
+            return;
+        }
+
+        ClearGraph();
+        CreateNodes();
+        ConnectNodes();
+        CreateExposedProperties();
+    }
+
+    private void CreateNodes()
+    {
+        foreach (var nodeData in _AITreeCache.AINodeData)
+        {
+            var tempNode = _targetGraphView.CreateAITreeNode( Vector2.zero);
+            tempNode.GUID = nodeData.Guid;
+            _targetGraphView.AddElement(tempNode);
+
+            var nodePorts = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName));
+
+        }
+    }
+
+    private void ConnectNodes()
+    {
+        for (int i = 0; i < Nodes.Count; i++)
+        {
+            var connections = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == Nodes[i].GUID).ToList();
+            for (int j = 0; j < connections.Count; j++)
+            {
+                var targetNodeGuid = connections[j].TargetNodeGuid;
+                var targetNode = Nodes.First(x => x.GUID == targetNodeGuid);
+                LinkNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
+
+                targetNode.SetPosition(new Rect(_AITreeCache.AINodeData.First(x => x.Guid == targetNodeGuid).Position, _targetGraphView.defaultNodeSize));
+            }
+        }
+    }
+
+    private void LinkNodes(Port output, Port input)
+    {
+        var tempEdge = new Edge 
+        { 
+            output = output,
+            input = input
+        };
+
+        tempEdge?.input.Connect(tempEdge);
+        tempEdge?.output.Connect(tempEdge);
+
+        _targetGraphView.Add(tempEdge);
+    }
+
+    private void CreateExposedProperties()
+    {
+        _targetGraphView.ClearBlackBoardAndExposedProperties();
+        foreach (var exposedProperty in _AITreeCache.ExposedProperties)
+        {
+            _targetGraphView.AddPropertyToBlackBoard(exposedProperty);
+        }
+    }
+
+    private void ClearGraph()
+    {
+        //Start point
+        Nodes.Find(x => x.EntryPoint).GUID = _AITreeCache.NodeLinks[0].BaseNodeGuid;
+
+        foreach (var node in Nodes)
+        {
+            if (node.EntryPoint) continue;
+            Edges.Where(x => x.input.node == node).ToList().ForEach(edge => _targetGraphView.RemoveElement(edge));
+            _targetGraphView.RemoveElement(node);
+        }
+    }
+
+}

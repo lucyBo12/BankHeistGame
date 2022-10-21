@@ -28,12 +28,13 @@ public class GraphSaveUtility
         {
             return;
         } 
-        SaveExposedProperties(AITree);
 
-        if (!AssetDatabase.IsValidFolder("Assets/Resources/AITree"))
-        { AssetDatabase.CreateFolder("Assets", "Resources"); AssetDatabase.CreateFolder("Assets/Resources", "AITree"); }
+        if (!AssetDatabase.IsValidFolder("Assets/Resources/AI")) { 
+            AssetDatabase.CreateFolder("Assets", "Resources"); 
+            AssetDatabase.CreateFolder("Assets/Resources", "AI"); 
+        }
 
-        AssetDatabase.CreateAsset(AITree, $"Assets/Resources/AITree/{fileName}.asset");
+        AssetDatabase.CreateAsset(AITree, $"Assets/Resources/AI/{fileName}.asset");
         AssetDatabase.SaveAssets();
     }
 
@@ -64,6 +65,7 @@ public class GraphSaveUtility
             AITree.AINodeData.Add(new AINodeData
             {
                 Guid = AITreeNode.GUID,
+                Type = AITreeNode.GetType(),
                 Position = AITreeNode.GetPosition().position
             });; ;
         }
@@ -71,14 +73,9 @@ public class GraphSaveUtility
         return true;
     }
 
-    private void SaveExposedProperties(AITree AITree)
-    {
-        AITree.ExposedProperties.AddRange(_targetGraphView.ExposedProperties);
-    }
-
     public void LoadGraph(string fileName)
     {
-        _AITreeCache = Resources.Load<AITree>("AITree/" + fileName);
+        _AITreeCache = Resources.Load<AITree>("AI/" + fileName);
         if (_AITreeCache == null)
         {
             EditorUtility.DisplayDialog("AITree Tree not found!", "Unity could not find the AITree Tree. This is a problem for Joe.", ok: "Oh shit.");
@@ -88,19 +85,21 @@ public class GraphSaveUtility
         ClearGraph();
         CreateNodes();
         ConnectNodes();
-        CreateExposedProperties();
     }
 
     private void CreateNodes()
     {
         foreach (var nodeData in _AITreeCache.AINodeData)
         {
-            var tempNode = _targetGraphView.CreateAITreeNode( Vector2.zero);
-            tempNode.GUID = nodeData.Guid;
-            _targetGraphView.AddElement(tempNode);
+            Debug.Log($"Type: {nodeData.Type.Name}");
+            AINode node = _targetGraphView.CreateAI_HasGoalNode();
+
+
+            node.GUID = nodeData.Guid;
+            _targetGraphView.AddElement(node);
 
             var nodePorts = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(tempNode, x.PortName));
+            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(node, x.PortName));
 
         }
     }
@@ -133,15 +132,6 @@ public class GraphSaveUtility
         tempEdge?.output.Connect(tempEdge);
 
         _targetGraphView.Add(tempEdge);
-    }
-
-    private void CreateExposedProperties()
-    {
-        _targetGraphView.ClearBlackBoardAndExposedProperties();
-        foreach (var exposedProperty in _AITreeCache.ExposedProperties)
-        {
-            _targetGraphView.AddPropertyToBlackBoard(exposedProperty);
-        }
     }
 
     private void ClearGraph()

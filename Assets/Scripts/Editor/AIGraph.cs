@@ -10,7 +10,7 @@ public class AIGraph : EditorWindow
     private AIGraphView _graphView;
     private string _fileName = "New AITree";
 
-    [MenuItem("Window/AI/AI Tree")]
+    [MenuItem("Window/AI/AITree")]
     public static void OpenAIGraphWindow()
     {
         var window = GetWindow<AIGraph>();
@@ -22,38 +22,14 @@ public class AIGraph : EditorWindow
         ConstructGraphView();
         GenerateToolbar();
         GenerateMinimap();
-        GenerateBlackBoard();
     }
 
-    private void GenerateBlackBoard()
-    {
-        var blackBoard = new Blackboard(_graphView);
-        blackBoard.Add(new BlackboardSection { title = "Exposed Properties"});
-        blackBoard.addItemRequested = _blackBoard =>  {_graphView.AddPropertyToBlackBoard(new ExposedProperty()); };
-        blackBoard.editTextRequested = (blackBoard1, element, newValue) => 
-        {
-            var oldPropertyName = ((BlackboardField)element).text;
-            if (_graphView.ExposedProperties.Any(x => x.PropertyName == newValue))
-            {
-                EditorUtility.DisplayDialog("Error", "Can't share same name as existing property. Please assign a different one.", ok: "Got it");
-                return;
-            }
-
-            var propertyIndex = _graphView.ExposedProperties.FindIndex(x => x.PropertyName == oldPropertyName);
-            _graphView.ExposedProperties[propertyIndex].PropertyName = newValue;
-            ((BlackboardField)element).text = newValue;
-        };
-
-        blackBoard.SetPosition(new Rect(10, 30, 200, 300));
-        _graphView.Add(blackBoard);
-        _graphView.Blackboard = blackBoard;
-    }
 
     private void ConstructGraphView()
     {
         _graphView = new AIGraphView(this)
         {
-            name = "AITree Graph"
+            name = "AITree"
         };
 
         _graphView.StretchToParentSize();
@@ -79,8 +55,8 @@ public class AIGraph : EditorWindow
     {
         if (string.IsNullOrEmpty(_fileName))
         {
-            EditorUtility.DisplayDialog("No file name!", "All new instances of AITree Trees must have a File Name." +
-                "You can find the File Name input field on the toolbar above the grid view.\n (Ask Joe if you're still lost)", ok: "Got it!");
+            EditorUtility.DisplayDialog("No file name!", "All new instances of AITree must have a file name." +
+                "You can find the 'File Name' input field on the toolbar above the grid view.\n (Ask Joe if you're still lost)", ok: "Got it!");
             return;
         }
 

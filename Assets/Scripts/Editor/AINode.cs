@@ -17,7 +17,7 @@ public class AINode : Node
         
     }
 
-    public virtual bool Completed(AIBase npc) {
+    public virtual bool Active(AIBase npc) {
         return true;
     }
 }

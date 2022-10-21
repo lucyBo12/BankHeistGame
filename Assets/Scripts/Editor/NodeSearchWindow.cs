@@ -25,10 +25,10 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
         var tree = new List<SearchTreeEntry>
         {
             new SearchTreeGroupEntry(new GUIContent("Create Elements"), 0),
-            new SearchTreeGroupEntry(new GUIContent("AITree"), 1),
-            new SearchTreeEntry(new GUIContent("AITree Node", _indentationIcon))
+            new SearchTreeGroupEntry(new GUIContent("Condition"), 1),
+            new SearchTreeEntry(new GUIContent("HasGoalNode", _indentationIcon))
             {
-                userData = new AINode(), level = 2
+                userData = new AI_HasGoalNode(), level = 2
             }
         };
 
@@ -42,8 +42,8 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
 
         switch (SearchTreeEntry.userData)
         {
-            case AINode:
-                _graphView.CreateNode(localMousePosition);
+            case AI_HasGoalNode:
+                _graphView.AddNode(_graphView.CreateAI_HasGoalNode(), localMousePosition);
                 return true;
             default:
                 return false;

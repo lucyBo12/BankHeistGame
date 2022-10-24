@@ -28,8 +28,16 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
             new SearchTreeGroupEntry(new GUIContent("Condition"), 1),
             new SearchTreeEntry(new GUIContent("HasGoalNode", _indentationIcon))
             {
-                userData = new AI_HasGoalNode(), level = 2
+                userData = new AI_HasGoalNode(),
+                level = 2
+            },
+            new SearchTreeGroupEntry(new GUIContent("Action"), 1),
+            new SearchTreeEntry(new GUIContent("GetCivillianGoalNode", _indentationIcon))
+            {
+                userData = new AI_GetCivillianGoalNode(),
+                level = 2
             }
+            
         };
 
         return tree;
@@ -43,7 +51,14 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
         switch (SearchTreeEntry.userData)
         {
             case AI_HasGoalNode:
-                _graphView.AddNode(_graphView.CreateAI_HasGoalNode(), localMousePosition);
+                AINode node = _graphView.CreateAI_HasGoalNode();
+                node.nodeType = node;
+                _graphView.AddNode(node, localMousePosition);
+                return true;
+            case AI_GetCivillianGoalNode:
+                node = _graphView.CreateAI_GetCivillianGoalNode();
+                node.nodeType = node;
+                _graphView.AddNode(node, localMousePosition);
                 return true;
             default:
                 return false;

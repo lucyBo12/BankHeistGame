@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2745c95b77dd349bdad3ae1214e89f, type: 3}
+  m_Name: TestTree
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: c6caea9f-79ce-49f9-9192-252f619cd8b3
+    PortName: Single
+    TargetNodeGuid: 73fc59aa-6b06-4054-a56b-32d42e130360
+  - BaseNodeGuid: 73fc59aa-6b06-4054-a56b-32d42e130360
+    PortName: False
+    TargetNodeGuid: 14a662b0-106c-46bc-a032-e434276da101
+  AINodeData:
+  - Guid: 73fc59aa-6b06-4054-a56b-32d42e130360
+    Type: AI_HasGoalNode
+    Values: []
+    Position: {x: 476, y: 200}
+  - Guid: 14a662b0-106c-46bc-a032-e434276da101
+    Type: AI_GetCivillianGoalNode
+    Values: []
+    Position: {x: 773, y: 301}

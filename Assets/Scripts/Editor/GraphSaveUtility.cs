@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using Codice.CM.SEIDInfo;
 
 public class GraphSaveUtility
 {
@@ -62,12 +63,15 @@ public class GraphSaveUtility
 
         foreach (var AITreeNode in Nodes.Where(node => !node.EntryPoint))
         {
+
             AITree.AINodeData.Add(new AINodeData
             {
                 Guid = AITreeNode.GUID,
-                Type = AITreeNode.GetType(),
+                Type = AITreeNode.GetType().Name,
                 Position = AITreeNode.GetPosition().position
-            });; ;
+            });
+
+            //Add values below
         }
 
         return true;
@@ -91,15 +95,22 @@ public class GraphSaveUtility
     {
         foreach (var nodeData in _AITreeCache.AINodeData)
         {
-            Debug.Log($"Type: {nodeData.Type.Name}");
-            AINode node = _targetGraphView.CreateAI_HasGoalNode();
+            AINode node = null;
+            Debug.Log($"Type: {nodeData.Type}");
+            System.Type type = System.Type.GetType(nodeData.Type);
 
+            if (type == typeof(AI_HasGoalNode))
+                node = _targetGraphView.CreateAI_HasGoalNode();
+            if (type == typeof(AI_GetCivillianGoalNode))
+                node = _targetGraphView.CreateAI_GetCivillianGoalNode();
 
             node.GUID = nodeData.Guid;
             _targetGraphView.AddElement(node);
 
-            var nodePorts = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
-            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(node, x.PortName));
+            //Only do the below for custom choice nodes (might not need)
+
+            /*var nodePorts = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
+            nodePorts.ForEach(x => _targetGraphView.AddChoicePort(node, x.PortName));*/
 
         }
     }

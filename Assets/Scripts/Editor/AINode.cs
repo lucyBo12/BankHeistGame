@@ -4,6 +4,7 @@ public class AINode : Node
 {
     public string GUID;
     public bool EntryPoint = false;
+    public object nodeType;
 
     public virtual void OnStart(AIBase npc) { 
     
@@ -17,7 +18,7 @@ public class AINode : Node
         
     }
 
-    public virtual bool Active(AIBase npc) {
-        return true;
-    }
+    public virtual float Weight(AIBase npc) => 0;
+
+    public virtual bool Active(AIBase npc) => true;
 }

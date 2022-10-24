@@ -5,6 +5,8 @@ using System;
 public class AINodeData
 {
     public string Guid;
-    public Type Type;
+    public string Type;
+    public string[] Values;
     public Vector2 Position;
+
 }

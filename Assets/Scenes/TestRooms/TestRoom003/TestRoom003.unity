@@ -19010,8 +19010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be62b5c7f3a043e40ae6e726aab522f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: {fileID: 11400000, guid: 8ac51ffd1a4ca3b4b9e493873d912b03, type: 2}
+  behaviour: {fileID: 11400000, guid: 21d9e359c8467ee4b9ece7ad92e3cae4, type: 2}
   aiEnabled: 1
+  animator: {fileID: 9088109908553469891}
 --- !u!4 &9088109908563209685
 Transform:
   m_ObjectHideFlags: 0

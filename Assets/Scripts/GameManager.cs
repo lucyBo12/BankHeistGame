@@ -11,7 +11,7 @@ using UnityEngine;
 public static class GameManager
 {
     public static InputMaster Input { get; private set; }
-
+    public static bool InCombat { get; private set; }
 
     /**
      * Uses "RuntimeInitializeOnLoadMethod" to run game setup

@@ -38,12 +38,29 @@ public class AITree : ScriptableObject
             }
         }
 
-        var values = nodes.OrderBy(x => x.Weight(aIBase));
-
         if (nodes.Count == 0)
             Debug.LogWarning("<AITree> Could not make successful link. " +
                 $"\nAITree: {name}" +
                 $"\nNode: {node.name}");
+
+        if (node.Conditional) {
+            foreach (NodeLinkData link in baseLinks) {
+                if (link.PortName.Equals(node.BoolResult(aIBase) ? "True" : "False")) {
+                    AINode x = GetNode(link.TargetNodeGuid);
+                    Debug.Log(link + $"\n--------\n{x.GUID}");
+                    return new AINode[] { 
+                        GetNode(link.TargetNodeGuid)
+                    };
+                }
+            }
+
+            return new AINode[] {
+                StartNode()
+            };
+        }
+
+        var values = nodes.OrderBy(x => x.Weight(aIBase));
+
 
         return values.ToArray();
     }
@@ -56,6 +73,16 @@ public class AITree : ScriptableObject
         }
 
         return AINodeData[0];
+    }
+
+    private AINode GetNode(string GUID) {
+
+        foreach (AINodeData data in AINodeData) {
+            if (data.GUID.Equals(GUID))
+                return GetNode(data.NodeType, GUID);
+        }
+
+        return StartNode();
     }
 
     private NodeLinkData[] GetLinks(AINode node) {

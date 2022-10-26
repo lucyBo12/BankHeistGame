@@ -10,7 +10,14 @@ public class AIBase : MonoBehaviour
     public AITree behaviour;
     public bool aiEnabled = true;
     public AINode currentNode { get; private set; }
+    [SerializeField] Animator animator;
 
+
+    private void Start()
+    {
+        Goal = new AIGoal();
+        Agent = GetComponent<NavMeshAgent>();
+    }
 
     private void LateUpdate()
     {

@@ -109,6 +109,34 @@ public class AIGraphView : GraphView
         return node;
     }
 
+    public AI_InCombatNode CreateAI_InCombatNode()
+    {
+        var node = new AI_InCombatNode
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "True";
+        node.outputContainer.Add(outPort);
+
+        //Output Port
+        var outPortB = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPortB.portName = "False";
+        node.outputContainer.Add(outPortB);
+
+        node.title = "In Combat?";
+
+        return node;
+    }
+
     public AI_GetCivillianGoalNode CreateAI_GetCivillianGoalNode()
     {
         var node = new AI_GetCivillianGoalNode
@@ -131,6 +159,8 @@ public class AIGraphView : GraphView
 
         return node;
     }
+
+
 
     public void AddChoicePort(AINode node, string overriddenPortName = "")
     {

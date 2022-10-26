@@ -4,6 +4,7 @@ public struct AIGoal
 {
     public Transform Target { get; private set; }
     public Vector3 TargetLocation { get; private set; }
+    public bool HasGoal => Target != null || TargetLocation != Vector3.zero;
     public bool ActiveGoal;
 
     public AIGoal(Transform target) { 
@@ -17,4 +18,5 @@ public struct AIGoal
         Target = null;
         ActiveGoal = true;
     } 
+
 }

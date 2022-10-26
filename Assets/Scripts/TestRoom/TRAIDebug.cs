@@ -6,11 +6,11 @@ public class TRAIDebug : MonoBehaviour
     [SerializeField] AIBase ai;
     [SerializeField] TextMeshProUGUI debugText;
 
-    private void Update()
+    private void LateUpdate()
     {
         debugText.text = $"'{ai.name}' active: [{ai.gameObject.activeSelf}] " +
             $"\nAIEnabled: [{ai.aiEnabled}]" +
-            $"\nNode: {ai.currentNode.ToString(ai)}";
+            $"\nNode: {(ai.currentNode == null ? "<NULL>" : ai.currentNode.ToString(ai))}";
     }
 
 }

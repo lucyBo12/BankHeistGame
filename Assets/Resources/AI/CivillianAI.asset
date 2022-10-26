@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2745c95b77dd349bdad3ae1214e89f, type: 3}
+  m_Name: CivillianAI
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: 144a2c0d-18a7-4bba-adb5-6fa6ec8fbf76
+    PortName: START
+    TargetNodeGuid: bdc31a06-9b0f-4754-a6d9-d132783ed1ad
+  - BaseNodeGuid: bdc31a06-9b0f-4754-a6d9-d132783ed1ad
+    PortName: False
+    TargetNodeGuid: a51e4e5c-17ac-429f-9ccc-8ba5f37103ed
+  - BaseNodeGuid: a51e4e5c-17ac-429f-9ccc-8ba5f37103ed
+    PortName: False
+    TargetNodeGuid: 5a5afefb-7a0f-4bb6-b81e-f58a2f3a65a9
+  AINodeData:
+  - GUID: bdc31a06-9b0f-4754-a6d9-d132783ed1ad
+    NodeType: AI_InCombatNode
+    Position: {x: 287.33334, y: 200}
+  - GUID: a51e4e5c-17ac-429f-9ccc-8ba5f37103ed
+    NodeType: AI_HasGoalNode
+    Position: {x: 523.3333, y: 278.66666}
+  - GUID: 5a5afefb-7a0f-4bb6-b81e-f58a2f3a65a9
+    NodeType: AI_GetCivillianGoalNode
+    Position: {x: 740, y: 381.3333}

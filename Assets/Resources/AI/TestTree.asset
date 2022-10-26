@@ -13,18 +13,16 @@ MonoBehaviour:
   m_Name: TestTree
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGuid: c6caea9f-79ce-49f9-9192-252f619cd8b3
-    PortName: Single
-    TargetNodeGuid: 73fc59aa-6b06-4054-a56b-32d42e130360
-  - BaseNodeGuid: 73fc59aa-6b06-4054-a56b-32d42e130360
-    PortName: False
-    TargetNodeGuid: 14a662b0-106c-46bc-a032-e434276da101
+  - BaseNodeGuid: 4956ac1a-c2d6-4d55-a3f8-09e0265e2f81
+    PortName: START
+    TargetNodeGuid: fdd528e9-a103-4352-96b9-557c20d799af
+  - BaseNodeGuid: fdd528e9-a103-4352-96b9-557c20d799af
+    PortName: True
+    TargetNodeGuid: f7f0cb5f-6166-48dc-92e1-1b1a53b3a67d
   AINodeData:
-  - Guid: 73fc59aa-6b06-4054-a56b-32d42e130360
-    Type: AI_HasGoalNode
-    Values: []
-    Position: {x: 476, y: 200}
-  - Guid: 14a662b0-106c-46bc-a032-e434276da101
-    Type: AI_GetCivillianGoalNode
-    Values: []
-    Position: {x: 773, y: 301}
+  - GUID: fdd528e9-a103-4352-96b9-557c20d799af
+    NodeType: AI_HasGoalNode
+    Position: {x: 336.66666, y: 200}
+  - GUID: f7f0cb5f-6166-48dc-92e1-1b1a53b3a67d
+    NodeType: AI_GetCivillianGoalNode
+    Position: {x: 599.3333, y: 224}

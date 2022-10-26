@@ -57,12 +57,12 @@ public class AIGraphView : GraphView
     {
         var node = new AINode
         {
-            title = "START",
             GUID = Guid.NewGuid().ToString(),
             EntryPoint = true
         };
 
         var generatedPort = GeneratePort(node, Direction.Output);
+        generatedPort.portName = "START";
         node.outputContainer.Add(generatedPort);
 
         node.capabilities &= ~Capabilities.Movable;

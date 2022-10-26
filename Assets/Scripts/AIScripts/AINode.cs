@@ -4,7 +4,11 @@ public class AINode : Node
 {
     public string GUID;
     public bool EntryPoint = false;
-    public object nodeType;
+
+
+    public AINode(string GUID = "") { 
+        this.GUID = GUID;
+    }
 
     public virtual void OnStart(AIBase npc) { 
     
@@ -20,5 +24,9 @@ public class AINode : Node
 
     public virtual float Weight(AIBase npc) => 0;
 
-    public virtual bool Active(AIBase npc) => true;
+    public virtual bool Active(AIBase npc) => false;
+
+    public virtual string ToString(AIBase npc) {
+        return $"{GetType().Name}: [{Active(npc)}] - {GUID}";
+    }
 }

@@ -51,14 +51,10 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
         switch (SearchTreeEntry.userData)
         {
             case AI_HasGoalNode:
-                AINode node = _graphView.CreateAI_HasGoalNode();
-                node.nodeType = node;
-                _graphView.AddNode(node, localMousePosition);
+                _graphView.AddNode(_graphView.CreateAI_HasGoalNode(), localMousePosition);
                 return true;
             case AI_GetCivillianGoalNode:
-                node = _graphView.CreateAI_GetCivillianGoalNode();
-                node.nodeType = node;
-                _graphView.AddNode(node, localMousePosition);
+                _graphView.AddNode(_graphView.CreateAI_GetCivillianGoalNode(), localMousePosition);
                 return true;
             default:
                 return false;

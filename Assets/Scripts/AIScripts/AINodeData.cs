@@ -4,9 +4,8 @@ using System;
 [Serializable]
 public class AINodeData
 {
-    public string Guid;
-    public string Type;
-    public string[] Values;
+    public string GUID;
+    public string NodeType;
     public Vector2 Position;
 
 }

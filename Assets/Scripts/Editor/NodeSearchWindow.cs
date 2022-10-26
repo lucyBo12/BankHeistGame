@@ -28,24 +28,27 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
             
             //Conditional
             new SearchTreeGroupEntry(new GUIContent("Condition"), 1),
-            new SearchTreeEntry(new GUIContent("HasGoalNode", _indentationIcon))
+            new SearchTreeEntry(new GUIContent("Has Goal", _indentationIcon))
             {
                 userData = new AI_HasGoalNode(),
                 level = 2
             },
-            new SearchTreeEntry(new GUIContent("InCombat", _indentationIcon)) { 
+            new SearchTreeEntry(new GUIContent("In Combat", _indentationIcon)) { 
                userData = new AI_InCombatNode(),
                level = 2
             },
 
             //Action
             new SearchTreeGroupEntry(new GUIContent("Action"), 1),
-            new SearchTreeEntry(new GUIContent("GetCivillianGoalNode", _indentationIcon))
+            new SearchTreeEntry(new GUIContent("Get Civillian Goal", _indentationIcon))
             {
                 userData = new AI_GetCivillianGoalNode(),
                 level = 2
-            }
-            
+            },
+            new SearchTreeEntry(new GUIContent("Press Alarm", _indentationIcon)) {
+               userData = new AI_AlarmNode(),
+               level = 2
+            },
         };
 
         return tree;
@@ -66,6 +69,9 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 return true;
             case AI_InCombatNode:
                 _graphView.AddNode(_graphView.CreateAI_InCombatNode(), localMousePosition);
+                return true;
+            case AI_AlarmNode:
+                _graphView.AddNode(_graphView.CreateAI_AlarmNode(), localMousePosition);
                 return true;
             default:
                 return false;

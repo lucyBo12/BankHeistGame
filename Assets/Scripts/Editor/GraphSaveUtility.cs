@@ -146,8 +146,12 @@ public class GraphSaveUtility
 
             if (type == typeof(AI_HasGoalNode))
                 node = _targetGraphView.CreateAI_HasGoalNode();
-            if (type == typeof(AI_GetCivillianGoalNode))
+            else if (type == typeof(AI_GetCivillianGoalNode))
                 node = _targetGraphView.CreateAI_GetCivillianGoalNode();
+            else if (type == typeof(AI_InCombatNode))
+                node = _targetGraphView.CreateAI_InCombatNode();
+            else if (type == typeof(AI_AlarmNode))
+                node = _targetGraphView.CreateAI_AlarmNode();
 
             node.GUID = nodeData.GUID;
             _targetGraphView.AddElement(node);

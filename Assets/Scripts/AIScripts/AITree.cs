@@ -15,6 +15,10 @@ public class AITree : ScriptableObject
                 return new AI_GetCivillianGoalNode(GUID);
             case "AI_HasGoalNode":
                 return new AI_HasGoalNode(GUID);
+            case "AI_InCombatNode":
+                return new AI_InCombatNode(GUID);
+            case "AI_AlarmNode":
+                return new AI_AlarmNode(GUID);
             default:
                 return new AINode(GUID);
         }

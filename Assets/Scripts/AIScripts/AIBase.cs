@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class AIBase : MonoBehaviour
 {
     public NavMeshAgent Agent { get; protected set; }
-    public Transform Target { get; protected set; }
+    public CharacterSheet Character;
     public AIGoal Goal { get; set; }
     public AITree behaviour;
     public bool aiEnabled = true;
@@ -52,4 +52,15 @@ public class AIBase : MonoBehaviour
         currentNode.OnStart(this);
     }
 
+    [System.Serializable]
+    public struct CharacterSheet {
+        public readonly float fear;
+        public readonly bool staff;
+
+        public CharacterSheet(float fear, bool staff) {
+            this.fear = fear;
+            this.staff = staff;
+        }
+        
+    }
 }

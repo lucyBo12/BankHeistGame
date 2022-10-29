@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Netcode;
 
 /**
  * Character movement behavior and animation handling is
@@ -12,7 +13,7 @@ using UnityEngine;
  * author: Joseph Denby
  * email: jd744@kent.ac.uk
  */
-public class CharacterLocomotion : MonoBehaviour
+public class CharacterLocomotion : NetworkBehaviour
 {
     //Variables
     public CharacterController controller;
@@ -28,8 +29,14 @@ public class CharacterLocomotion : MonoBehaviour
     private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
+    private void Start()
+    {
+        PlayerActions.Enable();
+    }
+
     //Called automatically every frame
     private void Update() {
+        if (!IsOwner) return;
 
         //Move/AnimateCharacter both use Movement input
         Vector2 input = PlayerActions.Movement.ReadValue<Vector2>();
@@ -51,6 +58,7 @@ public class CharacterLocomotion : MonoBehaviour
         //If aiming/crouching speed should be lowered
         currentSpeed = isCrouching || isAiming ? speed * 0.5f : speed;
 
+        Debug.Log($"Moving {input}");
         //Move Transform toward input over currentSpeed
         controller.Move((new Vector3(input.x, 0, input.y) * currentSpeed) * Time.deltaTime);
     }

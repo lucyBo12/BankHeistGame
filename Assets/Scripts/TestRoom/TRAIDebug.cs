@@ -18,7 +18,8 @@ public class TRAIDebug : MonoBehaviour
     {
         debugText.text = $"'{ai.name}' active: [{ai.gameObject.activeSelf}] " +
             $"\nAIEnabled: [{ai.aiEnabled}]" +
-            $"\nNode: {(ai.currentNode == null ? "<NULL>" : ai.currentNode.ToString(ai))}";
+            $"\nNode: {(ai.currentNode == null ? "<NULL>" : ai.currentNode.ToString(ai))}" +
+            $"\nInCombat: {GameManager.InCombat}";
     }
 
     private void Update()

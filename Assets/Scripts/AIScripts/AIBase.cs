@@ -1,6 +1,17 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+/**
+ * Centeral class for AI Behaviour. Pre-Assembled 'AITree' objects
+ * are assigned to 'AIBase' component and computed from here. Other
+ * aspects of ai logic are also defined here, including 'NavMeshAgent'
+ * for pathfinding and 'AIGoal' for goal tracking respectivley. 
+ * 
+ * requires: NavMeshAgent
+ * author: Joseph Denby 
+ * email: jd744@kent.ac.uk
+ */
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class AIBase : MonoBehaviour
 {
@@ -13,15 +24,22 @@ public class AIBase : MonoBehaviour
     [SerializeField] Animator animator;
 
 
-    private void Start()
-    {
+    private void Start() {
         Goal = new AIGoal();
         Agent = GetComponent<NavMeshAgent>();
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
+        //Process tree logic
         HandleTree();
+
+        if (Agent.destination.Equals(transform.position))
+            return; //Are we going somewhere?
+
+        //Animate movement
+        var dir = transform.forward;
+        animator.SetFloat("inputx", dir.x);
+        animator.SetFloat("inputy", dir.y);
     }
 
     /**
@@ -52,10 +70,11 @@ public class AIBase : MonoBehaviour
         currentNode.OnStart(this);
     }
 
+    //Variables for ai behaviour defined here
     [System.Serializable]
     public struct CharacterSheet {
-        public readonly float fear;
-        public readonly bool staff;
+        [Range(0, 1)]public float fear;
+        public bool staff;
 
         public CharacterSheet(float fear, bool staff) {
             this.fear = fear;

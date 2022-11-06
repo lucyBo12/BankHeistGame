@@ -58,7 +58,6 @@ public class CharacterLocomotion : NetworkBehaviour
         //If aiming/crouching speed should be lowered
         currentSpeed = isCrouching || isAiming ? speed * 0.5f : speed;
 
-        Debug.Log($"Moving {input}");
         //Move Transform toward input over currentSpeed
         controller.Move((new Vector3(input.x, 0, input.y) * currentSpeed) * Time.deltaTime);
     }

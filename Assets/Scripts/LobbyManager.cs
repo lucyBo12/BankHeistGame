@@ -14,7 +14,6 @@ using UnityEngine;
 public static class LobbyManager
 {
     public static Lobby Current { get; private set;}
-    private static QueryResponse QR { get; set; }
     private static UnityTransport Transport => GameObject.FindObjectOfType<UnityTransport>();
     private const string JoinCodeKey = "j";
     public static string PlayerName { get; set; }
@@ -38,7 +37,6 @@ public static class LobbyManager
         {
             var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
             var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
-
             //SetTransformAsClient(a)
 
             NetworkManager.Singleton.StartClient();
@@ -55,22 +53,19 @@ public static class LobbyManager
     {
         try
         {
-            Debug.Log(">1");
             const int maxPlayers = 5;
             var a = await RelayService.Instance.CreateAllocationAsync(maxPlayers);
             var joinCode = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
-            Debug.Log(">2");
+
             var options = new CreateLobbyOptions()
             {
                 Data = new Dictionary<string, DataObject> { { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } }
             };
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Dolefish", maxPlayers, options);
-            Debug.Log(">3");
-            Timeout(lobby.Id, DateTime.Now.AddMinutes(10));
 
-            Debug.Log(">4");
-            NetworkManager.Singleton.StartHost();
+            Timeout(lobby.Id, DateTime.Now.AddMinutes(10));
             Transport.SetHostRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData);
+            NetworkManager.Singleton.StartHost();
 
             return lobby;
         }

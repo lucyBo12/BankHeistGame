@@ -37,8 +37,7 @@ public static class LobbyManager
         {
             var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
             var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
-            //SetTransformAsClient(a)
-
+            Transport.SetClientRelayData(a.RelayServer.IpV4, (ushort)a.RelayServer.Port, a.AllocationIdBytes, a.Key, a.ConnectionData, a.HostConnectionData);
             NetworkManager.Singleton.StartClient();
             return lobby;
         }

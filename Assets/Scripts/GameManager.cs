@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -11,7 +12,9 @@ using UnityEngine;
 public static class GameManager
 {
     public static InputMaster Input { get; private set; }
-
+    public static bool InCombat { get; private set; }
+    public static List<Transform> Players = new List<Transform>();
+    public static List<Transform> Alarms = new List<Transform>();
 
     /**
      * Uses "RuntimeInitializeOnLoadMethod" to run game setup
@@ -21,5 +24,7 @@ public static class GameManager
     private static void Initialize() {
         Input = new InputMaster();    
     }
+
+    public static void StartCombat() => InCombat = true;
 
 }

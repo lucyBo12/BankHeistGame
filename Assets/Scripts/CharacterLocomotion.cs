@@ -46,6 +46,9 @@ public class CharacterLocomotion : NetworkBehaviour
         //Get mouse position and pass to Aim function
         Vector2 mousePos = PlayerActions.Look.ReadValue<Vector2>();
         Aim(mousePos);
+
+        if (IsHost) return;
+        UpdateHostServerRpc(NetworkManager.Singleton.LocalClient.ClientId, input);
     }
 
     /**
@@ -111,6 +114,18 @@ public class CharacterLocomotion : NetworkBehaviour
         moveDirection = transform.InverseTransformDirection(moveDirection);
         animator.SetFloat("inputx", moveDirection.x, 0.1f, Time.deltaTime);
         animator.SetFloat("inputy", moveDirection.z, 0.1f, Time.deltaTime);
+    }
+
+    [ServerRpc]
+    private void UpdateHostServerRpc(ulong id, Vector2 input) {
+        Debug.Log($"Called RPC with {id} + {input}");
+        if (!IsHost) return;
+
+        Debug.Log($"Getting NetObj for {id}");
+        NetworkObject netObj = NetworkManager.Singleton.ConnectedClients[id].PlayerObject;
+        Debug.Log($"Object found for {id} with name {netObj.name}");
+        netObj.GetComponent<Animator>().SetFloat("inputx", input.x);
+        netObj.GetComponent<Animator>().SetFloat("inputy", input.y);
     }
 
 

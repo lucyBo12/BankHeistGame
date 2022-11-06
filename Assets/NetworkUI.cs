@@ -4,12 +4,12 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 using Unity.Netcode.Transports.UTP;
+using Unity.Netcode.Components;
 
 public class NetworkUI : MonoBehaviour
 {
     [SerializeField] private Button hostBtn;
     [SerializeField] private Button clientBtn;
-    [SerializeField] private UnityTransport transport;
 
 
     private void Awake()
@@ -26,6 +26,7 @@ public class NetworkUI : MonoBehaviour
     public void Connect()
     {
         LobbyManager.CreateOrJoinLobby();
+        NetworkAnimator animator;
     }
 
 }

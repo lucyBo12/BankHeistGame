@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Components;
+using Cinemachine;
 
 /**
  * Character movement behavior and animation handling is
@@ -27,11 +28,15 @@ public class CharacterLocomotion : NetworkBehaviour
     public bool isAiming => PlayerActions.Aim.IsPressed();
     public bool IsCrouching => PlayerActions.Crouch.IsPressed();
     public bool IsMoving => controller.velocity != Vector3.zero;
+    public CinemachineVirtualCamera VirtualCamera => GameObject.FindGameObjectWithTag("VirtualCamera")?.GetComponent<CinemachineVirtualCamera>();
     private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
     private void Start() {
         PlayerActions.Enable();
+
+        if (!VirtualCamera) return;
+            VirtualCamera.Follow = LobbyManager.Self().transform;
     }
 
     //Called automatically every frame

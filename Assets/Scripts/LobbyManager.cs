@@ -25,6 +25,11 @@ public static class LobbyManager
         Current = await QuickJoinLobby() ?? await CreateLobby();
     }
 
+    public static NetworkObject Self() {
+        ulong id = NetworkManager.Singleton.LocalClientId;
+        return NetworkManager.Singleton.ConnectedClients[id].PlayerObject;
+    }
+
     private static async Task Authenticate() {
         var options = new InitializationOptions();
         await UnityServices.InitializeAsync(options);
@@ -82,4 +87,6 @@ public static class LobbyManager
         await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
         Timeout(lobbyId, expiry);
     }
+
+    
 }

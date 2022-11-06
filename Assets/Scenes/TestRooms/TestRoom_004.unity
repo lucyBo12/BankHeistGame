@@ -2082,7 +2082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265536046}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3785,15 +3785,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4398996393446377873, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.003049612
       objectReference: {fileID: 0}
     - target: {fileID: 4398996393446377873, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.33
+      value: 10.312611
       objectReference: {fileID: 0}
     - target: {fileID: 4398996393446377873, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -6.5340385
       objectReference: {fileID: 0}
     - target: {fileID: 4398996393446377873, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3839,11 +3839,40 @@ PrefabInstance:
       propertyPath: m_Lens.FarClipPlane
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4398996393446377874, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398996393446377874, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398996393446377874, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_Transitions.m_OnCameraLive.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4398996393446377875, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
       propertyPath: m_Name
       value: VirtualCamera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4398996393446377875, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_TagString
+      value: VirtualCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398996393599486032, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_BindingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398996393599486032, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_FollowOffset.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398996393599486032, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4398996393599486033, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
 --- !u!1001 &547384256
 PrefabInstance:
@@ -9308,7 +9337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hostBtn: {fileID: 1413710799}
   clientBtn: {fileID: 1522020039}
-  transport: {fileID: 0}
 --- !u!114 &1259491368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14513,15 +14541,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8021674410165520742, guid: 8c6deb5b552c8f44790fd34e4908c96a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.003049612
       objectReference: {fileID: 0}
     - target: {fileID: 8021674410165520742, guid: 8c6deb5b552c8f44790fd34e4908c96a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.33
+      value: 10.312611
       objectReference: {fileID: 0}
     - target: {fileID: 8021674410165520742, guid: 8c6deb5b552c8f44790fd34e4908c96a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -6.5340385
       objectReference: {fileID: 0}
     - target: {fileID: 8021674410165520742, guid: 8c6deb5b552c8f44790fd34e4908c96a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15357,6 +15385,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
   m_PrefabInstance: {fileID: 1934940305}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1936540693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4398996393599486038, guid: cb118506c21d0db4f86bd3ebcfe0d785, type: 3}
+  m_PrefabInstance: {fileID: 542920741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1936540699
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936540693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 747.4308, y: 225.93008, z: 152.94656}
 --- !u!1001 &1950856859
 PrefabInstance:
   m_ObjectHideFlags: 0

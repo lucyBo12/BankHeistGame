@@ -26,7 +26,6 @@ public class NetworkUI : MonoBehaviour
     public void Connect()
     {
         LobbyManager.CreateOrJoinLobby();
-        NetworkAnimator animator;
     }
 
 }

@@ -8,41 +8,41 @@ public class InteractableAgent : MonoBehaviour
     private float radius;
     [SerializeField]
     private LayerMask layer;
-    public Interactable closest;
-    public float closestInteractableDistance => closest ? Vector3.Distance(closest.transform.position, transform.position) : float.MaxValue;
+    public GameObject closest;
+    public float closestInteractableDistance => closest != null ? Vector3.Distance(closest.transform.position, transform.position) : float.MaxValue;
 
 
     private void FixedUpdate()
     {
-        if (closest != null && closestInteractableDistance > radius) {
-            SetInteractable();
+        if (closest != null && closestInteractableDistance >= radius) {
+            SetInteractable(null);
             return;
         }
 
-        Interactable selected = closest;
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, radius, Vector3.up, 5f, layer);
+        GameObject selected = closest;
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, radius, Vector3.up / 2, radius, layer);
         foreach (RaycastHit h in hits) {
-            var interactable = h.transform.GetComponent<Interactable>();
-            selected = (Vector3.Distance(interactable.transform.position, transform.position)) < closestInteractableDistance ? 
-                interactable : closest;
+            selected = (Vector3.Distance(h.transform.position, transform.position)) < closestInteractableDistance ? 
+                h.transform.gameObject : selected;
         }
 
         if (selected == null || selected.Equals(closest)) return;
         SetInteractable(selected);
     }
 
-    private void SetInteractable(Interactable interactable = null) {
-        if (interactable == null) {
-            if (closest) closest.ClosePrompt();
+    private void SetInteractable(GameObject interactableObj) {
+        if (interactableObj == null) {
+            var interactable = closest.GetComponent<Interactable>();
+            if (interactable) interactable.ClosePrompt();
             closest = null;
             return;
         }
 
         if (closest != null) 
-            closest.ClosePrompt();
+            closest.GetComponent<Interactable>().ClosePrompt();
 
-        closest = interactable;
-        closest.ShowPrompt();
+        closest = interactableObj;
+        closest.GetComponent<Interactable>().ShowPrompt();
     }
 
     private void OnDrawGizmos()

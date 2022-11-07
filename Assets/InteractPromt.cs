@@ -4,6 +4,7 @@ using UnityEngine;
 public class InteractPromt : MonoBehaviour
 {
     public TextMeshProUGUI messageTxt;
+    public GameObject arrow;
 
     public static GameObject CreateNewPrompt(Transform parent) {
         GameObject prefab = Resources.Load<GameObject>("InteractPrompt");   
@@ -12,14 +13,8 @@ public class InteractPromt : MonoBehaviour
         return Instantiate(prefab, parent);
     }
 
-    private void LateUpdate()
-    {
-        if(!Camera.main) return;
-
-        transform.LookAt(Camera.main.transform);
-    }
-
     public void SetPrompt(string message) {
-        messageTxt.text = message;
+        messageTxt.text = message.Replace("{n}", transform.parent.name);
+        LeanTween.rotateLocal(arrow, new Vector3(180, 0, 0), 0.33f);
     }
 }

@@ -19,7 +19,7 @@ public class TRMovementDebug : MonoBehaviour
         txt += $"{locomotion.name} ({(locomotion.gameObject.activeSelf ? "Enabled" : "Disabled")}) \n" +
             $"Position: {locomotion.transform.position.ToString("0.00")} \n" +
             $"Rotation: {locomotion.transform.localRotation.eulerAngles.ToString("0.00")} \n" +
-            $"AngleToMouse: {locomotion.angle.ToString("0")} \n" +
+            $"AngleToMouse: {locomotion.Angle.ToString("0")} \n" +
             $"FPS: {fps.ToString("0")}";
 
         debugTxt.text = txt;

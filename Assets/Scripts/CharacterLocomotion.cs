@@ -1,4 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
+using Unity.Netcode.Components;
+using Cinemachine;
 
 /**
  * Character movement behavior and animation handling is
@@ -12,7 +15,7 @@ using UnityEngine;
  * author: Joseph Denby
  * email: jd744@kent.ac.uk
  */
-public class CharacterLocomotion : MonoBehaviour
+public class CharacterLocomotion : NetworkBehaviour
 {
     //Variables
     public CharacterController controller;
@@ -20,25 +23,41 @@ public class CharacterLocomotion : MonoBehaviour
     public float speed = 2f;
 
     //Properties
-    public float angle { get; private set; }
-    public float currentSpeed { get; private set; }
+    public float Angle { get; private set; }
+    public float CurrentSpeed { get; private set; }
     public bool isAiming => PlayerActions.Aim.IsPressed();
-    public bool isCrouching => PlayerActions.Crouch.IsPressed();
-    public bool isMoving => controller.velocity != Vector3.zero;
+    public bool IsCrouching => PlayerActions.Crouch.IsPressed();
+    public bool IsMoving => controller.velocity != Vector3.zero;
+    public CinemachineVirtualCamera VirtualCamera => GameObject.FindGameObjectWithTag("VirtualCamera")?.GetComponent<CinemachineVirtualCamera>();
     private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
+    private void Start() {
+        PlayerActions.Enable();
+
+        if (!VirtualCamera) return;
+
+        VirtualCamera.ForceCameraPosition((transform.position - (Vector3.back * 5)), VirtualCamera.transform.rotation);
+        VirtualCamera.Follow = LobbyManager.Self().transform;
+        VirtualCamera.LookAt = LobbyManager.Self().transform;
+    }
+
     //Called automatically every frame
     private void Update() {
+        if (!IsOwner) return;
 
         //Move/AnimateCharacter both use Movement input
         Vector2 input = PlayerActions.Movement.ReadValue<Vector2>();
         Move(input);
-        AnimateCharacter(input);
+        AnimateCharacter();
 
         //Get mouse position and pass to Aim function
         Vector2 mousePos = PlayerActions.Look.ReadValue<Vector2>();
         Aim(mousePos);
+
+        if (IsHost) return;
+        ulong id = NetworkManager.Singleton.LocalClient.ClientId;
+        UpdateHostServerRpc(id, input);
     }
 
     /**
@@ -49,10 +68,10 @@ public class CharacterLocomotion : MonoBehaviour
      */
     private void Move(Vector2 input) {
         //If aiming/crouching speed should be lowered
-        currentSpeed = isCrouching || isAiming ? speed * 0.5f : speed;
+        CurrentSpeed = IsCrouching || isAiming ? speed * 0.5f : speed;
 
         //Move Transform toward input over currentSpeed
-        controller.Move((new Vector3(input.x, 0, input.y) * currentSpeed) * Time.deltaTime);
+        controller.Move((new Vector3(input.x, 0, input.y) * CurrentSpeed) * Time.deltaTime);
     }
 
     /**
@@ -71,13 +90,13 @@ public class CharacterLocomotion : MonoBehaviour
         mousePosition.y = mousePosition.y - center.y;
 
         //Apply Tan to get rotation in radians and convert to degrees
-        angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
+        Angle = Mathf.Atan2(mousePosition.x, mousePosition.y) * Mathf.Rad2Deg;
         
         //Offset to ensure absolute value (0-360)
-        angle = angle < 0 ? angle + 360 : angle;
+        Angle = Angle < 0 ? Angle + 360 : Angle;
 
         //Apply calculated angled to Transform
-        transform.rotation = Quaternion.Euler(0, angle, 0);
+        transform.rotation = Quaternion.Euler(0, Angle, 0);
     }
 
     /**
@@ -86,9 +105,9 @@ public class CharacterLocomotion : MonoBehaviour
      * 
      * @param Vector2
      */
-    private void AnimateCharacter(Vector2 input) {
+    private void AnimateCharacter() {
         //Animator speed
-        animator.speed = isAiming && !isCrouching ? 0.66f : 1f;
+        animator.speed = isAiming && !IsCrouching ? 0.66f : 1f;
 
         //Animator layers
         animator.SetLayerWeight(1, isAiming ? 1 : 0);
@@ -96,7 +115,7 @@ public class CharacterLocomotion : MonoBehaviour
 
         //Bool logic
         animator.SetBool("isAiming", isAiming);
-        animator.SetBool("crouch", isCrouching);
+        animator.SetBool("crouch", IsCrouching);
 
         //Rotation inverse logic
         var movement_input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
@@ -104,6 +123,15 @@ public class CharacterLocomotion : MonoBehaviour
         moveDirection = transform.InverseTransformDirection(moveDirection);
         animator.SetFloat("inputx", moveDirection.x, 0.1f, Time.deltaTime);
         animator.SetFloat("inputy", moveDirection.z, 0.1f, Time.deltaTime);
+    }
+
+    [ServerRpc]
+    private void UpdateHostServerRpc(ulong id, Vector2 input) {
+        if (!IsHost) return;
+
+        NetworkObject netObj = NetworkManager.Singleton.ConnectedClients[id].PlayerObject;
+        netObj.GetComponent<Animator>().SetFloat("inputx", input.x);
+        netObj.GetComponent<Animator>().SetFloat("inputy", input.y);
     }
 
 

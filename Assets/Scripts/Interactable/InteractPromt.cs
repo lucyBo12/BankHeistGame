@@ -6,11 +6,13 @@ public class InteractPromt : MonoBehaviour
     public TextMeshProUGUI messageTxt;
     public GameObject arrow;
 
-    public static GameObject CreateNewPrompt(Transform parent) {
+    public static GameObject CreateNewPrompt(Transform parent, Vector3 offset) {
         GameObject prefab = Resources.Load<GameObject>("InteractPrompt");   
         if(prefab == null) return null;
-
-        return Instantiate(prefab, parent);
+        GameObject prompt = Instantiate(prefab, parent);
+        prompt.transform.rotation = new Quaternion(offset.x, offset.y, offset.z, 0);
+        prompt.transform.localScale = Vector3.one;
+        return prompt;
     }
 
     public void SetPrompt(string message) {

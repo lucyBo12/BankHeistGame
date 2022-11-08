@@ -8,11 +8,12 @@ public class Interactable : NetworkBehaviour
     public bool destroyOnInteract = false;
     public bool hoverIdle = true;
     public string promptMessage = "Use";
-
+    public Vector3 promptOffset;
     protected InteractPromt prompt => GetComponentInChildren<InteractPromt>();
 
 
     private void Start() {
+        if (!hoverIdle) return;
         LeanTween.moveY(gameObject, transform.position.y + .2f, 1f).setLoopPingPong();
     }
 
@@ -24,10 +25,19 @@ public class Interactable : NetworkBehaviour
     public virtual void ShowPrompt() {
         if (promptMessage.IsNullOrEmpty()) return;
         else if (prompt == null) {
-           InteractPromt.CreateNewPrompt(transform);
+           InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
 
         prompt.SetPrompt(promptMessage);
+    }
+
+    public virtual void ShowPrompt(string message) {
+        if (promptMessage.IsNullOrEmpty()) return;
+        else if (prompt == null) {
+            InteractPromt.CreateNewPrompt(transform, promptOffset);
+        }
+
+        prompt.SetPrompt(message);
     }
 
     public virtual void ClosePrompt() {

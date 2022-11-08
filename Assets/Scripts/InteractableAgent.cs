@@ -9,12 +9,26 @@ public class InteractableAgent : MonoBehaviour
     [SerializeField]
     private LayerMask layer;
     public GameObject closest;
-    public float closestInteractableDistance => closest != null ? Vector3.Distance(closest.transform.position, transform.position) : float.MaxValue;
+    public float closestInteractableDistance => closest != null ? 
+        Vector3.Distance(closest.transform.position, transform.position) : float.MaxValue;
 
+
+    private void Start() {
+        GameManager.Input.Player.Interact.performed += evt => InvokeInteractable();
+    }
+
+    private void InvokeInteractable() {
+        if (!closest) return;
+
+        Interactable interactable = closest.GetComponent<Interactable>();
+        if (!interactable) return;
+
+        interactable.Interact();
+    }
 
     private void FixedUpdate()
     {
-        if (closest != null && closestInteractableDistance >= radius) {
+        if (closest != null && closestInteractableDistance >= (radius * 1.1f)) {
             SetInteractable(null);
             return;
         }

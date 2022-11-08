@@ -98,6 +98,15 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""337f9ea0-d922-41f8-8e5a-43f7e14552d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -243,6 +252,17 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                     ""action"": ""Change Weapon2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3554fd40-a201-49ec-838e-74369734e5ee"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -276,6 +296,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         m_Player_ChangeWeapon = m_Player.FindAction("Change Weapon", throwIfNotFound: true);
         m_Player_ChangeWeapon1 = m_Player.FindAction("Change Weapon1", throwIfNotFound: true);
         m_Player_ChangeWeapon2 = m_Player.FindAction("Change Weapon2", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,6 +364,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ChangeWeapon;
     private readonly InputAction m_Player_ChangeWeapon1;
     private readonly InputAction m_Player_ChangeWeapon2;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -355,6 +377,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         public InputAction @ChangeWeapon => m_Wrapper.m_Player_ChangeWeapon;
         public InputAction @ChangeWeapon1 => m_Wrapper.m_Player_ChangeWeapon1;
         public InputAction @ChangeWeapon2 => m_Wrapper.m_Player_ChangeWeapon2;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -388,6 +411,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @ChangeWeapon2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon2;
                 @ChangeWeapon2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon2;
                 @ChangeWeapon2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeWeapon2;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -416,6 +442,9 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 @ChangeWeapon2.started += instance.OnChangeWeapon2;
                 @ChangeWeapon2.performed += instance.OnChangeWeapon2;
                 @ChangeWeapon2.canceled += instance.OnChangeWeapon2;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -439,5 +468,6 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
         void OnChangeWeapon(InputAction.CallbackContext context);
         void OnChangeWeapon1(InputAction.CallbackContext context);
         void OnChangeWeapon2(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

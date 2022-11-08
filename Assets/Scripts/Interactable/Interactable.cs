@@ -45,15 +45,4 @@ public class Interactable : NetworkBehaviour
         Destroy(prompt.gameObject);
     }
 
-    public override bool Equals(object other)
-    {
-        if (other == null) return false;
-        if(other.GetType() != typeof(Interactable)) 
-            return false;
-
-        Interactable interactable = (Interactable)other;
-        return interactable.name.Equals(name) && 
-            interactable.transform.position.Equals(transform.position);
-    }
-
 }

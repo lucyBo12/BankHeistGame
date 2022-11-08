@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ShootingRangeTarget : MonoBehaviour
 {
-
     private void Start()
     {
         if (!ShootingRangeOne.Instance)
@@ -22,7 +21,5 @@ public class ShootingRangeTarget : MonoBehaviour
 
         Destroy(gameObject, time);
     }
-
-
 
 }

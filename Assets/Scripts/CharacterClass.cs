@@ -5,9 +5,18 @@ using UnityEngine;
 public class CharacterClass : MonoBehaviour
 {
 
+    public CharacterController controller;
+
+    //player stats
     public int health;
     public bool alive = true;
+    
+    //equipment
     public int ammo;
+    public int grenades;
+    public GameObject gun;
+    public Transform weapons;
+
     // Start is called before the first frame update
     void Start()
     {

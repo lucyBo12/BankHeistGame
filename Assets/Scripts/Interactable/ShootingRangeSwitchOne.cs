@@ -3,9 +3,8 @@ using UnityEngine;
 public class ShootingRangeSwitchOne : InteractableSwitch
 {
 
-    public override void Interact()
+    public override void Interact(Transform user)
     {
-        base.Interact();
         if (isActive)
         {
             ShootingRangeOne.Instance.StartChallenge();
@@ -13,6 +12,7 @@ public class ShootingRangeSwitchOne : InteractableSwitch
         else {
             ShootingRangeOne.Instance.StopChallenge();
         }
+        base.Interact(user);
     }
 
 }

@@ -7,8 +7,9 @@ public class InteractableSwitch : Interactable
     [SerializeField]
     protected bool isActive;
 
-    public override void Interact() {
+    public override void Interact(Transform transform) {
         isActive = !isActive;
         ShowPrompt(isActive ? onMessage : offMessage);
+        base.Interact(transform);
     }
 }

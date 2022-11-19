@@ -11,8 +11,6 @@ public class BulletFire : MonoBehaviour
     public float lifetime = 3f;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {

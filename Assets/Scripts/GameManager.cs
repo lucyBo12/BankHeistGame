@@ -16,6 +16,7 @@ public static class GameManager
     public static bool InCombat { get; private set; }
     public static List<Transform> Players = new List<Transform>();
     public static List<Transform> Alarms = new List<Transform>();
+    public static List<NPCGoal> Goals = new List<NPCGoal>();
 
     /**
      * Uses "RuntimeInitializeOnLoadMethod" to run game setup

@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class AI_Flee : AINode
 {
-    
+
+    public override bool Active(AIBase npc)
+    {
+        return true;
+    }
+
 }

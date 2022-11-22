@@ -73,7 +73,7 @@ public class AIBase : MonoBehaviour
     //Variables for ai behaviour defined here
     [System.Serializable]
     public struct CharacterSheet {
-        [Range(0, 4)]public int fear;
+        [Range(0, 1)]public float fear;
         public bool staff;
 
         public CharacterSheet(int fear, bool staff) {

@@ -11,6 +11,7 @@ public class CharacterClass : MonoBehaviour
     //player stats
     public int health;
     public bool alive = true;
+    public int money;
     
     //equipment
     public int ammo;
@@ -78,6 +79,14 @@ public class CharacterClass : MonoBehaviour
     int GetAmmo()
     {
         return ammo;
+    }
+
+    /**
+    *Returns player money count
+    */
+    int GetMoney()
+    {
+        return money;
     }
 
     /**

@@ -141,7 +141,6 @@ public class GraphSaveUtility
         foreach (var nodeData in _AITreeCache.AINodeData)
         {
             AINode node = AITree.GetNode(nodeData.NodeType);
-            Debug.Log($"Type: {node.GetType().Name}");
             System.Type type = node.GetType();
 
             if (type == typeof(AI_HasGoalNode))
@@ -157,7 +156,6 @@ public class GraphSaveUtility
             _targetGraphView.AddElement(node);
 
             //Only do the below for custom choice nodes (might not need)
-
             /*var nodePorts = _AITreeCache.NodeLinks.Where(x => x.BaseNodeGuid == nodeData.Guid).ToList();
             nodePorts.ForEach(x => _targetGraphView.AddChoicePort(node, x.PortName));*/
 

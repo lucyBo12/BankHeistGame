@@ -19,7 +19,8 @@ public class TRAIDebug : MonoBehaviour
         debugText.text = $"'{ai.name}' active: [{ai.gameObject.activeSelf}] " +
             $"\nAIEnabled: [{ai.aiEnabled}]" +
             $"\nNode: {(ai.currentNode == null ? "<NULL>" : ai.currentNode.ToString(ai))}" +
-            $"\nInCombat: {GameManager.InCombat}";
+            $"\nInCombat: {GameManager.InCombat} " +
+            $"\nGoal: {(ai.Goal.HasGoal ? $"{ai.Goal.TargetLocation}" : "NULL")}";
     }
 
     private void Update()

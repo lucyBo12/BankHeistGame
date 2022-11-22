@@ -33,14 +33,13 @@ public class CharacterLocomotion : NetworkBehaviour
 
 
     private void Start() {
-        if (!IsOwner) return;
         PlayerActions.Enable();
 
         if (!VirtualCamera) return;
 
         VirtualCamera.ForceCameraPosition((transform.position - (Vector3.back * 5)), VirtualCamera.transform.rotation);
-        VirtualCamera.Follow = transform;
-        VirtualCamera.LookAt = transform;
+        VirtualCamera.Follow = LobbyManager.Self().transform;
+        VirtualCamera.LookAt = LobbyManager.Self().transform;
     }
 
     //Called automatically every frame

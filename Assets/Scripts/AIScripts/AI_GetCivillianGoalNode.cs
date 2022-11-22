@@ -9,16 +9,14 @@ public class AI_GetCivillianGoalNode : AINode {
     }   
 
     public override void OnStart(AIBase npc) {
-        npc.Goal = new AIGoal(new Vector3(Random.Range(-5, 5), 0.32f, Random.Range(-5, 5)));
-        npc.Agent.SetDestination(npc.Goal.TargetLocation);
+        NPCGoal goal = GameManager.Goals[Random.Range(0, GameManager.Goals.Count)];
+        goal.AddToQueue(npc);
+        Debug.Log($"Goal: {goal.name} [{npc.Goal.TargetLocation}]");
     }
 
     public override void OnEnd(AIBase npc) {
         npc.Goal = new AIGoal();
     }
 
-    public override bool Active(AIBase npc)
-    {
-        return Vector3.Distance(npc.transform.position, npc.Goal.TargetLocation) > 1;
-    }
+    public override bool Active(AIBase npc) => true;
 }

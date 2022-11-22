@@ -593,6 +593,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!1001 &62539978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,6 +740,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!114 &72433696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4876,6 +4882,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!114 &729113528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8264,6 +8273,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!1001 &1181176733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12580,6 +12592,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!1001 &1672644628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16034,6 +16049,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!4 &2061369490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4428569727077466, guid: 7f9658b34ea62bb4f956eb49dd193aeb, type: 3}
@@ -16510,6 +16528,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 0
   hoverIdle: 1
+  promptMessage: Use
+  promptOffset: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 0}
 --- !u!1001 &2113461309
 PrefabInstance:
   m_ObjectHideFlags: 0

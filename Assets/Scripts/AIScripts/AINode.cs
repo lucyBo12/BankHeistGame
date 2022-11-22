@@ -10,8 +10,7 @@ public class AINode : Node
         this.GUID = GUID;
     }
 
-    public virtual void OnStart(AIBase npc) { 
-    
+    public virtual void OnStart(AIBase npc) {
     }
 
     public virtual void OnUpdate(AIBase npc) { 

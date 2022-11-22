@@ -23,7 +23,7 @@ public class InteractableAgent : MonoBehaviour
         Interactable interactable = closest.GetComponent<Interactable>();
         if (!interactable) return;
 
-        interactable.Interact();
+        interactable.Interact(transform);
     }
 
     private void FixedUpdate()

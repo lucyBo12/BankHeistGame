@@ -12,6 +12,18 @@ public class InteractableAgent : MonoBehaviour
     public float closestInteractableDistance => Vector3.Distance(closest.transform.position, transform.position);
 
 
+    private void Start()
+    {
+        GameManager.Input.Player.Interact.performed += evt => Interact();
+    }
+
+    private void Interact() {
+        if (!closest) return;
+
+        Debug.Log("BANG");
+        closest.Interact(transform);
+    }
+
     private void FixedUpdate()
     {
         if (closest) {
@@ -29,6 +41,7 @@ public class InteractableAgent : MonoBehaviour
                     interactable : closest;
             }
         }
+
     }
 
     private void OnDrawGizmos()

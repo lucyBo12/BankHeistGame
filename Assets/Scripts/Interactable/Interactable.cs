@@ -35,9 +35,8 @@ public class Interactable : NetworkBehaviour
         if (promptMessage.IsNullOrEmpty()) return;
         else if (prompt == null) {
             InteractPromt.CreateNewPrompt(transform, promptOffset);
+            prompt.SetPrompt(message);
         }
-
-        prompt.SetPrompt(message);
     }
 
     public virtual void ClosePrompt() {

@@ -20,28 +20,39 @@ public class InteractableAgent : MonoBehaviour
     private void Interact() {
         if (!closest) return;
 
-        Debug.Log("BANG");
         closest.Interact(transform);
     }
 
     private void FixedUpdate()
     {
         if (closest) {
-            closest = closestInteractableDistance > radius ? null : closest;
+            if (closestInteractableDistance > radius) {
+                closest.ClosePrompt();
+                closest = null;
+            }
         }
 
+        Interactable x = null;
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, radius, Vector3.up, 5f, layer);
         foreach (RaycastHit h in hits) {
             var interactable = h.transform.GetComponent<Interactable>();
-            if (!closest) {
-                closest = interactable;
+            if (!x) {
+                x = interactable;
             }
             else { 
-                closest = (Vector3.Distance(interactable.transform.position, transform.position)) < closestInteractableDistance ?
-                    interactable : closest;
+                x = (Vector3.Distance(interactable.transform.position, transform.position)) < (Vector3.Distance(x.transform.position, transform.position)) ?
+                    interactable : x;
             }
         }
 
+        if (x && !x.Equals(closest)) {
+            if (closest) {
+                closest.ClosePrompt();
+            }
+
+            closest = x;
+            closest.ShowPrompt();
+        }
     }
 
     private void OnDrawGizmos()

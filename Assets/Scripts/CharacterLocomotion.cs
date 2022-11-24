@@ -19,8 +19,10 @@ public class CharacterLocomotion : NetworkBehaviour
 {
     //Variables
     public CharacterController controller;
+    public WeightModifier weight;
     public Animator animator;
     public float speed = 2f;
+    
 
     //Properties
     public float Angle { get; private set; }
@@ -97,6 +99,10 @@ public class CharacterLocomotion : NetworkBehaviour
 
         //Apply calculated angled to Transform
         transform.rotation = Quaternion.Euler(0, Angle, 0);
+
+        //Apply Aim weights
+        weight.SetWeight(isAiming ? WeightModifier.WeightSwitch.SideArmAim : WeightModifier.WeightSwitch.SideArmIdle, 1);
+        weight.SetWeight(!isAiming ? WeightModifier.WeightSwitch.SideArmAim : WeightModifier.WeightSwitch.SideArmIdle, 0);
     }
 
     /**

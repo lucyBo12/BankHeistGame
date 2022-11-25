@@ -75,7 +75,7 @@ public class AIBase : MonoBehaviour
     //range is the minimum fear radius around an npc
     [System.Serializable]
     public struct CharacterSheet {
-        [Range(0, 4)]public int fear;
+        [Range(0, 1)]public float fear;
         public bool staff;
 
         public CharacterSheet(int fear, bool staff) {

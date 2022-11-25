@@ -8,6 +8,7 @@ public class NPCGoal : MonoBehaviour
     [SerializeField] private Vector3 queueDirection = new Vector3(0, 0, -1);
     [SerializeField, Range(0, 1f)] private float positionOffset = 0.2f;
     [SerializeField] private string animationTrigger = "Interact";
+    [SerializeField] private bool combatOnly = false;
 
     void Start() => GameManager.Goals.Add(this);
 

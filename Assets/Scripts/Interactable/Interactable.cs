@@ -24,8 +24,8 @@ public class Interactable : NetworkBehaviour
 
     public virtual void ShowPrompt() {
         if (promptMessage.IsNullOrEmpty()) return;
-        else if (prompt == null) {
-           InteractPromt.CreateNewPrompt(transform, promptOffset);
+        if (prompt == null) {
+            InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
 
         prompt.SetPrompt(promptMessage);
@@ -33,7 +33,7 @@ public class Interactable : NetworkBehaviour
 
     public virtual void ShowPrompt(string message) {
         if (promptMessage.IsNullOrEmpty()) return;
-        else if (prompt == null) {
+        if (prompt == null) {
             InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
 

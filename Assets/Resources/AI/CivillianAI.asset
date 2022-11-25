@@ -17,24 +17,30 @@ MonoBehaviour:
     PortName: START
     TargetNodeGuid: 05321ce9-7c6b-4c8c-a111-648175422e38
   - BaseNodeGuid: 05321ce9-7c6b-4c8c-a111-648175422e38
-    PortName: True
-    TargetNodeGuid: c42657f3-24f2-4eec-8f0b-1802f39947c5
-  - BaseNodeGuid: 05321ce9-7c6b-4c8c-a111-648175422e38
     PortName: False
-    TargetNodeGuid: d003c923-900b-4ac1-a184-ade4d463c48d
-  - BaseNodeGuid: d003c923-900b-4ac1-a184-ade4d463c48d
+    TargetNodeGuid: f544ca31-d889-474b-8a25-5620f2cb14a5
+  - BaseNodeGuid: f544ca31-d889-474b-8a25-5620f2cb14a5
     PortName: False
     TargetNodeGuid: 8c179aa2-bef7-4095-bb22-ada52b6ce00b
+  - BaseNodeGuid: 05321ce9-7c6b-4c8c-a111-648175422e38
+    PortName: True
+    TargetNodeGuid: 359cdc1b-a884-4c1f-9686-c1386226510c
+  - BaseNodeGuid: 359cdc1b-a884-4c1f-9686-c1386226510c
+    PortName: Next
+    TargetNodeGuid: 76040a05-9695-4758-9678-fbd5495e729b
   AINodeData:
   - GUID: 05321ce9-7c6b-4c8c-a111-648175422e38
     NodeType: AI_InCombatNode
     Position: {x: 330, y: 188}
-  - GUID: c42657f3-24f2-4eec-8f0b-1802f39947c5
+  - GUID: 76040a05-9695-4758-9678-fbd5495e729b
     NodeType: AI_AlarmNode
-    Position: {x: 602, y: 148.66667}
-  - GUID: d003c923-900b-4ac1-a184-ade4d463c48d
-    NodeType: AI_HasGoalNode
-    Position: {x: 602, y: 290.66666}
+    Position: {x: 926, y: 111}
   - GUID: 8c179aa2-bef7-4095-bb22-ada52b6ce00b
     NodeType: AI_GetCivillianGoalNode
-    Position: {x: 838, y: 376}
+    Position: {x: 795, y: 314.5}
+  - GUID: f544ca31-d889-474b-8a25-5620f2cb14a5
+    NodeType: AI_HasGoalNode
+    Position: {x: 577, y: 299}
+  - GUID: 359cdc1b-a884-4c1f-9686-c1386226510c
+    NodeType: AI_Cower
+    Position: {x: 584, y: 161}

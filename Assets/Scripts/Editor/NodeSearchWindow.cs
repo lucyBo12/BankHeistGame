@@ -49,6 +49,12 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                userData = new AI_AlarmNode(),
                level = 2
             },
+            new SearchTreeEntry(new GUIContent("Cower", _indentationIcon))
+            {
+                userData = new AI_Cower(),
+                level = 2
+            },
+
         };
 
         return tree;
@@ -72,6 +78,9 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 return true;
             case AI_AlarmNode:
                 _graphView.AddNode(_graphView.CreateAI_AlarmNode(), localMousePosition);
+                return true;
+            case AI_Cower:
+                _graphView.AddNode(_graphView.CreateAI_Cower(), localMousePosition);
                 return true;
             default:
                 return false;

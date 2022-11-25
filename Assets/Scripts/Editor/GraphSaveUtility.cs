@@ -151,6 +151,8 @@ public class GraphSaveUtility
                 node = _targetGraphView.CreateAI_InCombatNode();
             else if (type == typeof(AI_AlarmNode))
                 node = _targetGraphView.CreateAI_AlarmNode();
+            else if (type == typeof(AI_Cower))
+                node = _targetGraphView.CreateAI_Cower();
 
             node.GUID = nodeData.GUID;
             _targetGraphView.AddElement(node);
@@ -171,6 +173,10 @@ public class GraphSaveUtility
             {
                 var targetNodeGuid = connections[j].TargetNodeGuid;
                 var targetNode = Nodes.First(x => x.GUID == targetNodeGuid);
+                if (Nodes[i] == null)
+                {
+                    Debug.LogError("EMPTY NODE SAVE!!");
+                }
                 LinkNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
 
                 targetNode.SetPosition(new Rect(_AITreeCache.AINodeData.First(x => x.GUID == targetNodeGuid).Position, _targetGraphView.defaultNodeSize));

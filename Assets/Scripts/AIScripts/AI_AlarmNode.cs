@@ -14,8 +14,7 @@ public class AI_AlarmNode : AINode
 
     public override void OnUpdate(AIBase npc)
     {
-        Debug.Log($"Goal: {npc.Goal.Target.name} " +
-            $"\nAgent Target: {npc.Agent.destination}");
+
     }
 
     public override void OnEnd(AIBase npc)

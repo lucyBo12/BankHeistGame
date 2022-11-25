@@ -137,6 +137,28 @@ public class AIGraphView : GraphView
         return node;
     }
 
+    public AI_Cower CreateAI_Cower()
+    {
+        var node = new AI_Cower
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " make civillian cower"; return node;
+
+    }
+
     public AI_GetCivillianGoalNode CreateAI_GetCivillianGoalNode()
     {
         var node = new AI_GetCivillianGoalNode

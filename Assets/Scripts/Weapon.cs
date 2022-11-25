@@ -1,6 +1,4 @@
 using System.Threading.Tasks;
-using Unity.Mathematics;
-using Unity.Netcode;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,7 +6,7 @@ public class Weapon : MonoBehaviour
     [Header("Gun")]
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform muzzle;
-    [SerializeField] private int2 ammo = new int2(12, 32);
+    [SerializeField] private AmmoClip clip;
 
     [Header("Config")]
     [SerializeField] private float fireRate = 0.1f;
@@ -20,9 +18,21 @@ public class Weapon : MonoBehaviour
     }
 
 
+    private void Start() => canFire = true;
+
     public virtual async void Fire() {
-        Instantiate(bullet, muzzle);
-        ammo[0] -= 1;
+        if (clip.ammo == 0) {
+            clip.Reload();
+            return;
+        }
+        if (!canFire) return;
+
+        var bullet = ObjectPool.Get(ObjectPool.BulletPool);
+        Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+        bullet.transform.position = muzzle.position;
+        bullet.SetActive(true);
+
+        clip.ammo -= 1;
         canFire = false;
         await Wait(fireRate);
         canFire = true;
@@ -34,5 +44,18 @@ public class Weapon : MonoBehaviour
 
     protected virtual async Task Wait(float time) {
         await Task.Delay(Mathf.CeilToInt(1000 * time));
+    }
+
+    [System.Serializable]
+    public struct AmmoClip {
+        public int ammo;
+        public int clip;
+        public int quantity;
+
+        public void Reload() {
+            var r = (clip - ammo) > quantity ? (clip - ammo) : quantity;
+            quantity -= r;
+            ammo += r;
+        }
     }
 }

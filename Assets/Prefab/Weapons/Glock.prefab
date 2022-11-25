@@ -232,9 +232,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6400776588626431424, guid: c961f4a8dc7542c4bade28d9e927335c, type: 3}
   muzzle: {fileID: 6347234971038898923}
-  ammo:
-    x: 12
-    y: 32
+  clip:
+    ammo: 16
+    clip: 16
+    quantity: 64
   fireRate: 0.1
   reloadTime: 1
   weaponType: 1

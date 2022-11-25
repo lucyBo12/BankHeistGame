@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class AI_Cower : AINode
 {
+    public AI_Cower(string GUID = "") : base(GUID)
+    {
+
+    }
+
     // Start is called before the first frame update
     public override bool Active(AIBase npc)
     {

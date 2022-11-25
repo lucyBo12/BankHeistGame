@@ -19,6 +19,8 @@ public class AITree : ScriptableObject
                 return new AI_InCombatNode(GUID);
             case "AI_AlarmNode":
                 return new AI_AlarmNode(GUID);
+            case "AI_Cower":
+                return new AI_Cower(GUID);
             default:
                 return new AINode(GUID);
         }
@@ -64,7 +66,6 @@ public class AITree : ScriptableObject
         }
 
         var values = nodes.OrderBy(x => x.Weight(aIBase));
-
 
         return values.ToArray();
     }

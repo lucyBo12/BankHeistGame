@@ -9,8 +9,6 @@ public class Debug_Player : MonoBehaviour
     {
         GameManager.Players.Add(transform);
         GameManager.StartCombat(); 
-        
-        
     }
 
     // Update is called once per frame

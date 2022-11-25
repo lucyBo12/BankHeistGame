@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8247371565295806421}
   - component: {fileID: 8270116680269827219}
   - component: {fileID: 485768842985634278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HostileTarget
-  m_TagString: Untagged
+  m_TagString: RangeTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee9fb702ea8fa64fa1b4bd7f9f79dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCivillian: 0

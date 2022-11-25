@@ -8,9 +8,6 @@ public class ShootingRangeSpawn : MonoBehaviour
     private float distance, time;
 
     [SerializeField]private float hostileRate = 0f;
-    private Vector3 targetDestination => 
-        new Vector3(transform.position.x + distance, transform.position.y + 0.5f, transform.position.z);
-
 
     public void Spawn() {
         //Determine what should spawn

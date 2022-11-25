@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3335275168601203867}
   - component: {fileID: 3384885649957029413}
   - component: {fileID: 1775014538427534525}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CivillianTarget
-  m_TagString: Untagged
+  m_TagString: RangeTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

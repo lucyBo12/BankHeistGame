@@ -18,10 +18,8 @@ public class InventoryManager : MonoBehaviour
         activeWeapon = sidearm.GetChild(0).GetComponent<Weapon>();
     }
 
-    private void FireWeapon() {
-        if(!activeWeapon.canFire) return;
-
-        Debug.Log("Bang!");
+    private void FireWeapon() { 
+        if(!activeWeapon) return;
         activeWeapon.Fire();
     }
 

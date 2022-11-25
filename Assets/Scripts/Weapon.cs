@@ -25,11 +25,12 @@ public class Weapon : MonoBehaviour
             clip.Reload();
             return;
         }
-        if (!canFire) return;
+        if (!canFire || !GameManager.Input.Player.Aim.IsPressed()) return;
 
         var bullet = ObjectPool.Get(ObjectPool.BulletPool);
         Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
         bullet.transform.position = muzzle.position;
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, muzzle.rotation.eulerAngles.y, muzzle.rotation.eulerAngles.z));
         bullet.SetActive(true);
 
         clip.ammo -= 1;

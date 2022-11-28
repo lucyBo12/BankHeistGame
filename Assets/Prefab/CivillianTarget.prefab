@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3335275168601203867}
   - component: {fileID: 3384885649957029413}
   - component: {fileID: 1775014538427534525}
+  - component: {fileID: 6240485998549994345}
   m_Layer: 7
   m_Name: CivillianTarget
   m_TagString: RangeTarget
@@ -112,3 +113,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCivillian: 1
+--- !u!54 &6240485998549994345
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321861219673075443}
+  serializedVersion: 2
+  m_Mass: 4
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

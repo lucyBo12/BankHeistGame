@@ -4,7 +4,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Gun")]
-    [SerializeField] private GameObject bullet;
     [SerializeField] private Transform muzzle;
     [SerializeField] private AmmoClip clip;
 
@@ -21,11 +20,12 @@ public class Weapon : MonoBehaviour
     private void Start() => canFire = true;
 
     public virtual async void Fire() {
+        if (!canFire || !GameManager.Input.Player.Aim.IsPressed()) return;
         if (clip.ammo == 0) {
-            clip.Reload();
+            if (clip.quantity == 0) return;
+            Reload();
             return;
         }
-        if (!canFire || !GameManager.Input.Player.Aim.IsPressed()) return;
 
         var bullet = ObjectPool.Get(ObjectPool.BulletPool);
         Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
@@ -40,7 +40,10 @@ public class Weapon : MonoBehaviour
     }
 
     public virtual async void Reload() {
+        canFire = false;
         await Wait(reloadTime);
+        clip.Reload();
+        canFire = true;
     }
 
     protected virtual async Task Wait(float time) {
@@ -54,7 +57,7 @@ public class Weapon : MonoBehaviour
         public int quantity;
 
         public void Reload() {
-            var r = (clip - ammo) > quantity ? (clip - ammo) : quantity;
+            var r = (clip - ammo) < quantity ? (clip - ammo) : quantity;
             quantity -= r;
             ammo += r;
         }

@@ -15,6 +15,7 @@ public class AI_AlarmNode : AINode
     public override void OnUpdate(AIBase npc)
     {
 
+
     }
 
     public override void OnEnd(AIBase npc)
@@ -24,8 +25,9 @@ public class AI_AlarmNode : AINode
     }
 
     public override bool Active(AIBase npc) {
-       return !(Vector3.Distance(npc.transform.position, npc.Goal.Target.position) < 1) || 
+       return  !AIUtil.Cower(npc) && !(Vector3.Distance(npc.transform.position, npc.Goal.Target.position) < 1) || 
             Weight(npc) > npc.Character.fear;
+        
     }
     
     public override float Weight(AIBase npc)

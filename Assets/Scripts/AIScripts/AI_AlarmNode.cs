@@ -12,23 +12,14 @@ public class AI_AlarmNode : AINode
         npc.Agent.SetDestination(npc.Goal.TargetLocation);
     }
 
-    public override void OnUpdate(AIBase npc)
-    {
-
-
-    }
-
     public override void OnEnd(AIBase npc)
     {
         npc.Agent.isStopped = true;
         npc.Agent.destination = npc.transform.position;
     }
 
-    public override bool Active(AIBase npc) {
-       return  !AIUtil.Cower(npc) && !(Vector3.Distance(npc.transform.position, npc.Goal.Target.position) < 1) || 
-            Weight(npc) > npc.Character.fear;
-        
-    }
+    public override bool Active(AIBase npc) => Weight(npc) > npc.Character.fear;
+ 
     
     public override float Weight(AIBase npc)
     {

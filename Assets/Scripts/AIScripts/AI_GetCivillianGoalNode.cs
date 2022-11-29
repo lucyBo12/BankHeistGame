@@ -18,5 +18,5 @@ public class AI_GetCivillianGoalNode : AINode {
         npc.Goal = new AIGoal();
     }
 
-    public override bool Active(AIBase npc) => true;
+    public override bool Active(AIBase npc) => !GameManager.InCombat;
 }

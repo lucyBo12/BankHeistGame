@@ -18,7 +18,6 @@ public static class AIUtil
         //distance of player from npc
         float Distance = Vector3.Distance(T.position, npc.transform.position);
 
-        Debug.Log(y);
         return Distance < y;
     }
 }

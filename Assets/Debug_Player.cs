@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class Debug_Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameManager.Players.Add(transform);
-        GameManager.StartCombat(); 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Start() =>
+        GameManager.Players.Add(transform);
+
+
 }

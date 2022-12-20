@@ -3,52 +3,28 @@ using UnityEngine;
 
 public class WeightModifier : MonoBehaviour
 {
-    [Header("Primary Idle")]
-    public MultiAimConstraint primaryAimConstraintIdle;
-    public MultiParentConstraint primaryParentConstraintIdle;
-    public MultiPositionConstraint primaryPositionConstraintIdle;
+    [Header("Primary")]
+    public Rig primaryIdle;
+    public Rig primaryAim;
 
-    [Header("Primary Aim")]
-    public MultiAimConstraint primaryAimConstraintAim;
-    public MultiParentConstraint primaryParentConstraintAim;
-    public MultiPositionConstraint primaryPositionConstraintAim;
+    [Header("SideArm")]
+    public Rig sideArmAim;
+    public Rig sideArmIdle;
 
-    [Header("SideArm Idle")]
-    public MultiAimConstraint sideAimConstraintIdle;
-    public MultiParentConstraint sideParentConstraintIdle;
-    public MultiPositionConstraint sidePositionConstraintIdle;
 
-    [Header("SideArm Aim")]
-    public MultiAimConstraint sideAimConstraintAim;
-    public MultiParentConstraint sideParentConstraintAim;
-    public MultiPositionConstraint sidePositionConstraintAim;
+    // The speed at which we want to lerp the weight value
+    public float lerpSpeed = 1.0f;
 
-    public enum WeightSwitch {  
-        PrimaryIdle, PrimaryAim, SideArmIdle, SideArmAim
-    }
+    // The current weight value of the rig
+    private float currentWeight = 0.0f;
 
-    public void SetWeight(WeightSwitch constraint, float weight) {
-        switch (constraint) {
-            case WeightSwitch.PrimaryIdle:
-                primaryParentConstraintIdle.weight = weight;
-                primaryPositionConstraintIdle.weight = weight;
-                primaryAimConstraintIdle.weight = weight;
-                break;
-            case WeightSwitch.SideArmIdle:
-                sideParentConstraintIdle.weight = weight;
-                sidePositionConstraintIdle.weight = weight;
-                //sideAimConstraintIdle.weight = weight;
-                break;
-            case WeightSwitch.PrimaryAim:
-                primaryParentConstraintAim.weight = weight;
-                primaryPositionConstraintAim.weight = weight;
-                primaryAimConstraintAim.weight = weight;
-                break;
-            case WeightSwitch.SideArmAim:
-                sideParentConstraintAim.weight = weight;
-                sidePositionConstraintAim.weight = weight;
-                sideAimConstraintAim.weight = weight;
-                break;
-        }
+
+    public void SetWeight(Weapon.WeaponType weapon, bool isAiming)
+    {
+        // Calculate the new weight value by lerping from the current weight to the target weight
+        currentWeight = Mathf.Lerp(currentWeight, isAiming ? 1.0f : 0.0f, lerpSpeed * Time.deltaTime);
+
+        sideArmAim.weight = currentWeight;
+        Debug.Log(sideArmAim.weight);
     }
 }

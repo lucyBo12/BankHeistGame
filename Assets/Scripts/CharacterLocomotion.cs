@@ -15,6 +15,7 @@ using Cinemachine;
  * author: Joseph Denby
  * email: jd744@kent.ac.uk
  */
+[RequireComponent(typeof(CharacterController), typeof(Character))]
 public class CharacterLocomotion : NetworkBehaviour
 {
     //Variables
@@ -22,7 +23,8 @@ public class CharacterLocomotion : NetworkBehaviour
     public WeightModifier weight;
     public Animator animator;
     public float speed = 2f;
-    
+
+    private Character character => GetComponent<Character>();
 
     //Properties
     public float Angle { get; private set; }
@@ -101,8 +103,7 @@ public class CharacterLocomotion : NetworkBehaviour
         transform.rotation = Quaternion.Euler(0, Angle, 0);
 
         //Apply Aim weights
-        weight.SetWeight(isAiming ? WeightModifier.WeightSwitch.SideArmAim : WeightModifier.WeightSwitch.SideArmIdle, 1);
-        weight.SetWeight(!isAiming ? WeightModifier.WeightSwitch.SideArmAim : WeightModifier.WeightSwitch.SideArmIdle, 0);
+        weight.SetWeight(character.inventoryManager.ActiveWeaponType(), isAiming);
     }
 
     /**

@@ -54,6 +54,11 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 userData = new AI_Cower(),
                 level = 2
             },
+             new SearchTreeEntry(new GUIContent("Flee", _indentationIcon))
+            {
+                userData = new AI_Flee(),
+                level = 2
+            },
 
         };
 
@@ -81,6 +86,9 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 return true;
             case AI_Cower:
                 _graphView.AddNode(_graphView.CreateAI_Cower(), localMousePosition);
+                return true;
+            case AI_Flee:
+                _graphView.AddNode(_graphView.CreateAI_Flee(), localMousePosition);
                 return true;
             default:
                 return false;

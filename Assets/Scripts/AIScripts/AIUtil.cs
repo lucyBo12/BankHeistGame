@@ -13,7 +13,7 @@ public static class AIUtil
         //y is the new cower range
         int y = (int)(5 * (MathF.Pow(1.1f, x)));
 
-        var T = GameUtil.ClosestPlayer(npc.transform);
+        var T = GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray());
 
         //distance of player from npc
         float Distance = Vector3.Distance(T.position, npc.transform.position);

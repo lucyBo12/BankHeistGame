@@ -21,6 +21,8 @@ public class AITree : ScriptableObject
                 return new AI_AlarmNode(GUID);
             case "AI_Cower":
                 return new AI_Cower(GUID);
+            case "AI_Flee":
+                return new AI_Flee(GUID);
             default:
                 return new AINode(GUID);
         }

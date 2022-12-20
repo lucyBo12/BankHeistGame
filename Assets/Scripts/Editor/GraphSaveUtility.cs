@@ -153,6 +153,8 @@ public class GraphSaveUtility
                 node = _targetGraphView.CreateAI_AlarmNode();
             else if (type == typeof(AI_Cower))
                 node = _targetGraphView.CreateAI_Cower();
+            else if (type == typeof(AI_Flee))
+                node = _targetGraphView.CreateAI_Flee();
 
             node.GUID = nodeData.GUID;
             _targetGraphView.AddElement(node);

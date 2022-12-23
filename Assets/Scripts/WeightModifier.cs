@@ -18,13 +18,21 @@ public class WeightModifier : MonoBehaviour
     // The current weight value of the rig
     private float currentWeight = 0.0f;
 
-
     public void SetWeight(Weapon.WeaponType weapon, bool isAiming)
     {
+        if (weapon == Weapon.WeaponType.primary) {
+            sideArmAim.weight = 0;
+            sideArmIdle.weight = 0;
+        }
+
         // Calculate the new weight value by lerping from the current weight to the target weight
         currentWeight = Mathf.Lerp(currentWeight, isAiming ? 1.0f : 0.0f, lerpSpeed * Time.deltaTime);
+        if (Mathf.Abs(currentWeight - (isAiming ? 1.0f : 0.0f)) < 0.1f) {
+            currentWeight = (isAiming ? 1.0f : 0.0f);
+        }
 
+        //var rig = weapon == Weapon.WeaponType.primary ? (isAiming ? primaryAim : primaryIdle) : sideArmIdle;
         sideArmAim.weight = currentWeight;
-        Debug.Log(sideArmAim.weight);
     }
+
 }

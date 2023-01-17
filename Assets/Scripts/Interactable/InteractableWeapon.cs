@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableWeapon : Interactable
@@ -8,7 +6,10 @@ public class InteractableWeapon : Interactable
 
     public override void Interact(Transform user)
     {
-        InventoryManager.Instance.Assign(weapon);
+        var character = user.GetComponent<Character>();
+        if (!character) return;
+
+        character.inventoryManager.Assign(weapon);
         base.Interact(user);
     }
 

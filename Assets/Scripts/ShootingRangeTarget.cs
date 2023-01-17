@@ -9,6 +9,7 @@ public class ShootingRangeTarget : MonoBehaviour
         LeanTween.rotateX(gameObject, -45, 0.2f);
         LeanTween.color(gameObject, Color.clear, 0.2f);
         Destroy(gameObject, 0.5f);
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void Move(Vector3 start, float distance, float time)

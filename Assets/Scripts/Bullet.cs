@@ -11,13 +11,5 @@ public class Bullet : MonoBehaviour
     {
         gameObject.SetActive(false);
         transform.localPosition = Vector3.zero;
-
-        if (collision.gameObject.layer != 7) return;
-
-        switch (collision.gameObject.tag) {
-            case "RangeTarget":
-                collision.gameObject.GetComponent<ShootingRangeTarget>().Hit();
-                break;
-        }
     }
 }

@@ -4,13 +4,9 @@ using UnityEngine.Animations.Rigging;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance { get; private set; }
-
     [SerializeField] private Weapon activeWeapon;
     [SerializeField] private Transform primary, sidearm;
     [SerializeField] private RigBuilder rig;
-
-    private void Awake() => Instance = this;
 
     private void Start()
     {
@@ -43,4 +39,7 @@ public class InventoryManager : MonoBehaviour
         sidearm.gameObject.SetActive(index == 2);
     }
 
+    public Weapon.WeaponType ActiveWeaponType() {
+        return activeWeapon ? activeWeapon.weaponType : Weapon.WeaponType.sidearm;
+    }
 }

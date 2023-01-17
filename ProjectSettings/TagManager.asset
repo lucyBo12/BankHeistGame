@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - VirtualCamera
+  - moneyRoll
+  - moneyStack
+  - moneyNote
   layers:
   - Default
   - TransparentFX

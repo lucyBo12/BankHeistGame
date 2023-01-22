@@ -6,12 +6,11 @@ public class WireBehaviourRight : MonoBehaviour
 {
 
     WireRight wireR;
-    WireLeft wireL;
     int wireCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        wireR = gameObject.GetComponent<WireRight>();
+       // wireR = gameObject.GetComponent<WireRight>();
     }
 
     // Update is called once per frame
@@ -26,8 +25,8 @@ public class WireBehaviourRight : MonoBehaviour
         wireR = gameObject.GetComponent<WireRight>();
         if (collision.GetComponent<WireLeft>())
         {
-            wireL = collision.gameObject.GetComponent<WireLeft>();
-            Debug.Log(wireL.colour);
+            WireLeft wireL = collision.gameObject.GetComponent<WireLeft>();
+            //Debug.Log(wireL.colour);
             Debug.Log(wireR.colour);
             if(wireR.colour == wireL.colour)
             {

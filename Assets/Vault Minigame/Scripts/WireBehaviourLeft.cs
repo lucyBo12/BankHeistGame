@@ -8,6 +8,7 @@ public class WireBehaviourLeft : MonoBehaviour
     WireLeft wire;
     public bool mouseDown = false;
     LineRenderer line;
+    int wireCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -80,5 +81,39 @@ public class WireBehaviourLeft : MonoBehaviour
     private void OnMouseOver()
     {
         wire.canMove = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<WireRight>())
+        {
+            WireRight wireR = collision.GetComponent<WireRight>();
+            Debug.Log(wireR.colour);
+            if(wireR.colour == wire.colour)
+            {
+                wire.joined = true;
+                wireR.joined = true;
+                wire.joinedPos = collision.transform.position;
+                wireCount++;
+                if(wireCount == 4)
+                {
+                    Debug.Log("Done");
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(wireCount == 4)
+        {
+            Application.Quit();
+        }
+        if (collision.GetComponent<WireLeft>())
+        {
+            WireRight wireR = collision.GetComponent<WireRight>();
+            wireR.joined = false;
+            wire.joined = false;
+        }
     }
 }

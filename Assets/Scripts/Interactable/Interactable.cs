@@ -17,15 +17,15 @@ public class Interactable : NetworkBehaviour
         LeanTween.moveY(gameObject, transform.position.y + .2f, 1f).setLoopPingPong();
     }
 
-    public virtual void Interact() { 
+    public virtual void Interact(Transform user) { 
         if(destroyOnInteract)
             Destroy(gameObject);
     }
 
     public virtual void ShowPrompt() {
         if (promptMessage.IsNullOrEmpty()) return;
-        else if (prompt == null) {
-           InteractPromt.CreateNewPrompt(transform, promptOffset);
+        if (prompt == null) {
+            InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
 
         prompt.SetPrompt(promptMessage);
@@ -33,7 +33,7 @@ public class Interactable : NetworkBehaviour
 
     public virtual void ShowPrompt(string message) {
         if (promptMessage.IsNullOrEmpty()) return;
-        else if (prompt == null) {
+        if (prompt == null) {
             InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
 

@@ -8,31 +8,23 @@ public class AI_AlarmNode : AINode
 
     public override void OnStart(AIBase npc)
     {
-        npc.Goal = new AIGoal(GameUtil.ClosestAlarm(npc.transform));
+        npc.Goal = new AIGoal(GameUtil.ClosestTransform(npc.transform, GameManager.Alarms.ToArray()));
         npc.Agent.SetDestination(npc.Goal.TargetLocation);
     }
-
-    public override void OnUpdate(AIBase npc)
-    {
-        Debug.Log($"Goal: {npc.Goal.Target.name} " +
-            $"\nAgent Target: {npc.Agent.destination}");
-    }
-
+   
     public override void OnEnd(AIBase npc)
     {
         npc.Agent.isStopped = true;
         npc.Agent.destination = npc.transform.position;
     }
 
-    public override bool Active(AIBase npc) {
-       return !(Vector3.Distance(npc.transform.position, npc.Goal.Target.position) < 1) || 
-            Weight(npc) > npc.Character.fear;
-    }
+    public override bool Active(AIBase npc) => Weight(npc) > npc.Character.fear;
+ 
     
     public override float Weight(AIBase npc)
     {
-        var pd = Vector3.Distance(GameUtil.ClosestPlayer(npc.transform).position, npc.transform.position);
-        var ad = Vector3.Distance(GameUtil.ClosestAlarm(npc.transform).position, npc.transform.position);
+        var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform , GameManager.Players.ToArray()).position, npc.transform.position); //pd =  distance to closest player
+        var ad = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Alarms.ToArray()).position, npc.transform.position); // ad =  distance to closest alarm 
         var f = npc.Character.fear;
         var t = npc.Character.staff;
 

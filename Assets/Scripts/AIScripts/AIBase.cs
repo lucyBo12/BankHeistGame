@@ -68,18 +68,24 @@ public class AIBase : MonoBehaviour
         AINode[] nextNodes = behaviour.Next(currentNode, this);
         currentNode = nextNodes.Length == 0 ? behaviour.StartNode() : nextNodes[0];
         currentNode.OnStart(this);
+        Debug.Log(currentNode.GetType().Name);
     }
 
     //Variables for ai behaviour defined here
+    //range is the minimum fear radius around an npc
     [System.Serializable]
     public struct CharacterSheet {
         [Range(0, 1)]public float fear;
         public bool staff;
 
-        public CharacterSheet(float fear, bool staff) {
+        public CharacterSheet(int fear, bool staff) {
             this.fear = fear;
-            this.staff = staff;
+            this.staff = staff;          
         }
+
+        
         
     }
+
+    
 }

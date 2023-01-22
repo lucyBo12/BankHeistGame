@@ -2,23 +2,20 @@ using UnityEngine;
 
 public class ShootingRangeTarget : MonoBehaviour
 {
-    private void Start()
+    public bool isCivillian;
+
+    public void Hit()
     {
-        if (!ShootingRangeOne.Instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        LeanTween.rotateX(gameObject, -45, 0.2f);
+        LeanTween.color(gameObject, Color.clear, 0.2f);
+        Destroy(gameObject, 0.5f);
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
 
-        Physics.Raycast(transform.position, Vector3.left, out RaycastHit hit1);
-        Physics.Raycast(transform.position, Vector3.right, out RaycastHit hit2);
-        var left = hit1.distance;
-        var right = hit2.distance;
-
-        var destination = left > right ? transform.position.x + left : transform.position.x + right;
-        var time = left > right ? left / 2 : right / 2;
-        LeanTween.moveX(gameObject, destination, time);
-
+    public void Move(Vector3 start, float distance, float time)
+    {
+        transform.position = new Vector3(start.x, start.y + 1.65f, start.z);
+        LeanTween.moveX(gameObject, start.x + distance, time);
         Destroy(gameObject, time);
     }
 

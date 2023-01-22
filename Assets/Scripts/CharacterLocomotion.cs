@@ -15,12 +15,16 @@ using Cinemachine;
  * author: Joseph Denby
  * email: jd744@kent.ac.uk
  */
+[RequireComponent(typeof(CharacterController), typeof(Character))]
 public class CharacterLocomotion : NetworkBehaviour
 {
     //Variables
     public CharacterController controller;
+    public WeightModifier weight;
     public Animator animator;
     public float speed = 2f;
+
+    private Character character => GetComponent<Character>();
 
     //Properties
     public float Angle { get; private set; }
@@ -33,14 +37,13 @@ public class CharacterLocomotion : NetworkBehaviour
 
 
     private void Start() {
-        if (!IsOwner) return;
         PlayerActions.Enable();
 
         if (!VirtualCamera) return;
 
         VirtualCamera.ForceCameraPosition((transform.position - (Vector3.back * 5)), VirtualCamera.transform.rotation);
-        VirtualCamera.Follow = transform;
-        VirtualCamera.LookAt = transform;
+        VirtualCamera.Follow = LobbyManager.Self().transform;
+        VirtualCamera.LookAt = LobbyManager.Self().transform;
     }
 
     //Called automatically every frame
@@ -98,6 +101,9 @@ public class CharacterLocomotion : NetworkBehaviour
 
         //Apply calculated angled to Transform
         transform.rotation = Quaternion.Euler(0, Angle, 0);
+
+        //Apply Aim weights
+        weight.SetWeight(character.inventoryManager.ActiveWeaponType(), isAiming);
     }
 
     /**

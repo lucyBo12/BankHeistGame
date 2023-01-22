@@ -10,15 +10,12 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("A");
         if(!other.CompareTag("Player") && !other.CompareTag("NPC"))
             return;
 
-        Debug.Log("A");
         if (inhabitants.Contains(other.gameObject))
             return;
 
-        Debug.Log("C");
         inhabitants.Add(other.gameObject);
     }
 

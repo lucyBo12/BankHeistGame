@@ -8,13 +8,15 @@ public class WireBehaviourLeft : MonoBehaviour
     WireLeft wire;
     public bool mouseDown = false;
     LineRenderer line;
-    int wireCount = 0;
+    static int wireCount = 0;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
         wire = gameObject.GetComponent<WireLeft>();
         line = gameObject.GetComponent<LineRenderer>();
+
 
     }
 
@@ -88,16 +90,19 @@ public class WireBehaviourLeft : MonoBehaviour
         if(collision.GetComponent<WireRight>())
         {
             WireRight wireR = collision.GetComponent<WireRight>();
-            Debug.Log(wireR.colour);
+            //Debug.Log(wireR.colour);
             if(wireR.colour == wire.colour)
             {
                 wire.joined = true;
                 wireR.joined = true;
                 wire.joinedPos = collision.transform.position;
                 wireCount++;
-                if(wireCount == 4)
+                Debug.Log(wireCount);
+                if(wireCount == 4 )
                 {
+                    
                     Debug.Log("Done");
+                    canvas.SetActive(false);
                 }
             }
         }
@@ -105,15 +110,15 @@ public class WireBehaviourLeft : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(wireCount == 4)
+        if (collision.tag == "wireR")
         {
-            Application.Quit();
-        }
-        if (collision.GetComponent<WireLeft>())
-        {
-            WireRight wireR = collision.GetComponent<WireRight>();
-            wireR.joined = false;
-            wire.joined = false;
+            
+            if (collision.GetComponent<WireLeft>())
+            {
+                WireRight wireR = collision.GetComponent<WireRight>();
+                wireR.joined = false;
+                wire.joined = false;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ public class CharacterClass : MonoBehaviour
     public bool dead;
     public int money;
     public int noOfdeaths;
+    public string playerName;
     
     //equipment
     public int ammo;

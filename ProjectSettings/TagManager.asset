@@ -8,6 +8,10 @@ TagManager:
   - Weapon
   - RangeTarget
   - Cover
+  - moneyStack
+  - moneyNote
+  - moneyRoll
+  - goldBar
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class MoneyBehaviour : MonoBehaviour
     int roll = 200;
     int stack = 1000;
     int note = 100;
+    int bar = 500;
 
     public CharacterClass player;
 
@@ -33,6 +34,7 @@ public class MoneyBehaviour : MonoBehaviour
             gameObject.SetActive(false);
             if(this.tag == "moneyStack")
             {
+                Debug.Log("stack");
                 player.money = player.money + stack;
             }
 
@@ -44,6 +46,10 @@ public class MoneyBehaviour : MonoBehaviour
             if (this.tag == "moneyNote")
             {
                 player.money = player.money + note;
+            }
+            if(this.tag == "goldBar")
+            {
+                player.money = player.money + bar;
             }
         }
     }

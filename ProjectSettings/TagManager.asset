@@ -7,6 +7,7 @@ TagManager:
   - VirtualCamera
   - Weapon
   - RangeTarget
+  - Cover
   layers:
   - Default
   - TransparentFX

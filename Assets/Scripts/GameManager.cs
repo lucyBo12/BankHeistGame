@@ -18,7 +18,9 @@ public static class GameManager
     public static List<Transform> Alarms = new List<Transform>();
     public static List<Transform> ExitPoint = new List<Transform>();
     public static List<NPCGoal> Goals = new List<NPCGoal>();
+    public static List<Room> Rooms = new List<Room>();
 
+   
 
     public static Transform Exit;
 
@@ -31,7 +33,18 @@ public static class GameManager
         Input = new InputMaster();    
     }
 
+    public static Room GetRoom(GameObject other) {
+        foreach (Room room in Rooms) { 
+            if(room.HasInhibtant(other)) return room;
+        
+        }
+        return null;
+    }
     public static void StartCombat() => InCombat = true;
 
+    public static void SetUpCoverPoints()
+    {
+
+    }
     
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2745c95b77dd349bdad3ae1214e89f, type: 3}
+  m_Name: Cop_AI
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGuid: a811dd52-0d14-49a2-84fa-fdc99d91527e
+    PortName: START
+    TargetNodeGuid: 86f767c2-3765-4377-9e09-90c0f00a4796
+  AINodeData:
+  - GUID: 86f767c2-3765-4377-9e09-90c0f00a4796
+    NodeType: AI_HasGoalNode
+    Position: {x: 272, y: 223}

@@ -33,7 +33,7 @@ public class CharacterLocomotion : NetworkBehaviour
     public bool IsCrouching => PlayerActions.Crouch.IsPressed();
     public bool IsMoving => controller.velocity != Vector3.zero;
     public CinemachineVirtualCamera VirtualCamera => GameObject.FindGameObjectWithTag("VirtualCamera")?.GetComponent<CinemachineVirtualCamera>();
-    private InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
+    public InputMaster.PlayerActions PlayerActions => GameManager.Input.Player;
 
 
     private void Start() {

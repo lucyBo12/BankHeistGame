@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class WeightModifier : MonoBehaviour
 {
-    [Header("Primary")]
-    public Rig primaryIdle;
-    public Rig primaryAim;
+    [Header("IKRef")]
+    public IKRef primary = new();
+    public IKRef sideArm = new();
 
-    [Header("SideArm")]
-    public Rig sideArmAim;
-    public Rig sideArmIdle;
+    [Header("Constraint")]
+    public TwoBoneIKConstraint leftIK;
+    public TwoBoneIKConstraint rightIK;
+
 
 
     // The speed at which we want to lerp the weight value
@@ -20,9 +21,11 @@ public class WeightModifier : MonoBehaviour
 
     public void SetWeight(Weapon.WeaponType weapon, bool isAiming)
     {
+        IKRef ik = weapon == Weapon.WeaponType.primary ? primary : sideArm;
+
         if (weapon == Weapon.WeaponType.primary) {
-            sideArmAim.weight = 0;
-            sideArmIdle.weight = 0;
+            sideArm.aim.weight = 0;
+            sideArm.idle.weight = 0;
         }
 
         // Calculate the new weight value by lerping from the current weight to the target weight
@@ -31,8 +34,21 @@ public class WeightModifier : MonoBehaviour
             currentWeight = (isAiming ? 1.0f : 0.0f);
         }
 
-        //var rig = weapon == Weapon.WeaponType.primary ? (isAiming ? primaryAim : primaryIdle) : sideArmIdle;
-        sideArmAim.weight = currentWeight;
+        
     }
 
+
+    [System.Serializable]
+    public class IKRef {
+        public Rig idle;
+        public Rig aim;
+
+        [Header("Right Hand")]
+        public Transform rightTarget;
+        public Transform rightHint;
+
+        [Header("Left Hand")]
+        public Transform leftTarget;
+        public Transform leftHint;
+    }
 }

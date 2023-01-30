@@ -3,13 +3,16 @@ using UnityEngine;
 public static class ObjectPool 
 {
     public static GameObject BulletPool { get; private set; }
-
+    public static GameObject CopPool { get; private set; }
+    public static GameObject CivPool { get; private set; }
 
 
     [RuntimeInitializeOnLoadMethod]
     private static void Initialize() {
         CreateParentObjects();
-        AssignObjects(BulletPool, GetResource("9mm"), 100);
+        AssignObjects(BulletPool, GetResource("9mm"), 200);
+        AssignObjects(CopPool, GetResource("NPC/Cop"), 20);
+        AssignObjects(CivPool, GetResource("NPC/Civ"), 20);
     }
 
     public static GameObject Get(GameObject pool) {
@@ -28,10 +31,21 @@ public static class ObjectPool
         BulletPool = new GameObject("Bullet");
         BulletPool.transform.parent = pool.transform;
 
+        CopPool = new GameObject("Cop");
+        CopPool.transform.parent = pool.transform;
+
+        CivPool = new GameObject("Civ");
+        CivPool.transform.parent = pool.transform;
+
         Object.DontDestroyOnLoad(pool);
     }
 
     private static void AssignObjects(GameObject parent, GameObject prefab, int quantity) {
+        if (!prefab) {
+            Debug.LogError($"Could not find prefab for {parent.name}.");
+            return;
+        }
+
         for (int i = 0; i < quantity; i++) {
             var obj = Object.Instantiate(prefab, parent.transform);
             obj.name = $"{parent.name} Object [{(i + 1)}]";
@@ -39,6 +53,7 @@ public static class ObjectPool
         }
     }
 
-    private static GameObject GetResource(string name) => Resources.Load<GameObject>($"PoolObjects/{name}");
+    private static GameObject GetResource(string name) => 
+        Resources.Load<GameObject>($"PoolObjects/{name}");
 
 }

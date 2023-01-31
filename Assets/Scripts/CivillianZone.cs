@@ -22,6 +22,7 @@ public class CivillianZone : MonoBehaviour
         for (int i = 0; i < count; i++) {
             GameObject gO = ObjectPool.Get(ObjectPool.CivPool);
             gO.transform.position = GetValidPosition();
+            gO.SetActive(true);
         }
     }
 

@@ -29,8 +29,8 @@ public class InventoryManager : MonoBehaviour
         var obj = Instantiate(weapon.gameObject, slot);
         obj.transform.SetAsFirstSibling();
 
-        int index = weapon.weaponType == Weapon.WeaponType.primary ? 1 : 2;
-        int reverse = index == 1 ? 1 : 2;
+        int index = weapon.weaponType == Weapon.WeaponType.primary ? 1 : 0;
+        int reverse = index == 1 ? 0 : 1;
 
         rig.layers[index].active = true;
         rig.layers[reverse].active = false;

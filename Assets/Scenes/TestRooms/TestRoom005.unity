@@ -17085,7 +17085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersInZone: 0
-  requiredPlayers: 2
+  requiredPlayers: 1
   time: 0
   countDown: 5
   sceneName: BankLevel

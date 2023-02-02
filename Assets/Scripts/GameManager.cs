@@ -14,6 +14,7 @@ public static class GameManager
 {
     public static InputMaster Input { get; private set; }
     public static bool InCombat { get;  set; }
+    [Range(0, 5)] public static int WantedLevel = 0;
     public static List<Transform> Players = new List<Transform>();
     public static List<Transform> Alarms = new List<Transform>();
     public static List<Transform> ExitPoint = new List<Transform>();

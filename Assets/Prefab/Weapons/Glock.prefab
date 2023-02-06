@@ -230,14 +230,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5339d5229f6ad438d540a2a5b7a517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6400776588626431424, guid: c961f4a8dc7542c4bade28d9e927335c, type: 3}
+  target: {fileID: 0}
   muzzle: {fileID: 6347234971038898923}
   clip:
     ammo: 16
     clip: 16
     quantity: 64
+  icon: {fileID: 744310475, guid: 820acfcfcdcf82e4ab2af4343272fcbb, type: 3}
   fireRate: 0.1
   reloadTime: 1
+  range: 20
   weaponType: 1
 --- !u!114 &980447238527744612
 MonoBehaviour:

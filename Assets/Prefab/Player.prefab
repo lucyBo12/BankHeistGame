@@ -4233,6 +4233,7 @@ MonoBehaviour:
     ammo: 16
     clip: 16
     quantity: 64
+  icon: {fileID: 744310475, guid: 820acfcfcdcf82e4ab2af4343272fcbb, type: 3}
   fireRate: 0.1
   reloadTime: 1
   range: 20
@@ -7204,12 +7205,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Elbow_R'\n\tTransform 'Elbow_L'\n\tTransform
-    'Hand_L'\n\tTransform 'Shoulder_L'\n\tTransform 'Shoulder_R'\n\tTransform 'Hand_R'\n\tTransform
-    'Elbow_R'\n\tTransform 'Elbow_L'\n\tTransform 'Hand_L'\n\tTransform 'Shoulder_L'\n\tand
-    more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

@@ -11,7 +11,8 @@ public class AI_Flee : AINode
 
     public override void OnStart(AIBase npc)
     {
-        npc.Goal = new AIGoal(GameUtil.ClosestTransform(npc.transform, GameManager.ExitPoint.ToArray()));
+        var Room = GameManager.GetRoom(npc.gameObject);
+        npc.Goal = new AIGoal(GameUtil.ClosestTransform(npc.transform, Room.exitPoint));
         npc.Agent.SetDestination(npc.Goal.TargetLocation);
     }
 
@@ -25,8 +26,9 @@ public class AI_Flee : AINode
 
     public override float Weight(AIBase npc)
     {
+        var Room = GameManager.GetRoom(npc.gameObject);
         var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray()).position, npc.transform.position);// pd =  distance to closest player
-        var dd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.ExitPoint.ToArray()).position, npc.transform.position); // ad =  distance to closest door
+        var dd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, Room.exitPoint).position, npc.transform.position); // ad =  distance to closest door
         var f = npc.Character.fear;
 
         return (pd - (f * 10)) / (dd + (f * 10));

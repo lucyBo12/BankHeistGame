@@ -2888,7 +2888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11881,8 +11881,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coverPoints: []
-  showGizmo: 0
-  inhabitants: []
+  showGizmo: 1
+  inhabitants:
+  - {fileID: 1952264766}
+  alarms: []
+  exitPoint: []
+  goals: []
   gizmoColor: {r: 0, g: 0.2807932, b: 1, a: 0.5}
 --- !u!65 &1425128994
 BoxCollider:
@@ -13130,6 +13134,10 @@ MonoBehaviour:
   - {fileID: 1810478384}
   showGizmo: 1
   inhabitants: []
+  alarms:
+  - {fileID: 1668184130}
+  exitPoint: []
+  goals: []
   gizmoColor: {r: 0, g: 1, b: 0, a: 0.5}
 --- !u!65 &1526317849
 BoxCollider:
@@ -19078,6 +19086,7 @@ GameObject:
   - component: {fileID: 9088109908563208652}
   - component: {fileID: 9088109908563208654}
   - component: {fileID: 9088109908563208655}
+  - component: {fileID: 9088109908563208656}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -20138,7 +20147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character:
-    fear: 0.2
+    fear: 0
     staff: 0
   behaviour: {fileID: 11400000, guid: 21d9e359c8467ee4b9ece7ad92e3cae4, type: 2}
   aiEnabled: 1
@@ -20173,6 +20182,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9088109908563208656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088109908562891079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb86a8182f8179048b7b385180c659ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  inventoryManager: {fileID: 0}
 --- !u!4 &9088109908563209685
 Transform:
   m_ObjectHideFlags: 0

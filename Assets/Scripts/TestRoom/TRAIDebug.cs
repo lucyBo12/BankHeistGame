@@ -10,8 +10,9 @@ public class TRAIDebug : MonoBehaviour
 
 
     private void Start() {
+
         GameManager.Players.Add(player);
-        GameManager.Alarms.Add(button);
+       
     }
 
     private void LateUpdate()

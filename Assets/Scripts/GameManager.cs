@@ -15,9 +15,7 @@ public static class GameManager
     public static InputMaster Input { get; private set; }
     public static bool InCombat { get;  set; }
     public static List<Transform> Players = new List<Transform>();
-    public static List<Transform> Alarms = new List<Transform>();
-    public static List<Transform> ExitPoint = new List<Transform>();
-    public static List<NPCGoal> Goals = new List<NPCGoal>();
+    
     public static List<Room> Rooms = new List<Room>();
 
    

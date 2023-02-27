@@ -9,7 +9,8 @@ public class AI_GetCivillianGoalNode : AINode {
     }   
 
     public override void OnStart(AIBase npc) {
-        NPCGoal goal = GameManager.Goals[Random.Range(0, GameManager.Goals.Count)];
+        var Room = GameManager.GetRoom(npc.gameObject);
+        NPCGoal goal = Room.goals[Random.Range(0, Room.goals.Length)];
         goal.AddToQueue(npc);
         Debug.Log($"Goal: {goal.name} [{npc.Goal.TargetLocation}]");
     }

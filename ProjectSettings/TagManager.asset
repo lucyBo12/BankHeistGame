@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - RangeTarget
   - Cover
+  - Cop
   layers:
   - Default
   - TransparentFX

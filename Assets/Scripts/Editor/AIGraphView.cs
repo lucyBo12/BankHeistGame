@@ -177,7 +177,7 @@ public class AIGraphView : GraphView
         outPort.portName = "Next";
         node.outputContainer.Add(outPort);
 
-        node.title = " make civillian cower"; return node;
+        node.title = " make civillian Flee"; return node;
 
     }
 

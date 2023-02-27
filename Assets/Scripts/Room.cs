@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -7,6 +8,11 @@ public class Room : MonoBehaviour
     public Transform[] coverPoints; 
     [SerializeField] private bool showGizmo;
     public List<GameObject> inhabitants = new List<GameObject>();
+    public List<GameObject> cops => inhabitants.Where(x => x.CompareTag("Cop")).ToList();
+    public List<GameObject> players => inhabitants.Where(x => x.CompareTag("Player")).ToList();
+    public Transform[] alarms;
+    public Transform[] exitPoint;
+    public NPCGoal[] goals;
     public Color gizmoColor = new Color(0, 1, 0, 0.5f);
     public BoxCollider coll => GetComponent<BoxCollider>();
 
@@ -24,6 +30,8 @@ public class Room : MonoBehaviour
         }
         return false;
     }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(!other.CompareTag("Player") && !other.CompareTag("NPC"))

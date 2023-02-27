@@ -10,7 +10,7 @@ public class NPCGoal : MonoBehaviour
     [SerializeField] private string animationTrigger = "Interact";
     [SerializeField] private bool combatOnly = false;
 
-    void Start() => GameManager.Goals.Add(this);
+    
 
     public void AddToQueue(AIBase civ) { 
         queue.Enqueue(civ);

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public int maxHealth;
     public InventoryManager inventoryManager;
 
     CharacterLocomotion player;
@@ -10,7 +9,8 @@ public class Character : MonoBehaviour
 
     //player stats
     public int health;
-    public bool dead;
+    public bool dead => health <= 0;
+    public bool safe = false;
     public int money;
     public int noOfdeaths;
     public string playerName;
@@ -21,58 +21,23 @@ public class Character : MonoBehaviour
     public GameObject gun;
     public Transform[] weapons;
 
-    //loadout
-    //public bool isSwitching => player.PlayerActions.ChangeWeapon.IsPressed();
-    // public bool isSwitching2 => player.PlayerActions.ChangeWeapon1.IsPressed();
-    //public bool isSwitching3 => player.PlayerActions.ChangeWeapon2.IsPressed();
 
 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        dead = false;
-        health = 10;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        //switch weapon
-        //  if (isSwitching)
-        //    {
-        //        ChangeWeapon(1);
-        //     }
-        //     if (isSwitching2)
-        //     {
-        //        ChangeWeapon(2);
-        //     }
-        //     if (isSwitching3)
-        //     {
-        //          ChangeWeapon(3);
-        //     }
-    }
-
-
-    public void gotShot()
+    public void Damage()
     {
         health--;
-        if (health <= 0)
+        animator.SetBool("isDead", dead);
+        if (dead)
         {
-            dead = true;
-            animator.SetBool("isDead", dead);
             noOfdeaths++;
             player.speed = 0f;
         }
     }
 
-    public void revived()
-    {
-        dead = false;
-        health = 5;
-        player.speed = 2f;
+    public void ResetCharacter() {
+        health = 100;
+        animator.SetBool("isDead", dead);
     }
 
 
@@ -82,7 +47,6 @@ public class Character : MonoBehaviour
      */
     int GetHealth()
     {
-
         return health;
     }
 

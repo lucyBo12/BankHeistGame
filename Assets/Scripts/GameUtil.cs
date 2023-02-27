@@ -4,7 +4,7 @@ public static class GameUtil
 {
 
     public static Transform ClosestTransform(Transform transform, Transform[] others) {
- 
+
         Transform t = transform;
         float d = float.MaxValue;
 
@@ -15,7 +15,10 @@ public static class GameUtil
         return t;
     }
 
- 
+    public static T Random<T>(T[] arr) {
+        var i = UnityEngine.Random.Range(0, arr.Length);
+        return arr[i];
+    } 
     
 
 

@@ -12,8 +12,8 @@ public static class ObjectPool
     private static void Initialize() {
         CreateParentObjects();
         AssignObjects(BulletPool, GetResource("9mm"), 100);
-        AssignObjects(CivPool, GetResource("Civ"), 20);
-        AssignObjects(CopPool, GetResource("Cop"), 50);
+        AssignObjects(CivPool, GetResource("NPC/Civ"), 20);
+        AssignObjects(CopPool, GetResource("NPC/Cop"), 40);
     }
 
     public static GameObject Get(GameObject pool) {

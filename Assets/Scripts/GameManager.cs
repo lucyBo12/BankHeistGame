@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.Netcode;
+using System.Linq;
 using UnityEngine;
 
 /**
@@ -13,9 +13,11 @@ using UnityEngine;
 public static class GameManager
 {
     public static InputMaster Input { get; private set; }
+    public static GameState State { get; private set; }
     public static bool InCombat => WantedLevel > 0;
-    [Range(0f, 5f)] public static float WantedLevel = 0;
+    [Range(0f, 5f)] public static float WantedLevel;
     public static List<Transform> Players = new List<Transform>();
+    public static List<Character> Characters => Players.Select(x => x.GetComponent<Character>()).ToList();
     
     public static List<Room> Rooms = new List<Room>();
 
@@ -40,9 +42,27 @@ public static class GameManager
         return null;
     }
 
-    public static void SetUpCoverPoints()
-    {
+    public static void SetUpCoverPoints()  {
 
+    }
+
+    public static void StartNewGame() {
+
+        Characters.ForEach(x => { 
+            x.ResetCharacter(); 
+        });
+        WantedLevel = 0;
+        State = GameState.Active;
+    }
+
+    public static void CheckGameState() {
+        if (Characters.All(x => x.dead)) {
+            State = GameState.Failed;
+        }
+        else if (Characters.All(x => x.safe)) {
+            State = GameState.Success;
+        }
+        State = GameState.Active;
     }
     
 }

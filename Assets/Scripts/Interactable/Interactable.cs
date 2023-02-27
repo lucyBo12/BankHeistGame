@@ -8,7 +8,7 @@ public class Interactable : NetworkBehaviour
     public bool destroyOnInteract = false;
     public bool hoverIdle = true;
     public string promptMessage = "Use";
-    public Vector3 promptOffset;
+    public Vector3 promptOffset = new Vector3(0, 90, 20);
     protected InteractPromt prompt => GetComponentInChildren<InteractPromt>();
 
 

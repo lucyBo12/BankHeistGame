@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AmmoClip clip;
 
     [Header("Config")]
+    public Sprite icon;
     [SerializeField] private float fireRate = 0.1f;
     [SerializeField] private float reloadTime = 1f;
     [SerializeField] private float range = 20f;

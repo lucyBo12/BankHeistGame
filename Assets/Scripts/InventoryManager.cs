@@ -11,7 +11,10 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         GameManager.Input.Player.Fire.performed += evt => FireWeapon();
-        activeWeapon = sidearm.GetChild(0).GetComponent<Weapon>();
+        Weapon weapon = sidearm.GetChild(0).GetComponent<Weapon>();
+        activeWeapon = weapon;
+        WeaponGUI.Instance.UpdateWeapon(weapon);
+
     }
 
     private void FireWeapon() { 
@@ -20,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void Assign(Weapon weapon) {
+        WeaponGUI.Instance.UpdateWeapon(weapon);
         var slot = weapon.weaponType == Weapon.WeaponType.primary ? primary : sidearm;
         var child = slot.GetChild(0);
         if (child.CompareTag("Weapon")) { 
@@ -29,8 +33,8 @@ public class InventoryManager : MonoBehaviour
         var obj = Instantiate(weapon.gameObject, slot);
         obj.transform.SetAsFirstSibling();
 
-        int index = weapon.weaponType == Weapon.WeaponType.primary ? 1 : 2;
-        int reverse = index == 1 ? 1 : 2;
+        int index = weapon.weaponType == Weapon.WeaponType.primary ? 1 : 0;
+        int reverse = index == 1 ? 0 : 1;
 
         rig.layers[index].active = true;
         rig.layers[reverse].active = false;

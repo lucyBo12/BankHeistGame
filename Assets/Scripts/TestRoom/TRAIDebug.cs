@@ -24,11 +24,5 @@ public class TRAIDebug : MonoBehaviour
             $"\nGoal: {(ai.Goal.HasGoal ? $"{ai.Goal.TargetLocation}" : "NULL")}";
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            GameManager.StartCombat();
-        }
-    }
 
 }

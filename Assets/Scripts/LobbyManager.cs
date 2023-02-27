@@ -23,6 +23,7 @@ public static class LobbyManager
     public static async void CreateOrJoinLobby() {
         await Authenticate();
         Current = await QuickJoinLobby() ?? await CreateLobby();
+        CheckDDOL();
     }
 
     public static NetworkObject Self() {
@@ -88,5 +89,14 @@ public static class LobbyManager
         Timeout(lobbyId, expiry);
     }
 
+    private static void CheckDDOL() {
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var p in players) { 
+            GameObject.DontDestroyOnLoad(p);
+        }
+
+        GameObject.DontDestroyOnLoad(Camera.main);
+        GameObject.DontDestroyOnLoad(GameObject.FindGameObjectWithTag("VirtualCamera"));
+    }
     
 }

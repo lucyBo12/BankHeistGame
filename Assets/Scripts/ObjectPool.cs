@@ -3,6 +3,8 @@ using UnityEngine;
 public static class ObjectPool 
 {
     public static GameObject BulletPool { get; private set; }
+    public static GameObject CivPool { get; private set; }
+    public static GameObject CopPool { get; private set; }
 
 
 
@@ -10,6 +12,8 @@ public static class ObjectPool
     private static void Initialize() {
         CreateParentObjects();
         AssignObjects(BulletPool, GetResource("9mm"), 100);
+        AssignObjects(CivPool, GetResource("Civ"), 20);
+        AssignObjects(CopPool, GetResource("Cop"), 50);
     }
 
     public static GameObject Get(GameObject pool) {
@@ -28,10 +32,20 @@ public static class ObjectPool
         BulletPool = new GameObject("Bullet");
         BulletPool.transform.parent = pool.transform;
 
+        CivPool = new GameObject("Civilians");
+        CivPool.transform.parent = pool.transform;
+
+        CopPool = new GameObject("Cops");
+        CopPool.transform.parent = pool.transform;
+
         Object.DontDestroyOnLoad(pool);
     }
 
     private static void AssignObjects(GameObject parent, GameObject prefab, int quantity) {
+        if (prefab == null) {
+            Debug.LogError($"Did not find prefab for {parent.name}.");
+            return;
+        }
         for (int i = 0; i < quantity; i++) {
             var obj = Object.Instantiate(prefab, parent.transform);
             obj.name = $"{parent.name} Object [{(i + 1)}]";

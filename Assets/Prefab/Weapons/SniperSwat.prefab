@@ -197,8 +197,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5339d5229f6ad438d540a2a5b7a517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  muzzle: {fileID: 0}
+  clip:
+    ammo: 0
+    clip: 0
+    quantity: 0
+  icon: {fileID: -1075708803, guid: 820acfcfcdcf82e4ab2af4343272fcbb, type: 3}
   fireRate: 0.1
   reloadTime: 1
+  range: 20
   weaponType: 0
 --- !u!1 &7703168457437741948
 GameObject:

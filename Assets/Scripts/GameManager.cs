@@ -13,7 +13,8 @@ using UnityEngine;
 public static class GameManager
 {
     public static InputMaster Input { get; private set; }
-    public static bool InCombat { get;  set; }
+    public static bool InCombat => WantedLevel > 0;
+    [Range(0f, 5f)] public static float WantedLevel = 0;
     public static List<Transform> Players = new List<Transform>();
     
     public static List<Room> Rooms = new List<Room>();
@@ -38,7 +39,6 @@ public static class GameManager
         }
         return null;
     }
-    public static void StartCombat() => InCombat = true;
 
     public static void SetUpCoverPoints()
     {

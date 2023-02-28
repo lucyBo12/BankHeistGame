@@ -21,12 +21,13 @@ public class AIBase : MonoBehaviour
     public AITree behaviour;
     public bool aiEnabled = true;
     public AINode currentNode { get; private set; }
-    [SerializeField] Animator animator;
+    public Animator Animator { get; private set; }
 
 
     private void Start() {
         Goal = new AIGoal();
         Agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponent<Animator>();
     }
 
     private void LateUpdate() {
@@ -38,8 +39,8 @@ public class AIBase : MonoBehaviour
 
         //Animate movement
         var dir = transform.forward;
-        animator.SetFloat("inputx", dir.x);
-        animator.SetFloat("inputy", dir.y);
+        Animator.SetFloat("inputx", dir.x);
+        Animator.SetFloat("inputy", dir.y);
     }
 
     /**

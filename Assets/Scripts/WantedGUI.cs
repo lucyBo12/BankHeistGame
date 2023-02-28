@@ -7,6 +7,7 @@ public class WantedGUI : MonoBehaviour
     public Image badgeFill;
     private int prevWanted;
 
+    public AudioSource siren;
 
 
     private void Update()
@@ -16,6 +17,7 @@ public class WantedGUI : MonoBehaviour
             GameManager.WantedLevel = GameManager.WantedLevel >= 3 ? 0 : GameManager.WantedLevel +0.1f;
             WantedColor();
         }
+
     }
 
     public void WantedColor()
@@ -44,5 +46,7 @@ public class WantedGUI : MonoBehaviour
 
         LeanTween.scale(badge.gameObject, new Vector3(1.5f, 1.5f, 1.5f), 1f).setEaseInBounce().setOnComplete(() => { LeanTween.scale(badge.gameObject, Vector3.one, 0.5f); });
         prevWanted = wantedLevel;
+
+        siren.Play();
     }
 }

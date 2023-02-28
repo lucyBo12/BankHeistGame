@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Transform primary, sidearm;
     [SerializeField] private RigBuilder rig;
 
+    public AudioSource gunSound;
+
     private void Start()
     {
         GameManager.Input.Player.Fire.performed += evt => FireWeapon();
@@ -15,11 +17,13 @@ public class InventoryManager : MonoBehaviour
         activeWeapon = weapon;
         WeaponGUI.Instance.UpdateWeapon(weapon);
 
+
     }
 
     private void FireWeapon() { 
         if(!activeWeapon) return;
         activeWeapon.Fire();
+        gunSound.Play();
     }
 
     public void Assign(Weapon weapon) {

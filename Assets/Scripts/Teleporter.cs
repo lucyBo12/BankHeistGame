@@ -13,6 +13,8 @@ public class Teleporter : MonoBehaviour
     private string lobbyTxtPrompt => $"Players: {playersInZone} / {requiredPlayers}";
     private int connectedPlayers => NetworkManager.Singleton.ConnectedClients.Count;
 
+    public AudioSource teleporterSound;
+
     [Header("UI")]
     [SerializeField] private TMPro.TextMeshProUGUI lobbyTxt;
 
@@ -50,6 +52,7 @@ public class Teleporter : MonoBehaviour
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) { 
                 player.transform.position = location;   
             }
+            teleporterSound.Play();
             SceneManager.LoadScene(sceneName);
         }
     }

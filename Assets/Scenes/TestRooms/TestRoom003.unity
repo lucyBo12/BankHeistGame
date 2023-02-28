@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3696,7 +3696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7afa4cc0508ed84c9d12eb0158bf344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle: {fileID: 390225551}
 --- !u!114 &390225551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7484,7 +7483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487518, guid: 8d01dbffe8d6980419ce4af98b9d452b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.811637
+      value: 3.24
       objectReference: {fileID: 0}
     - target: {fileID: 487518, guid: 8d01dbffe8d6980419ce4af98b9d452b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7534,9 +7533,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueDirection: {x: 0, y: 0, z: -1}
+  interactionTime: 1
   positionOffset: 0.1
   animationTrigger: 
-  combatOnly: 0
 --- !u!1001 &893856654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11886,7 +11885,8 @@ MonoBehaviour:
   - {fileID: 1952264766}
   alarms: []
   exitPoint: []
-  goals: []
+  goals:
+  - {fileID: 886807797}
   gizmoColor: {r: 0, g: 0.2807932, b: 1, a: 0.5}
 --- !u!65 &1425128994
 BoxCollider:
@@ -12701,7 +12701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453260, guid: b0fe221769d38cb4d885e40b530103eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5843277
+      value: -10.68
       objectReference: {fileID: 0}
     - target: {fileID: 453260, guid: b0fe221769d38cb4d885e40b530103eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12709,7 +12709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453260, guid: b0fe221769d38cb4d885e40b530103eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.54
+      value: 2.97
       objectReference: {fileID: 0}
     - target: {fileID: 453260, guid: b0fe221769d38cb4d885e40b530103eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12759,9 +12759,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueDirection: {x: 0, y: 0, z: -1}
+  interactionTime: 1
   positionOffset: 0.1
   animationTrigger: 
-  combatOnly: 0
 --- !u!4 &1488967221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4855193289971172, guid: 2e23bb932cf4ec7498eb4b727d9113fa, type: 3}
@@ -13137,7 +13137,8 @@ MonoBehaviour:
   alarms:
   - {fileID: 1668184130}
   exitPoint: []
-  goals: []
+  goals:
+  - {fileID: 1486632942}
   gizmoColor: {r: 0, g: 1, b: 0, a: 0.5}
 --- !u!65 &1526317849
 BoxCollider:
@@ -20151,7 +20152,6 @@ MonoBehaviour:
     staff: 0
   behaviour: {fileID: 11400000, guid: 21d9e359c8467ee4b9ece7ad92e3cae4, type: 2}
   aiEnabled: 1
-  animator: {fileID: 9088109908553469891}
 --- !u!136 &9088109908563208654
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20194,9 +20194,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb86a8182f8179048b7b385180c659ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
   inventoryManager: {fileID: 0}
+  health: 100
+  safe: 0
+  money: 0
+  noOfdeaths: 0
+  playerName: 
+  ammo: 0
+  grenades: 0
+  gun: {fileID: 0}
+  weapons: []
 --- !u!4 &9088109908563209685
 Transform:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour
     private void Start() => canFire = true;
 
     public virtual async void Fire() {
-        if (!canFire || !GameManager.Input.Player.Aim.IsPressed()) return;
+        if (!canFire) return;
         if (clip.ammo == 0) {
             if (clip.quantity == 0) return;
             Reload();

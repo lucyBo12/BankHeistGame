@@ -42,10 +42,6 @@ public static class GameManager
         return null;
     }
 
-    public static void SetUpCoverPoints()  {
-
-    }
-
     public static void StartNewGame() {
 
         Characters.ForEach(x => { 

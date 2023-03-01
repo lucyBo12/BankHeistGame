@@ -5,29 +5,44 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class Cop_Attack : AINode
+
 {
-    public override float Weight(AIBase npc)
+    public override void OnUpdate(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);
+        
+        //aim
+        Vector3 playerPos = npc.Target.transform.position;
+        Vector3 npcPos = npc.transform.position;
+        Vector3 delta = new Vector3(playerPos.x - npcPos.x, 0.0f, playerPos.z - npcPos.z);
+        Quaternion rotation = Quaternion.LookRotation(delta);
+        npc.transform.rotation = rotation;
+        //gets cop to fire
+        npc.character.inventoryManager.activeWeapon.Fire();
+
+    }
+    public override float Weight(AIBase npc)
+    {
+
+        return 1f;
+        /*var Room = GameManager.GetRoom(npc.gameObject);
         var ae = Room.players.Count; //ae number of enemies^*
         if (ae == 0)
         {
             return 0;
         }
         var aa = Room.cops.Count; //aa num of allays^*
-        var php = (100 * ae) / Room.players.Sum(x => x.GetComponent<Character>().health); //php player health (percentage of all players health in room)^*
         var hp = npc.GetComponent<Character>().health; //hp cop health 
-        var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray()).position, npc.transform.position);
+        var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray()).position, npc.transform.position);//distance to player
+       
 
 
 
-
-        return (( pd) + aa + (hp));
+        return ((hp+aa) - (pd+ ae));*/
     }
 
     /**
      * ((Ahp/pd + pa)+aa+(ph-hp))
-     *
      * ahp = ally hp*
      * pd = player distance *
      * aa = number of players (exluding pd)

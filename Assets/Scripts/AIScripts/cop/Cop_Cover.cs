@@ -5,19 +5,27 @@ using UnityEngine;
 
 public class Cop_Cover : AINode
 {
+    public override void OnStart(AIBase npc)
+    {
+        var Room = GameManager.GetRoom(npc.gameObject);
+        npc.Goal = new AIGoal(GameUtil.ClosestTransform(npc.transform, Room.coverPoints));
+        npc.Agent.SetDestination(npc.Goal.TargetLocation);
+        //pick best cover point, check cover point is empty
+    }
     public override float Weight(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);
 
-        var dd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, Room.exitPoint).position, npc.transform.position); // ad =  distance to closest door
+        var cpd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, Room.coverPoints).position, npc.transform.position); // cpd = distance to cover point
         var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray()).position, npc.transform.position); //pd =  distance to closest player
         var aa = Room.cops.Count; //aa num of allays^*
         var ae = Room.players.Count; //ae number of enemies^*
         var hp = npc.GetComponent<Character>().health; //hp cop health 
-        
+        var php = (100 * ae) / Room.players.Sum(x => x.GetComponent<Character>().health); //php player health (percentage of all players health in room)^*
 
 
-        return (( hp) + (ae - aa) - dd);
+
+        return ((float)((ae + pd + php) / (aa + (hp) + cpd)));
 
 
 

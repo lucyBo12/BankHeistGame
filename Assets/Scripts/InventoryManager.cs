@@ -4,7 +4,7 @@ using UnityEngine.Animations.Rigging;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private Weapon activeWeapon;
+    public Weapon activeWeapon;
     [SerializeField] private Transform primary, sidearm;
     [SerializeField] private RigBuilder rig;
 

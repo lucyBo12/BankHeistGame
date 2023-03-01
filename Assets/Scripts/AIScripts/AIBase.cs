@@ -18,15 +18,18 @@ public class AIBase : MonoBehaviour
     public NavMeshAgent Agent { get; protected set; }
     public CharacterSheet Character;
     public AIGoal Goal { get; set; }
+    public GameObject Target { get; set; }
     public AITree behaviour;
     public bool aiEnabled = true;
     public AINode currentNode { get; private set; }
     [SerializeField] Animator animator;
+    public Character character { get; protected set; }
 
 
     private void Start() {
         Goal = new AIGoal();
         Agent = GetComponent<NavMeshAgent>();
+        character = GetComponent<Character>();
     }
 
     private void LateUpdate() {

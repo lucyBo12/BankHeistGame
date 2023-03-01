@@ -14,6 +14,7 @@ public class Room : MonoBehaviour
     public Transform[] exitPoint;
     public NPCGoal[] goals;
     public Color gizmoColor = new Color(0, 1, 0, 0.5f);
+    public LayerMask coverLayer;
     public BoxCollider coll => GetComponent<BoxCollider>();
 
     private void Start()
@@ -31,6 +32,18 @@ public class Room : MonoBehaviour
         return false;
     }
 
+
+    [ContextMenu("AssignCoverPoints")]
+    private void AssignCoverPoints()
+    {
+        RaycastHit[] hits = Physics.BoxCastAll(transform.position, coll.size, Vector3.up, Quaternion.identity, 1f, coverLayer);
+        coverPoints = new Transform[hits.Length];
+        for(int i = 0; i < hits.Length; i++)
+        {
+            coverPoints[i] = hits[i].transform; 
+        }
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {

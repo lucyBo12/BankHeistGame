@@ -16,8 +16,10 @@ using UnityEngine.AI;
 public class AIBase : MonoBehaviour
 {
     public NavMeshAgent Agent { get; protected set; }
-    public CharacterSheet Character;
+    public CharacterSheet profile;
     public AIGoal Goal { get; set; }
+    public Character Character { get; private set;} 
+    public GameObject Target { get; set; }
     public AITree behaviour;
     public bool aiEnabled = true;
     public AINode currentNode { get; private set; }
@@ -28,6 +30,7 @@ public class AIBase : MonoBehaviour
         Goal = new AIGoal();
         Agent = GetComponent<NavMeshAgent>();
         Animator = GetComponent<Animator>();
+        Character = GetComponent<Character>();
     }
 
     private void LateUpdate() {

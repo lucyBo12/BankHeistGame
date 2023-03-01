@@ -18,7 +18,7 @@ public class Cop_Attack : AINode
         Quaternion rotation = Quaternion.LookRotation(delta);
         npc.transform.rotation = rotation;
         //gets cop to fire
-        npc.character.inventoryManager.activeWeapon.Fire();
+        npc.Character.inventoryManager.activeWeapon.Fire();
 
     }
     public override float Weight(AIBase npc)

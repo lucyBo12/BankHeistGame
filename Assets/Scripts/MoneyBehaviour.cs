@@ -11,7 +11,7 @@ public class MoneyBehaviour : MonoBehaviour
     int note = 100;
     int bar = 500;
 
-    public CharacterClass player;
+    public Character player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class MoneyBehaviour : MonoBehaviour
         Debug.Log("hit");
         if(other.tag == "Player")
         {
-            player = other.GetComponent<CharacterClass>();
+            player = other.GetComponent<Character>();
             gameObject.SetActive(false);
             if(this.tag == "moneyStack")
             {

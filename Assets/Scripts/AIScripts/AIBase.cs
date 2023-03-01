@@ -18,18 +18,16 @@ public class AIBase : MonoBehaviour
     public NavMeshAgent Agent { get; protected set; }
     public CharacterSheet Character;
     public AIGoal Goal { get; set; }
-    public GameObject Target { get; set; }
     public AITree behaviour;
     public bool aiEnabled = true;
     public AINode currentNode { get; private set; }
-    [SerializeField] Animator animator;
-    public Character character { get; protected set; }
+    public Animator Animator { get; private set; }
 
 
     private void Start() {
         Goal = new AIGoal();
         Agent = GetComponent<NavMeshAgent>();
-        character = GetComponent<Character>();
+        Animator = GetComponent<Animator>();
     }
 
     private void LateUpdate() {
@@ -41,8 +39,8 @@ public class AIBase : MonoBehaviour
 
         //Animate movement
         var dir = transform.forward;
-        animator.SetFloat("inputx", dir.x);
-        animator.SetFloat("inputy", dir.y);
+        Animator.SetFloat("inputx", dir.x);
+        Animator.SetFloat("inputy", dir.y);
     }
 
     /**

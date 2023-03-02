@@ -15,8 +15,44 @@ MonoBehaviour:
   NodeLinks:
   - BaseNodeGuid: a811dd52-0d14-49a2-84fa-fdc99d91527e
     PortName: START
-    TargetNodeGuid: 86f767c2-3765-4377-9e09-90c0f00a4796
+    TargetNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: False
+    TargetNodeGuid: c881d20f-df7a-4c20-b442-3a26feb5555b
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: False
+    TargetNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
+  - BaseNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
+    PortName: False
+    TargetNodeGuid: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: True
+    TargetNodeGuid: 6d260691-cb87-4b53-9842-c219e51308c0
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: True
+    TargetNodeGuid: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: True
+    TargetNodeGuid: c14de84d-e9c0-4c9e-832a-23db8da0b44f
   AINodeData:
-  - GUID: 86f767c2-3765-4377-9e09-90c0f00a4796
+  - GUID: 6d260691-cb87-4b53-9842-c219e51308c0
+    NodeType: Cop_Cover
+    Position: {x: 552, y: 200}
+  - GUID: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
+    NodeType: Cop_Attack
+    Position: {x: 552, y: 101.5}
+  - GUID: c14de84d-e9c0-4c9e-832a-23db8da0b44f
+    NodeType: Cop_Retreat
+    Position: {x: 549, y: 12}
+  - GUID: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    NodeType: Cop_HasTarget
+    Position: {x: 209, y: 200}
+  - GUID: c881d20f-df7a-4c20-b442-3a26feb5555b
+    NodeType: Cop_GetTarget
+    Position: {x: 533, y: 312}
+  - GUID: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
+    NodeType: AI_GetRoom
+    Position: {x: 755.5, y: 413}
+  - GUID: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
     NodeType: AI_HasGoalNode
-    Position: {x: 272, y: 223}
+    Position: {x: 533, y: 401.5}

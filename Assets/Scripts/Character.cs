@@ -22,7 +22,11 @@ public class Character : MonoBehaviour
     public Transform[] weapons;
 
 
-
+    public void Start()
+    {
+        if (transform.CompareTag("Player"))
+            GameManager.Players.Add(transform);
+    }
 
     public void Damage()
     {
@@ -37,7 +41,7 @@ public class Character : MonoBehaviour
 
     public void ResetCharacter() {
         health = 100;
-        animator.SetBool("isDead", dead);
+        animator?.SetBool("isDead", dead);
     }
 
 

@@ -295,27 +295,32 @@ public class AIGraphView : GraphView
         return node;
 
     }
-    public Cop_HasTarget CreateCop_HasTarget() //CHANGE HERE *2
+    public Cop_HasTarget CreateCop_HasTarget()
     {
-        var node = new Cop_HasTarget //CHANGE HERE
+        var node = new Cop_HasTarget
         {
             title = "AINode",
             GUID = Guid.NewGuid().ToString()
         };
+
         //Input Port
         var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
         inputPort.portName = "Input";
         node.inputContainer.Add(inputPort);
 
-
         //Output Port
         var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
-        outPort.portName = "Next";
+        outPort.portName = "True";
         node.outputContainer.Add(outPort);
 
-        node.title = " checks if the cop has a target"; //CHANGE HERE
-        return node;
+        //Output Port
+        var outPortB = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPortB.portName = "False";
+        node.outputContainer.Add(outPortB);
 
+        node.title = "Has Target?";
+
+        return node;
     }
     public Cop_GetTarget CreateCop_GetTarget() //CHANGE HERE *2
     {

@@ -9,18 +9,19 @@ public class ScoreBoard : MonoBehaviour
     [SerializeField] public TextMeshProUGUI scoreText1, scoreText2, scoreText3;
     [SerializeField] public TextMeshProUGUI nameText1, nameText2, nameText3;
     public ScoreBoardTracker scoreTracker;
-    
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        string name = player.GetComponent<Character>().name;
+        int score = player.GetComponent<Character>().money;
         //just test values
         //scores will actually be added using the endGame script that will fetch the players score and name from the CharacterClass
+        Debug.Log(name + score);
         scoreTracker = GetComponent<ScoreBoardTracker>();
-        scoreTracker.AddScore(new Scores(name: "Dave", score: 100));
-        scoreTracker.AddScore(new Scores(name: "Debbie", score: 2000));
-        scoreTracker.AddScore(new Scores(name: "Barry", score: 0));
-        //scoreTracker.AddScore(new Scores(name: "hmm", score: 1500));
+        scoreTracker.AddScore(new Scores(name: name, score: score));
+        //scoreTracker.AddScore(new Scores(name: "Debbie", score: 2000));
 
         SetScoreBoard();
         

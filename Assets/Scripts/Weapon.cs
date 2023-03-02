@@ -20,6 +20,8 @@ public class Weapon : MonoBehaviour
         primary, sidearm
     }
 
+    public AudioSource fireSound;
+
 
     private void Start() => canFire = true;
 

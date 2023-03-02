@@ -4125,6 +4125,7 @@ GameObject:
   - component: {fileID: 186371202212997215}
   - component: {fileID: 5304988552996399767}
   - component: {fileID: 7819836912874487714}
+  - component: {fileID: 7564673684367814487}
   m_Layer: 0
   m_Name: Glock
   m_TagString: Weapon
@@ -4238,6 +4239,7 @@ MonoBehaviour:
   reloadTime: 1
   range: 20
   weaponType: 1
+  fireSound: {fileID: 7564673684367814487}
 --- !u!114 &7819836912874487714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4254,6 +4256,102 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!82 &7564673684367814487
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540677751407521144}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3970910379462355608, guid: fefdf80701758d449b6abced946850ff, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 115f1ca8e45c36d408dca7d2cfc87156, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4686882797788040171
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,8 +7196,8 @@ GameObject:
   - component: {fileID: 1882984987785925999}
   - component: {fileID: 1150403189182233917}
   - component: {fileID: 7547506662228374983}
-  - component: {fileID: -40969942877878726}
   - component: {fileID: 4186723670617592741}
+  - component: {fileID: 4923744117910058037}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7181,7 +7279,7 @@ MonoBehaviour:
   primary: {fileID: 2651795704097492466}
   sidearm: {fileID: 2449293420556661305}
   rig: {fileID: 1150403189182233917}
-  gunSound: {fileID: -40969942877878726}
+  gunSound: {fileID: 0}
 --- !u!114 &8834165774203921937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7340,7 +7438,23 @@ MonoBehaviour:
   leftIK: {fileID: 0}
   rightIK: {fileID: 0}
   lerpSpeed: 6
---- !u!82 &-40969942877878726
+--- !u!54 &4186723670617592741
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621742573086391854}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!82 &4923744117910058037
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7350,7 +7464,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3970910379462355608, guid: fefdf80701758d449b6abced946850ff, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 115f1ca8e45c36d408dca7d2cfc87156, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 274136ef485cc8b48b8903d3bfc1aa84, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7436,22 +7550,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!54 &4186723670617592741
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8621742573086391854}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &8717232244562488982
 GameObject:
   m_ObjectHideFlags: 0

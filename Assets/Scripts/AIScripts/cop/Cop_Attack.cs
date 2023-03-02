@@ -7,6 +7,10 @@ using UnityEngine;
 public class Cop_Attack : AINode
 
 {
+    public Cop_Attack(string GUID = "") : base(GUID)
+    {
+
+    }
     public override void OnUpdate(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);

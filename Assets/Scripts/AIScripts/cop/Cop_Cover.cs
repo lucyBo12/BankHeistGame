@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Cop_Cover : AINode
 {
+    public Cop_Cover(string GUID = "") : base(GUID)
+    {
+
+    }
     public override void OnStart(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);

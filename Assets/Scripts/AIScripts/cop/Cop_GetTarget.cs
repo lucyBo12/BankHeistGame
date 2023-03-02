@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Cop_GetTarget : AINode
 {
+    public Cop_GetTarget(string GUID = "") : base(GUID)
+    {
+
+    }
     public override float Weight(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);

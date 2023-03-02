@@ -155,6 +155,18 @@ public class GraphSaveUtility
                 node = _targetGraphView.CreateAI_Cower();
             else if (type == typeof(AI_Flee))
                 node = _targetGraphView.CreateAI_Flee();
+            else if (type == typeof(Cop_Attack)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_Attack(); //CHANGE HERE
+            else if (type == typeof(Cop_Retreat)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_Retreat(); //CHANGE HERE
+            else if (type == typeof(AI_GetRoom)) //CHANGE HERE
+                node = _targetGraphView.CreateAI_GetRoom(); //CHANGE HERE
+            else if (type == typeof(Cop_HasTarget)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_HasTarget(); //CHANGE HERE
+            else if (type == typeof(Cop_GetTarget)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_GetTarget(); //CHANGE HERE
+            else if (type == typeof(Cop_Cover)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_Cover(); //CHANGE HERE
 
             node.GUID = nodeData.GUID;
             _targetGraphView.AddElement(node);

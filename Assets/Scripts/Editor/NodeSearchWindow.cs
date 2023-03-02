@@ -37,6 +37,10 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                userData = new AI_InCombatNode(),
                level = 2
             },
+            new SearchTreeEntry(new GUIContent("Has Target", _indentationIcon)) {
+               userData = new Cop_HasTarget(),
+               level = 2
+            },
 
             //Action
             new SearchTreeGroupEntry(new GUIContent("Action"), 1),
@@ -57,6 +61,31 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
              new SearchTreeEntry(new GUIContent("Flee", _indentationIcon))
             {
                 userData = new AI_Flee(),
+                level = 2
+            },
+             new SearchTreeEntry(new GUIContent("Attack", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new Cop_Attack(), //CHANGE HERE
+                level = 2
+            },
+               new SearchTreeEntry(new GUIContent("Retreat", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new Cop_Retreat(), //CHANGE HERE
+                level = 2
+            },
+            new SearchTreeEntry(new GUIContent("Get Room", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new AI_GetRoom(), //CHANGE HERE
+                level = 2
+            },
+            new SearchTreeEntry(new GUIContent("get target", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new Cop_GetTarget(), //CHANGE HERE
+                level = 2
+            },
+            new SearchTreeEntry(new GUIContent("Cop Cover", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new Cop_Cover(), //CHANGE HERE
                 level = 2
             },
 
@@ -89,6 +118,24 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 return true;
             case AI_Flee:
                 _graphView.AddNode(_graphView.CreateAI_Flee(), localMousePosition);
+                return true;
+            case Cop_Attack: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_Attack(), localMousePosition); //CHANGE HERE
+                return true;
+            case Cop_Retreat: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_Retreat(), localMousePosition); //CHANGE HERE
+                return true;
+            case AI_GetRoom: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateAI_GetRoom(), localMousePosition); //CHANGE HERE
+                return true;
+            case Cop_HasTarget: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_HasTarget(), localMousePosition); //CHANGE HERE
+                return true;
+            case Cop_GetTarget: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_GetTarget(), localMousePosition); //CHANGE HERE
+                return true;
+            case Cop_Cover: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_Cover(), localMousePosition); //CHANGE HERE
                 return true;
             default:
                 return false;

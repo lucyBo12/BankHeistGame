@@ -227,6 +227,141 @@ public class AIGraphView : GraphView
         return node;
     }
 
+    public Cop_Attack CreateCop_Attack() //CHANGE HERE
+    {
+        var node = new Cop_Attack //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " make cops attack"; //CHANGE HERE
+        return node;
+
+    }
+
+    public Cop_Retreat CreateCop_Retreat() //CHANGE HERE *2
+    {
+        var node = new Cop_Retreat //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " make cops retreat"; //CHANGE HERE
+        return node;
+
+    }
+
+    public AI_GetRoom CreateAI_GetRoom() //CHANGE HERE *2
+    {
+        var node = new AI_GetRoom //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " selects a room for cops to move to in combat"; //CHANGE HERE
+        return node;
+
+    }
+    public Cop_HasTarget CreateCop_HasTarget() //CHANGE HERE *2
+    {
+        var node = new Cop_HasTarget //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " checks if the cop has a target"; //CHANGE HERE
+        return node;
+
+    }
+    public Cop_GetTarget CreateCop_GetTarget() //CHANGE HERE *2
+    {
+        var node = new Cop_GetTarget //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " Gets the cop's target"; //CHANGE HERE
+        return node;
+
+    }
+    public Cop_Cover CreateCop_Cover() //CHANGE HERE *2
+    {
+        var node = new Cop_Cover //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " checks if the cop should go in cover or not"; //CHANGE HERE
+        return node;
+
+    }
+
 
 
     public void AddChoicePort(AINode node, string overriddenPortName = "")

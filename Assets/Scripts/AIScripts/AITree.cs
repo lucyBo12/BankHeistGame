@@ -23,6 +23,18 @@ public class AITree : ScriptableObject
                 return new AI_Cower(GUID);
             case "AI_Flee":
                 return new AI_Flee(GUID);
+            case "Cop_Attack": //CHANGE HERE
+                return new Cop_Attack(GUID); //CHANGE HERE
+            case "Cop_Retreat": //CHANGE HERE
+                return new Cop_Retreat(GUID); //CHANGE HERE
+            case "Cop_GetRoom": //CHANGE HERE
+                return new AI_GetRoom(GUID); //CHANGE HERE
+            case "Cop_HasTarget": //CHANGE HERE
+                return new Cop_HasTarget(GUID); //CHANGE HERE
+            case "Cop_GetTarget": //CHANGE HERE
+                return new Cop_GetTarget(GUID); //CHANGE HERE
+            case "Cop_Cover": //CHANGE HERE
+                return new Cop_Cover(GUID); //CHANGE HERE
             default:
                 return new AINode(GUID);
         }

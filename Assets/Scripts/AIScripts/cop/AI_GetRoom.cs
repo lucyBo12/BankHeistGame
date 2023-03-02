@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AI_GetRoom : AINode
 {
+    public AI_GetRoom(string GUID = "") : base(GUID)
+    {
+
+    }
     public override float Weight(AIBase npc)
     {
         return 1f;

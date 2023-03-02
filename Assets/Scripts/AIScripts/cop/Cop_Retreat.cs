@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class Cop_Retreat : AINode
 {
+    public Cop_Retreat(string GUID = "") : base(GUID)
+    {
+
+    }
 
     public override void OnStart(AIBase npc)
     {

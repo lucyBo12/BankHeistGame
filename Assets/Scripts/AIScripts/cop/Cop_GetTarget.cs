@@ -8,6 +8,7 @@ public class Cop_GetTarget : AINode
     {
 
     }
+   
     public override float Weight(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);
@@ -29,6 +30,11 @@ public class Cop_GetTarget : AINode
             });
             npc.Target = target.gameObject;
         }
+    }
+
+    public override void OnEnd(AIBase npc)
+    {
+        Debug.Log($"T: {npc.Target}");
     }
 
 }

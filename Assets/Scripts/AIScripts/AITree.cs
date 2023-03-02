@@ -45,7 +45,7 @@ public class AITree : ScriptableObject
         return GetNode(start.NodeType, start.GUID);
     }
 
-    public AINode[] Next(AINode node, AIBase aIBase) {
+    public AINode[] Next(AINode node, AIBase aiBase) {
 
         NodeLinkData[] baseLinks = GetLinks(node);
         List<AINode> nodes = new List<AINode>();
@@ -64,23 +64,22 @@ public class AITree : ScriptableObject
                 $"\nNode: {node.name}");
 
         if (node.Conditional) {
+            List<AINode> nextNodes = new List<AINode>();
             foreach (NodeLinkData link in baseLinks) {
-                if (link.PortName.Equals(node.BoolResult(aIBase) ? "True" : "False")) {
+                if (link.PortName.Equals(node.BoolResult(aiBase) ? "True" : "False")) {
                     AINode x = GetNode(link.TargetNodeGuid);
-                    Debug.Log(link + $"\n--------\n{x.GUID}");
-                    return new AINode[] { 
-                        GetNode(link.TargetNodeGuid)
-                    };
+                    Debug.Log(link + $"\n--------\n {x.GUID} W: {x.Weight(aiBase)} ");
+
+                    nextNodes.Add(x);
                 }
             }
 
-            return new AINode[] {
-                StartNode()
-            };
+            nextNodes.OrderBy(x => x.Weight(aiBase));
+            nextNodes.Reverse();
+            return nextNodes.Count > 0 ? nextNodes.ToArray() : new AINode[] { StartNode() };
         }
 
-        var values = nodes.OrderBy(x => x.Weight(aIBase));
-
+        var values = nodes.OrderBy(x => x.Weight(aiBase));
         return values.ToArray();
     }
 

@@ -15,6 +15,8 @@ public class AI_HasGoalNode : AINode
         return npc.Goal.HasGoal;
     }
 
+    public override float Weight(AIBase npc) => 
+        npc.Goal.HasGoal ? 0 : 0.5f;
 
 
 }

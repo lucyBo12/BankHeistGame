@@ -72,7 +72,7 @@ public class AIBase : MonoBehaviour
         AINode[] nextNodes = behaviour.Next(currentNode, this);
         currentNode = nextNodes.Length == 0 ? behaviour.StartNode() : nextNodes[0];
         currentNode.OnStart(this);
-        Debug.Log(currentNode.GetType().Name);
+        Debug.Log($"{currentNode.GetType().Name} | W: {currentNode.Weight(this)}");
     }
 
     //Variables for ai behaviour defined here

@@ -47,7 +47,7 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Player") && !other.CompareTag("NPC"))
+        if(!other.CompareTag("Player") && !other.CompareTag("Cop"))
             return;
 
         if (inhabitants.Contains(other.gameObject))
@@ -58,7 +58,7 @@ public class Room : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player") && !other.CompareTag("NPC"))
+        if (!other.CompareTag("Player") && !other.CompareTag("Cop"))
             return;
 
         if (!inhabitants.Contains(other.gameObject))

@@ -11,8 +11,10 @@ public class AudioController : MonoBehaviour
     public GameObject soundPanel;
     public GameObject optionsPanel;
     public AudioSource click;
-    
-    
+
+    CharacterLocomotion character;
+    public bool isMenu = false;
+
 
     public void SetProfile(AudioProfile profile)
     {
@@ -31,18 +33,36 @@ public class AudioController : MonoBehaviour
     
     public void Start()
     {
-        if (Settings.userProfile)
-        {
-            Settings.userProfile.GetAudioLevel();
-        }
+        SetProfile(profile);
+        ResetButton();
+
+        //GameManager.Input.Player.OpenMenu.performed += evt => OpenMenu();
     }
+
+    public void OpenMenu()
+    {
+        //Debug.Log("Working");
+        isMenu = true;
+        optionsPanel.SetActive(true);
+    }
+    public void CloseMenu()
+    {
+        isMenu = false;
+        optionsPanel.SetActive(false);
+    }
+
 
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.O))
+        if((isMenu == false) && GameManager.Input.Player.OpenMenu.IsPressed())
         {
-            optionsPanel.SetActive(true);
+            OpenMenu();
         }
+        if ((isMenu == true) && GameManager.Input.Player.OpenMenu.triggered)
+        {
+            CloseMenu();
+        }
+
     }
 
     //save changes on button press

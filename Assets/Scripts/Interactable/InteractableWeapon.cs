@@ -3,6 +3,8 @@ using UnityEngine;
 public class InteractableWeapon : Interactable
 {
     [SerializeField] private Weapon weapon;
+    public AudioSource pickUp;
+    
 
     public override void Interact(Transform user)
     {
@@ -11,6 +13,7 @@ public class InteractableWeapon : Interactable
 
         character.inventoryManager.Assign(weapon);
         base.Interact(user);
+        pickUp.Play();
     }
 
 }

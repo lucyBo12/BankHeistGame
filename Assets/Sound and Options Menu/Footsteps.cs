@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class Footsteps : MonoBehaviour
 {
-    public AudioClip[] footsteps;
-    public AudioSource source;
+    public AudioSource footsteps;
+    CharacterLocomotion characterMovement;
 
-    float walkRate;
-    float threshold;
-    float timeSinceLast;
-
-    public CharacterLocomotion player;
-
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        if(player.IsMoving)
-        {
-            if(Time.time - timeSinceLast > walkRate)
-            {
-                timeSinceLast = Time.time;
-                source.PlayOneShot(footsteps[Random.Range(0, footsteps.Length)]);
+        
 
-            }
+    }
+
+    public void Update()
+    {
+        if(characterMovement.IsMoving)
+        {
+            footsteps.Play();
+            Debug.Log("Works");
         }
+        else
+        {
+            footsteps.Pause();
+        }
+
     }
 }

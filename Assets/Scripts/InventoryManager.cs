@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
         Weapon weapon = sidearm.GetChild(0).GetComponent<Weapon>();
         activeWeapon = weapon;
         WeaponGUI.Instance.UpdateWeapon(weapon);
+        gunSound = weapon.fireSound;
 
 
     }
@@ -45,6 +46,7 @@ public class InventoryManager : MonoBehaviour
 
         primary.gameObject.SetActive(index == 1);
         sidearm.gameObject.SetActive(index == 2);
+        gunSound = weapon.fireSound;
     }
 
     public Weapon.WeaponType ActiveWeaponType() {

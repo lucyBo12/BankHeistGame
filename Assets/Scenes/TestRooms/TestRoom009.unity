@@ -1381,6 +1381,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845028435}
   m_CullTransparentMesh: 1
+--- !u!1001 &876716594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.4633512
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.52412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.6032749
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.79753333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 79.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026975569959166446, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546370018718444689, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 704189264
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666356806140535234, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: money
+      value: 88000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819836912874487714, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2845363289
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621742573086391854, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
 --- !u!1 &994294172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1620,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1104659884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8621742573086391854, guid: b9d12fd8b655c9e40a2407de48240b5b, type: 3}
+  m_PrefabInstance: {fileID: 876716594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193577203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.36632204, g: 0, b: 1, a: 0.392}
+  m_Color: {r: 0.3160377, g: 0.4175888, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2217,7 +2291,8 @@ MonoBehaviour:
   nameText1: {fileID: 1933869351}
   nameText2: {fileID: 1941082487}
   nameText3: {fileID: 362351701}
-  scoreTracker: {fileID: 0}
+  scoreTracker: {fileID: 1550644051}
+  player: {fileID: 1104659884}
 --- !u!1 &1555523831
 GameObject:
   m_ObjectHideFlags: 0

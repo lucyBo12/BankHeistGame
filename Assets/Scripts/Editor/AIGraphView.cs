@@ -291,7 +291,7 @@ public class AIGraphView : GraphView
         outPort.portName = "Next";
         node.outputContainer.Add(outPort);
 
-        node.title = " selects a room for cops to move to in combat"; //CHANGE HERE
+        node.title = " get room "; //CHANGE HERE
         return node;
 
     }

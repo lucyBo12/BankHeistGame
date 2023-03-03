@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
     [Header("Gun")]
     [SerializeField] private Transform target;
     [SerializeField] private Transform muzzle;
-    [SerializeField] private AmmoClip clip;
+    [SerializeField] public AmmoClip clip;
 
     [Header("Config")]
     public Sprite icon;

@@ -20,5 +20,8 @@ public class AI_GetRoom : AINode
         npc.Goal = new AIGoal(Room.transform);
 
     }
-
+    public override void OnEnd(AIBase npc)
+    {
+        npc.Agent.destination = npc.Goal.TargetLocation;
+    }
 }

@@ -13,7 +13,7 @@ public class Cop_GetTarget : AINode
     {
         var Room = GameManager.GetRoom(npc.gameObject);
 
-        return Room.players.Count > 0 ? 1 : 0 ;
+        return Room is not null && Room.players.Count > 0 ? 1 : 0 ;
     }
 
     public override void OnStart(AIBase npc)

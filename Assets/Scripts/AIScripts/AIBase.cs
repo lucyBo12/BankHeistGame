@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -70,7 +71,7 @@ public class AIBase : MonoBehaviour
         //Node is finished so we establish next node
         currentNode.OnEnd(this);
         AINode[] nextNodes = behaviour.Next(currentNode, this);
-        currentNode = nextNodes.Length == 0 ? behaviour.StartNode() : nextNodes[0];
+        currentNode = nextNodes.Length == 0 ? behaviour.StartNode() : nextNodes.ToList().OrderByDescending(x => x.Weight(this)).First();
         currentNode.OnStart(this);
         Debug.Log($"{currentNode.GetType().Name} | W: {currentNode.Weight(this)}");
     }
@@ -81,10 +82,12 @@ public class AIBase : MonoBehaviour
     public struct CharacterSheet {
         [Range(0, 1)]public float fear;
         public bool staff;
+        [Range(0, 1)] public float charge;
 
-        public CharacterSheet(int fear, bool staff) {
+        public CharacterSheet(int fear, bool staff,int charge) {
             this.fear = fear;
-            this.staff = staff;          
+            this.staff = staff;
+            this.charge = charge;
         }
 
         

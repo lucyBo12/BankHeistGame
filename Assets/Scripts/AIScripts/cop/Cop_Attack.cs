@@ -27,8 +27,12 @@ public class Cop_Attack : AINode
     }
     public override float Weight(AIBase npc)
     {
+        var Charge = npc.profile.charge;
+        if(Charge < 0.3) {Charge = 0.3f;};
+        var Clip = npc.GetComponent<Weapon>().clip.quantity;
+        var ShotsFired = Clip * Charge; 
 
-        return 1f;
+        return ShotsFired;
         /*var Room = GameManager.GetRoom(npc.gameObject);
         var ae = Room.players.Count; //ae number of enemies^*
         if (ae == 0)

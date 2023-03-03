@@ -20,10 +20,17 @@ public class AI_GetRoom : AINode
         var point = GameUtil.ClosestTransform(closestPlayer, Room.exitPoint);
         var offset = (point.position - Room.transform.position).normalized;
         npc.Goal = new AIGoal(point.transform.position + offset);
+        npc.Agent.destination = npc.Goal.TargetLocation;
 
     }
+
+    public override bool Active(AIBase npc)
+    {
+        return npc.Agent.remainingDistance > 0.5f && GameManager.GetRoom(npc.gameObject).players.Count == 0;
+    }
+
     public override void OnEnd(AIBase npc)
     {
-        npc.Agent.destination = npc.Goal.TargetLocation;
+        npc.Goal = new AIGoal(); 
     }
 }

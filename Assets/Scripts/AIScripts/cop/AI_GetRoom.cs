@@ -17,7 +17,9 @@ public class AI_GetRoom : AINode
     {
         var closestPlayer = GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray());
         var Room = GameManager.GetRoom(closestPlayer.gameObject);
-        npc.Goal = new AIGoal(Room.transform);
+        var point = GameUtil.ClosestTransform(closestPlayer, Room.exitPoint);
+        var offset = (point.position - Room.transform.position).normalized;
+        npc.Goal = new AIGoal(point.transform.position + offset);
 
     }
     public override void OnEnd(AIBase npc)

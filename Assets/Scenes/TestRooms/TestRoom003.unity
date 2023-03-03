@@ -11948,7 +11948,9 @@ MonoBehaviour:
   showGizmo: 1
   inhabitants: []
   alarms: []
-  exitPoint: []
+  exitPoint:
+  - {fileID: 988150137}
+  - {fileID: 1263797760}
   goals:
   - {fileID: 886807797}
   gizmoColor: {r: 0, g: 0.2807932, b: 1, a: 0.5}
@@ -13203,7 +13205,8 @@ MonoBehaviour:
   inhabitants: []
   alarms:
   - {fileID: 1668184130}
-  exitPoint: []
+  exitPoint:
+  - {fileID: 1263797760}
   goals:
   - {fileID: 1486632942}
   gizmoColor: {r: 0, g: 1, b: 0, a: 0.5}

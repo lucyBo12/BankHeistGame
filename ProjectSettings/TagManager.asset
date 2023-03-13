@@ -9,6 +9,8 @@ TagManager:
   - RangeTarget
   - Cover
   - Cop
+  - MoneyUI
+  - UI
   layers:
   - Default
   - TransparentFX

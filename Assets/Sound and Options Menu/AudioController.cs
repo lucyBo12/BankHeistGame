@@ -12,7 +12,7 @@ public class AudioController : MonoBehaviour
     public GameObject optionsPanel;
     public AudioSource click;
 
-    CharacterLocomotion character;
+    public GameObject player;
     public bool isMenu = false;
 
 
@@ -44,11 +44,13 @@ public class AudioController : MonoBehaviour
         //Debug.Log("Working");
         isMenu = true;
         optionsPanel.SetActive(true);
+        player.GetComponent<CharacterLocomotion>().PlayerActions.Disable();
     }
     public void CloseMenu()
     {
         isMenu = false;
         optionsPanel.SetActive(false);
+        player.GetComponent<CharacterLocomotion>().PlayerActions.Enable();
     }
 
 

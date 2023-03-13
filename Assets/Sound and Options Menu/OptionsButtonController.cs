@@ -15,6 +15,8 @@ public class OptionsButtonController : MonoBehaviour, IPointerEnterHandler, IPoi
     public AudioSource hover;
     public AudioSource click;
 
+    AudioController ac;
+
 
     //OnHover text color and size will change
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +36,7 @@ public class OptionsButtonController : MonoBehaviour, IPointerEnterHandler, IPoi
     {
         optionPanel.SetActive(false);
         click.Play();
+        ac.isMenu = false;
     }
 
     public void AudioButton()

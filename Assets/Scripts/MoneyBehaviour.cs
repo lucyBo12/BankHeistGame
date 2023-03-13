@@ -10,6 +10,7 @@ public class MoneyBehaviour : MonoBehaviour
     int stack = 1000;
     int note = 100;
     int bar = 500;
+    public AudioSource moneySound;
 
     public Character player;
 
@@ -31,6 +32,7 @@ public class MoneyBehaviour : MonoBehaviour
         if(other.tag == "Player")
         {
             player = other.GetComponent<Character>();
+
             gameObject.SetActive(false);
             if(this.tag == "moneyStack")
             {

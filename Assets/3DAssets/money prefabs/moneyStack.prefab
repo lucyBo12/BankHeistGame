@@ -111,4 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e971f56772767094c88695fa01c5174a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneySound: {fileID: 64030467713698471, guid: 9f43fcb031737c14aa376d08577e8a1c, type: 3}
   player: {fileID: 0}

@@ -36,6 +36,7 @@ public class Character : MonoBehaviour
         {
             noOfdeaths++;
             player.speed = 0f;
+            money = 0;
         }
     }
 

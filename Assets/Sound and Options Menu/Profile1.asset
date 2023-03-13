@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: fefdf80701758d449b6abced946850ff, type: 2}
   volumesList:
-  - volume: 0.91183895
+  - volume: 0.8751051
     name: Master
-    tempVol: 0.91183895
-  - volume: 0.73273706
+    tempVol: 0.8751051
+  - volume: 0.10597909
     name: Music
-    tempVol: 0.73273706
+    tempVol: 0.10597909
   - volume: 0.69731355
     name: Effects
     tempVol: 0.69731355

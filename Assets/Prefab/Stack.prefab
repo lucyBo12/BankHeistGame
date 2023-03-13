@@ -120,6 +120,8 @@ MonoBehaviour:
   promptMessage: Use
   promptOffset: {x: 0, y: 90, z: 20}
   value: 2500
+  moneySound: {fileID: 64030467713698471, guid: 9f43fcb031737c14aa376d08577e8a1c, type: 3}
+  moneyText: {fileID: 4297473265722963177, guid: 621a7e4460d759d4783b12936a4d1152, type: 3}
 --- !u!135 &6658295498574146201
 SphereCollider:
   m_ObjectHideFlags: 0

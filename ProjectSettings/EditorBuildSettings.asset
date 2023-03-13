@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BankLevel/BankLevel.unity
     guid: 24cc76579acaafd42946b1bf1d755763
+  - enabled: 1
+    path: Assets/Scenes/TestRooms/TestRoom007.unity
+    guid: 824b0d4d46e787546bb569f672656f9b
   m_configObjects: {}

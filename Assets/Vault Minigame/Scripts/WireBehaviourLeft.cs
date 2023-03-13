@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WireBehaviourLeft : MonoBehaviour
 {
 
     WireLeft wire;
-    public bool mouseDown = false;
+    public bool mouseDown;
     LineRenderer line;
     static int wireCount = 0;
     public GameObject canvas;
+    public static bool done = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         wire = gameObject.GetComponent<WireLeft>();
         line = gameObject.GetComponent<LineRenderer>();
+        mouseDown = false;
 
 
     }
@@ -27,7 +31,7 @@ public class WireBehaviourLeft : MonoBehaviour
         Move();
 
         //move linerenderer to mimic wire
-        line.SetPosition(1, new Vector3(gameObject.transform.position.x - 0.1f, gameObject.transform.position.y - 0.1f, gameObject.transform.position.z));
+        line.SetPosition(1, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
 
 
 
@@ -39,12 +43,14 @@ public class WireBehaviourLeft : MonoBehaviour
         {
 
             wire.isMoving = true;
+            Debug.Log("Moving");
             float mouseX = Input.mousePosition.x;
             float mouseY = Input.mousePosition.y;
-            Vector3 mousePosition = Input.mousePosition;
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, 0));
-            
-            
+            Debug.Log(Input.mousePosition);
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+
 
         }
         else
@@ -82,6 +88,7 @@ public class WireBehaviourLeft : MonoBehaviour
 
     private void OnMouseOver()
     {
+        Debug.Log("Hovering");
         wire.canMove = true;
     }
 
@@ -103,6 +110,9 @@ public class WireBehaviourLeft : MonoBehaviour
                     
                     Debug.Log("Done");
                     canvas.SetActive(false);
+                    done = true;
+                    //vaultDoor.SetActive(false);
+                    SceneManager.LoadScene("BankLevel");
                 }
             }
         }

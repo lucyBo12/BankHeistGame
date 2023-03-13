@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     public void Damage()
     {
         health--;
+        int 
         animator.SetBool("isDead", dead);
         if (dead)
         {

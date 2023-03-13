@@ -97,7 +97,11 @@ public static class LobbyManager
 
         GameObject.DontDestroyOnLoad(Camera.main);
         GameObject.DontDestroyOnLoad(GameObject.FindGameObjectWithTag("VirtualCamera"));
-        GameObject.DontDestroyOnLoad(GameObject.FindGameObjectWithTag("UI"));
+        var uiObjects = GameObject.FindGameObjectsWithTag("UI");
+        foreach(var u in uiObjects)
+        {
+            GameObject.DontDestroyOnLoad(u);
+        }
     }
     
 }

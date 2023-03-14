@@ -14,18 +14,21 @@ public class Character : MonoBehaviour
     public int money;
     public int noOfdeaths;
     public string playerName;
+    
 
     //equipment
     public int ammo;
     public int grenades;
     public GameObject gun;
     public Transform[] weapons;
+    GameObject ammoUI;
 
 
     public void Start()
     {
         if (transform.CompareTag("Player"))
             GameManager.Players.Add(transform);
+        
     }
 
     public void Damage()

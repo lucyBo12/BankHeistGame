@@ -11,6 +11,7 @@ TagManager:
   - Cop
   - MoneyUI
   - UI
+  - AmmoUI
   layers:
   - Default
   - TransparentFX

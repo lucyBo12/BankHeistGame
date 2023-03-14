@@ -35,6 +35,8 @@ public class AITree : ScriptableObject
                 return new Cop_GetTarget(GUID); //CHANGE HERE
             case "Cop_Cover": //CHANGE HERE
                 return new Cop_Cover(GUID); //CHANGE HERE
+            case "Cop_Melee": //CHANGE HERE
+                return new Cop_Melee(GUID); //CHANGE HERE
             default:
                 return new AINode(GUID);
         }

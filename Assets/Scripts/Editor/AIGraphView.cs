@@ -362,7 +362,30 @@ public class AIGraphView : GraphView
         outPort.portName = "Next";
         node.outputContainer.Add(outPort);
 
-        node.title = " checks if the cop should go in cover or not"; //CHANGE HERE
+        node.title = " cop cover"; //CHANGE HERE
+        return node;
+
+    }
+
+    public Cop_Melee CreateCop_Melee() //CHANGE HERE
+    {
+        var node = new Cop_Melee //CHANGE HERE
+        {
+            title = "AINode",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+        node.title = " Melee"; //CHANGE HERE
         return node;
 
     }

@@ -167,6 +167,8 @@ public class GraphSaveUtility
                 node = _targetGraphView.CreateCop_GetTarget(); //CHANGE HERE
             else if (type == typeof(Cop_Cover)) //CHANGE HERE
                 node = _targetGraphView.CreateCop_Cover(); //CHANGE HERE
+            else if (type == typeof(Cop_Melee)) //CHANGE HERE
+                node = _targetGraphView.CreateCop_Melee(); //CHANGE HERE
 
             node.GUID = nodeData.GUID;
             _targetGraphView.AddElement(node);

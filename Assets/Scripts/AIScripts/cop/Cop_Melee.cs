@@ -7,6 +7,10 @@ public class Cop_Melee : AINode
     float coolDown = 3;
     float timer = 0;
 
+    public Cop_Melee(string GUID = "") : base(GUID)
+    {
+
+    }
 
     public override bool Active(AIBase npc)
     {

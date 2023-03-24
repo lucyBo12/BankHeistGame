@@ -31,10 +31,10 @@ public class Character : MonoBehaviour
         
     }
 
-    public void Damage()
+    public void Damage(int damage)
     {
-        health--;
-        int ;
+        health -= damage;
+        
         animator.SetBool("isDead", dead);
         if (dead)
         {

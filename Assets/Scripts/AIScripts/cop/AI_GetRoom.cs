@@ -17,20 +17,23 @@ public class AI_GetRoom : AINode
     {
         var closestPlayer = GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray());
         var Room = GameManager.GetRoom(closestPlayer.gameObject);
-        var point = GameUtil.ClosestTransform(closestPlayer, Room.exitPoint);
-        var offset = (point.position - Room.transform.position).normalized;
-        npc.Goal = new AIGoal(point.transform.position + offset);
+        npc.Goal = new AIGoal(Room.transform);
         npc.Agent.destination = npc.Goal.TargetLocation;
 
     }
 
     public override bool Active(AIBase npc)
     {
-        return npc.Agent.remainingDistance > 0.5f && GameManager.GetRoom(npc.gameObject).players.Count == 0;
+        var room= GameManager.GetRoom(npc.gameObject);  
+        if (room == null) return false;
+        return npc.Agent.remainingDistance > 0.5f && room.players.Count == 0;
+
     }
 
     public override void OnEnd(AIBase npc)
     {
+        npc.Agent.isStopped = true;
+        Debug.LogWarning(2);
         npc.Goal = new AIGoal(); 
     }
 }

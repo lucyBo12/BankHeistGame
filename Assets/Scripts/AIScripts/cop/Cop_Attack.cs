@@ -29,7 +29,7 @@ public class Cop_Attack : AINode
     {
         var Charge = npc.profile.charge;
         if(Charge < 0.3) {Charge = 0.3f;};
-        var Clip = npc.GetComponent<Weapon>().clip.quantity;
+        var Clip = npc.GetComponent<InventoryManager>().activeWeapon.clip.quantity;
         var ShotsFired = Clip * Charge; 
 
         return ShotsFired;

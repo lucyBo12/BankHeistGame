@@ -7,6 +7,7 @@ public class PlayerNameInput : MonoBehaviour
     public TMP_InputField nameInput;
     public GameObject startMenu;
     public TextMeshProUGUI warningText;
+    
 
     public static string userInput;
     //public string userInput;
@@ -15,6 +16,14 @@ public class PlayerNameInput : MonoBehaviour
     public void Start()
     {
         warningText.SetText("");
+    }
+
+    public void Update()
+    {
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void StartButton()

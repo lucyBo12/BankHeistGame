@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     public int money;
     public int noOfdeaths;
     public string playerName;
-    
+
 
     //equipment
     public int ammo;

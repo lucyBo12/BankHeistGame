@@ -28,6 +28,8 @@ public class Character : MonoBehaviour
     {
         if (transform.CompareTag("Player"))
             GameManager.Players.Add(transform);
+        playerName = PlayerNameInput.userInput;
+        Debug.Log(playerName);
         
     }
 

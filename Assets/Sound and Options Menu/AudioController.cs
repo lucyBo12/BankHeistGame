@@ -44,13 +44,13 @@ public class AudioController : MonoBehaviour
         //Debug.Log("Working");
         isMenu = true;
         optionsPanel.SetActive(true);
-        player.GetComponent<CharacterLocomotion>().PlayerActions.Disable();
+        player.GetComponent<CharacterLocomotion>().enabled = false;
     }
     public void CloseMenu()
     {
         isMenu = false;
         optionsPanel.SetActive(false);
-        player.GetComponent<CharacterLocomotion>().PlayerActions.Enable();
+        player.GetComponent<CharacterLocomotion>().enabled = true;
     }
 
 

@@ -17,9 +17,9 @@ MonoBehaviour:
   - volume: 0.8751051
     name: Master
     tempVol: 0.8751051
-  - volume: 0.10597909
+  - volume: 0.32785118
     name: Music
-    tempVol: 0.10597909
+    tempVol: 0.32785118
   - volume: 0.69731355
     name: Effects
     tempVol: 0.69731355

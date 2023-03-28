@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -11,16 +12,14 @@ public class Cop_Attack : AINode
     {
 
     }
+
     public override void OnUpdate(AIBase npc)
     {
         var Room = GameManager.GetRoom(npc.gameObject);
         
         //aim
-        Vector3 playerPos = npc.Target.transform.position;
-        Vector3 npcPos = npc.transform.position;
-        Vector3 delta = new Vector3(playerPos.x - npcPos.x, 0.0f, playerPos.z - npcPos.z);
-        Quaternion rotation = Quaternion.LookRotation(delta);
-        npc.transform.rotation = rotation;
+        npc.transform.LookAt(npc.Target.transform);
+
         //gets cop to fire
         npc.Character.inventoryManager.activeWeapon.Fire();
 
@@ -33,29 +32,11 @@ public class Cop_Attack : AINode
         var ShotsFired = Clip * Charge; 
 
         return ShotsFired;
-        /*var Room = GameManager.GetRoom(npc.gameObject);
-        var ae = Room.players.Count; //ae number of enemies^*
-        if (ae == 0)
-        {
-            return 0;
-        }
-        var aa = Room.cops.Count; //aa num of allays^*
-        var hp = npc.GetComponent<Character>().health; //hp cop health 
-        var pd = Vector3.Distance(GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray()).position, npc.transform.position);//distance to player
-       
-
-
-
-        return ((hp+aa) - (pd+ ae));*/
     }
 
-    /**
-     * ((Ahp/pd + pa)+aa+(ph-hp))
-     * ahp = ally hp*
-     * pd = player distance *
-     * aa = number of players (exluding pd)
-     * ph = targeted player hp*
-     * hp = cop health*
-     * 
-     * */
+    public override bool Active(AIBase npc)
+    {
+        return npc.Target is not null && npc.TargetInRange();
+    }
+
 }

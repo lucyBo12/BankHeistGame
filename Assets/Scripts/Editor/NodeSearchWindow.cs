@@ -93,7 +93,11 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 userData = new Cop_Melee(), //CHANGE HERE
                 level = 2
             },
-
+             new SearchTreeEntry(new GUIContent("Cop RePosition", _indentationIcon)) //CHANGE HERE
+            {
+                userData = new Cop_RePosition(), //CHANGE HERE
+                level = 2
+            },
         };
 
         return tree;
@@ -144,6 +148,9 @@ public class NodeSearchWindow : ScriptableObject, ISearchWindowProvider
                 return true;
             case Cop_Melee: //CHANGE HERE
                 _graphView.AddNode(_graphView.CreateCop_Melee(), localMousePosition); //CHANGE HERE
+                return true;
+            case Cop_RePosition: //CHANGE HERE
+                _graphView.AddNode(_graphView.CreateCop_RePosition(), localMousePosition); //CHANGE HERE
                 return true;
             default:
                 return false;

@@ -20,39 +20,39 @@ MonoBehaviour:
     PortName: False
     TargetNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
-    PortName: True
-    TargetNodeGuid: c14de84d-e9c0-4c9e-832a-23db8da0b44f
+    PortName: False
+    TargetNodeGuid: c881d20f-df7a-4c20-b442-3a26feb5555b
+  - BaseNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
+    PortName: False
+    TargetNodeGuid: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     PortName: True
     TargetNodeGuid: 6d260691-cb87-4b53-9842-c219e51308c0
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     PortName: True
     TargetNodeGuid: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
-  - BaseNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
-    PortName: False
-    TargetNodeGuid: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
-    PortName: False
-    TargetNodeGuid: c881d20f-df7a-4c20-b442-3a26feb5555b
+    PortName: True
+    TargetNodeGuid: a570fe17-ffff-4450-97c0-92dafb7d8759
   AINodeData:
   - GUID: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     NodeType: Cop_HasTarget
-    Position: {x: 209, y: 200}
-  - GUID: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
-    NodeType: AI_GetRoom
-    Position: {x: 848, y: 425.5}
-  - GUID: 6d260691-cb87-4b53-9842-c219e51308c0
-    NodeType: Cop_Cover
-    Position: {x: 602, y: -38.5}
-  - GUID: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
-    NodeType: Cop_Attack
-    Position: {x: 674, y: 110}
-  - GUID: c14de84d-e9c0-4c9e-832a-23db8da0b44f
-    NodeType: Cop_Retreat
-    Position: {x: 380, y: 33}
+    Position: {x: 249, y: 200}
   - GUID: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
     NodeType: AI_HasGoalNode
-    Position: {x: 367.5, y: 389}
+    Position: {x: 479, y: 448}
   - GUID: c881d20f-df7a-4c20-b442-3a26feb5555b
     NodeType: Cop_GetTarget
-    Position: {x: 517.5, y: 312}
+    Position: {x: 479, y: 549}
+  - GUID: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
+    NodeType: AI_GetRoom
+    Position: {x: 761, y: 511}
+  - GUID: 6d260691-cb87-4b53-9842-c219e51308c0
+    NodeType: Cop_Cover
+    Position: {x: 457, y: 123}
+  - GUID: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
+    NodeType: Cop_Attack
+    Position: {x: 457, y: 23}
+  - GUID: a570fe17-ffff-4450-97c0-92dafb7d8759
+    NodeType: Cop_RePosition
+    Position: {x: 457, y: 210}

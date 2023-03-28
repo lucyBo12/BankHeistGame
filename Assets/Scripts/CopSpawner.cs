@@ -7,7 +7,7 @@ public class CopSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> activeUnits = new List<GameObject>();
     [SerializeField] private Transform[] spawnPoints = new Transform[0];
 
-    private int unitCount => Mathf.CeilToInt(Mathf.Pow((2 + GameManager.Players.Count), 1 + (GameManager.WantedLevel / 5)));
+    private int unitCount => GameManager.WantedLevel == 1 ? 1 : Mathf.CeilToInt(Mathf.Pow((2 + GameManager.Players.Count), 1 + (GameManager.WantedLevel / 5)));
     private Coroutine coroutine;
 
 

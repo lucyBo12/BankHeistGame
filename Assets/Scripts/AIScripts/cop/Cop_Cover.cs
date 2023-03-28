@@ -30,9 +30,6 @@ public class Cop_Cover : AINode
 
 
         return ((float)((ae + pd + php) / (aa + (hp) + cpd)));
-
-
-
     }
     /**
      * ahp = ally hp

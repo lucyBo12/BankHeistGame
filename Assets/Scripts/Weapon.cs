@@ -42,8 +42,6 @@ public class Weapon : MonoBehaviour
         bullet.transform.rotation = muzzle.rotation;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 2000, ForceMode.Force);
         
-
-        ProcessTarget();
         clip.ammo -= 1;
         canFire = false;
         await Wait(fireRate);
@@ -55,20 +53,6 @@ public class Weapon : MonoBehaviour
         await Wait(reloadTime);
         clip.Reload();
         canFire = true;
-    }
-
-    public virtual void ProcessTarget() {
-        Vector3 direction = muzzle.position + muzzle.forward;
-        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, range))
-        {
-            Debug.Log($"Hit: {hit.transform} Point: {hit.point} L: {LayerMask.LayerToName(layer)}");
-            switch (hit.transform.tag)
-            {
-                case "RangeTarget":
-                    hit.transform.GetComponent<ShootingRangeTarget>().Hit();
-                    break;
-            }
-        }
     }
 
     private void OnDrawGizmos()

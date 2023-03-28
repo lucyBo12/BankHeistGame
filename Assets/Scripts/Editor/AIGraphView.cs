@@ -159,6 +159,27 @@ public class AIGraphView : GraphView
 
     }
 
+    public Cop_RePosition CreateCop_RePosition()
+    {
+        var node = new Cop_RePosition
+        {
+            title = "RePosition",
+            GUID = Guid.NewGuid().ToString()
+        };
+        //Input Port
+        var inputPort = GeneratePort(node, Direction.Input, Port.Capacity.Multi);
+        inputPort.portName = "Input";
+        node.inputContainer.Add(inputPort);
+
+
+        //Output Port
+        var outPort = GeneratePort(node, Direction.Output, Port.Capacity.Multi);
+        outPort.portName = "Next";
+        node.outputContainer.Add(outPort);
+
+       return node;
+    }
+
     public AI_Flee CreateAI_Flee()
     {
         var node = new AI_Flee

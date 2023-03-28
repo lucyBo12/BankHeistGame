@@ -76,6 +76,17 @@ public class AIBase : MonoBehaviour
         Debug.Log($"{currentNode.GetType().Name} | W: {currentNode.Weight(this)}");
     }
 
+    public bool TargetInRange() {
+        if(Target is null) return false;
+
+        if (Physics.Raycast(transform.position, (Target.transform.position - transform.position).normalized, out var hit, 500f)) {
+            return hit.transform.CompareTag("Player");
+        }
+
+        return false;
+    }
+
+
     //Variables for ai behaviour defined here
     //range is the minimum fear radius around an npc
     [System.Serializable]

@@ -27,13 +27,11 @@ public class AI_GetRoom : AINode
         var room= GameManager.GetRoom(npc.gameObject);  
         if (room == null) return false;
         return npc.Agent.remainingDistance > 0.5f && room.players.Count == 0;
-
     }
 
     public override void OnEnd(AIBase npc)
     {
         npc.Agent.isStopped = true;
-        Debug.LogWarning(2);
         npc.Goal = new AIGoal(); 
     }
 }

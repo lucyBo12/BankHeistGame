@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2240136523183305803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5378879593977124936}
@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ffece987a70074c8452887f6b67b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 21
 --- !u!135 &1858742263188207882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -203,7 +202,7 @@ TrailRenderer:
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
+      ctime0: 28334
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -228,7 +227,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.05
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &6942014697032522726

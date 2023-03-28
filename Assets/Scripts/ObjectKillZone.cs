@@ -14,6 +14,14 @@ public class ObjectKillZone : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer != 8) return;
+
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
         other.gameObject.SetActive(false);
     }
 

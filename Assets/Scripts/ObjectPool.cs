@@ -16,14 +16,27 @@ public static class ObjectPool
         AssignObjects(CopPool, GetResource("NPC/Cop"), 40);
     }
 
-    public static GameObject Get(GameObject pool) {
-        foreach (Transform obj in pool.transform) {
+    public static GameObject Get(GameObject pool)
+    {
+        foreach (Transform obj in pool.transform)
+        {
             if (obj.gameObject.activeSelf) continue;
+
+            var rb = obj.GetComponent<Rigidbody>();
+            if (rb != null) { 
+                rb.isKinematic = false;
+            }
+
             return obj.gameObject;
         }
 
-        Debug.LogError($"Out of available objects for {pool}");
-        return null;
+        // Create a new object when there are no available objects in the pool
+        GameObject prefab = pool.transform.GetChild(0).gameObject;
+        var newObj = Object.Instantiate(prefab, pool.transform);
+        newObj.name = $"{pool.name} Object [{(pool.transform.childCount + 1)}]";
+        newObj.SetActive(false);
+        Debug.LogWarning($"Created new object for {pool.name} due to insufficient pool size.");
+        return newObj;
     }
 
     private static void CreateParentObjects() {
@@ -49,6 +62,12 @@ public static class ObjectPool
         for (int i = 0; i < quantity; i++) {
             var obj = Object.Instantiate(prefab, parent.transform);
             obj.name = $"{parent.name} Object [{(i + 1)}]";
+
+            var rb = obj.GetComponent<Rigidbody>();
+            if (rb != null) {
+                rb.isKinematic = true;
+            }
+
             obj.SetActive(false);
         }
     }

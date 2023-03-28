@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -7,6 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Transform muzzle;
     [SerializeField] public AmmoClip clip;
+    [SerializeField] private GameObject bulletPrefab;
 
     [Header("Config")]
     public Sprite icon;
@@ -34,10 +36,12 @@ public class Weapon : MonoBehaviour
         }
 
         var bullet = ObjectPool.Get(ObjectPool.BulletPool);
+        bullet.SetActive(true);
         Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
         bullet.transform.position = muzzle.position;
-        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, muzzle.rotation.eulerAngles.y, muzzle.rotation.eulerAngles.z));
-        bullet.SetActive(true);
+        bullet.transform.rotation = muzzle.rotation;
+        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 2000, ForceMode.Force);
+        
 
         ProcessTarget();
         clip.ammo -= 1;

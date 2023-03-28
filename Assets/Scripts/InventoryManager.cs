@@ -1,8 +1,9 @@
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : NetworkBehaviour
 {
     public Weapon activeWeapon;
     [SerializeField] private Transform primary, sidearm;
@@ -12,13 +13,13 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Input.Player.Fire.performed += evt => FireWeapon();
+        if (IsOwner) {
+            GameManager.Input.Player.Fire.performed += evt => FireWeapon();
+        }
         Weapon weapon = sidearm.GetChild(0).GetComponent<Weapon>();
         activeWeapon = weapon;
         WeaponGUI.Instance.UpdateWeapon(weapon);
         gunSound = weapon.fireSound;
-
-
     }
 
     private void FireWeapon() { 

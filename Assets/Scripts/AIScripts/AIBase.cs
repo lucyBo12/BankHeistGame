@@ -77,15 +77,25 @@ public class AIBase : MonoBehaviour
     }
 
     public bool TargetInRange() {
-        if(Target is null) return false;
+        if (Target is null) {
+            return false;
+        }
 
-        if (Physics.Raycast(transform.position, (Target.transform.position - transform.position).normalized, out var hit, 500f)) {
+        if (Physics.Raycast(transform.position + Vector3.up, -((transform.position - Target.transform.position).normalized * 100) + Vector3.up, out var hit)) {
+            Debug.LogError($"Hit [{hit.transform.name}]");
             return hit.transform.CompareTag("Player");
         }
 
         return false;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (Target is null) return;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position + Vector3.up, -((transform.position - Target.transform.position).normalized * 100) + Vector3.up);
+    }
 
     //Variables for ai behaviour defined here
     //range is the minimum fear radius around an npc
@@ -101,8 +111,6 @@ public class AIBase : MonoBehaviour
             this.charge = charge;
         }
 
-        
-        
     }
 
     

@@ -34,7 +34,7 @@ public class Cop_GetTarget : AINode
 
     public override void OnEnd(AIBase npc)
     {
-        Debug.Log($"T: {npc.Target}");
+        Debug.LogWarning($"GetTarget: Target [{npc.Target.name}]");
     }
 
 }

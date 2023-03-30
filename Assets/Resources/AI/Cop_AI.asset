@@ -22,37 +22,31 @@ MonoBehaviour:
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     PortName: False
     TargetNodeGuid: c881d20f-df7a-4c20-b442-3a26feb5555b
+  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
+    PortName: True
+    TargetNodeGuid: 36fa764b-f528-42b8-83e0-1ab3a1280a69
   - BaseNodeGuid: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
     PortName: False
-    TargetNodeGuid: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
+    TargetNodeGuid: 0c081d4d-8ed7-4de2-9fde-f48566db4fd4
   - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     PortName: True
-    TargetNodeGuid: 6d260691-cb87-4b53-9842-c219e51308c0
-  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
-    PortName: True
-    TargetNodeGuid: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
-  - BaseNodeGuid: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
-    PortName: True
-    TargetNodeGuid: a570fe17-ffff-4450-97c0-92dafb7d8759
+    TargetNodeGuid: bf465c91-cbfd-41c9-8717-5eadcb2e84fc
   AINodeData:
   - GUID: b2c19594-8b47-4c3e-a8c4-d25a4ff36cfe
     NodeType: Cop_HasTarget
     Position: {x: 249, y: 200}
   - GUID: 206cb8ae-b2a0-4363-b278-6aa12e291a5a
     NodeType: AI_HasGoalNode
-    Position: {x: 479, y: 448}
+    Position: {x: 479, y: 387}
   - GUID: c881d20f-df7a-4c20-b442-3a26feb5555b
     NodeType: Cop_GetTarget
-    Position: {x: 479, y: 549}
-  - GUID: 9eb63eeb-bd8d-4087-873f-af06b4cb7d38
-    NodeType: AI_GetRoom
-    Position: {x: 761, y: 511}
-  - GUID: 6d260691-cb87-4b53-9842-c219e51308c0
-    NodeType: Cop_Cover
-    Position: {x: 457, y: 123}
-  - GUID: fdfa85ab-9b5e-4fce-ab32-6fc4b2604168
+    Position: {x: 479, y: 503}
+  - GUID: 36fa764b-f528-42b8-83e0-1ab3a1280a69
     NodeType: Cop_Attack
-    Position: {x: 457, y: 23}
-  - GUID: a570fe17-ffff-4450-97c0-92dafb7d8759
+    Position: {x: 479, y: 123}
+  - GUID: 0c081d4d-8ed7-4de2-9fde-f48566db4fd4
+    NodeType: AI_GetRoom
+    Position: {x: 700, y: 450}
+  - GUID: bf465c91-cbfd-41c9-8717-5eadcb2e84fc
     NodeType: Cop_RePosition
-    Position: {x: 457, y: 210}
+    Position: {x: 479, y: 32}

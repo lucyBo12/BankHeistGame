@@ -26,17 +26,21 @@ public class Cop_Attack : AINode
     }
     public override float Weight(AIBase npc)
     {
-        var Charge = npc.profile.charge;
-        if(Charge < 0.3) {Charge = 0.3f;};
-        var Clip = npc.GetComponent<InventoryManager>().activeWeapon.clip.quantity;
-        var ShotsFired = Clip * Charge; 
-
-        return ShotsFired;
+        if (!npc.TargetInRange()) return 0;
+        var dist = Mathf.Clamp(5 - (Vector3.Distance(npc.transform.position, npc.Target.transform.position)), 0f, 5f);
+        return 1f - (dist / 5f);
     }
 
-    public override bool Active(AIBase npc)
+    public override void OnEnd(AIBase npc)
     {
-        return npc.Target is not null && npc.TargetInRange();
+        Debug.LogWarning("Attack: End");
+        var room = GameManager.GetRoom(npc.gameObject);
+        if (room is not null && room.HasInhibtant(npc.Target)) return;
+
+        npc.Target = null;
+        Debug.LogWarning("Attack: End [Null Target]");
     }
+
+    public override bool Active(AIBase npc) => npc.Target is not null && npc.TargetInRange();
 
 }

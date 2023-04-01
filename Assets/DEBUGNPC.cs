@@ -16,11 +16,13 @@ public class DEBUGNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(aiBase is null) return;
+        if(!aiBase) return;
 
         text.text = $"Name: {aiBase.transform.name} \n" +
-            $"Node: {(aiBase.currentNode is not null ? aiBase.currentNode.GetType().Name : "NULL")} \n" +
-            $"In Range: {(aiBase.Target ? Physics.Raycast(aiBase.transform.position, (aiBase.Target.transform.position)) : "Null")}";
+            $"Node: {(aiBase.currentNode is not null ? aiBase.currentNode.GetType().Name : "Null")} \n" +
+            $"In Range: {(aiBase.Target ? Physics.Raycast(aiBase.transform.position, (aiBase.Target.transform.position)) : "Null")} \n" +
+            $"Desired Location: {aiBase.Agent.destination} " +
+            $"[{(aiBase.Target is not null ? Vector3.Distance(aiBase.transform.position, aiBase.Target.transform.position) : "Null")}]";
             
     }
 }

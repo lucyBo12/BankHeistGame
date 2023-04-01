@@ -8,7 +8,7 @@ public struct AIGoal
 
     public AIGoal(Transform target) { 
         Target = target;
-        TargetLocation = Target.position;
+        TargetLocation = target.position;
     }
 
     public AIGoal(Vector3 position) {

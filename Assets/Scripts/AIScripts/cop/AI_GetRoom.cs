@@ -16,10 +16,10 @@ public class AI_GetRoom : AINode
     public override void OnStart(AIBase npc)
     {
         var closestPlayer = GameUtil.ClosestTransform(npc.transform, GameManager.Players.ToArray());
-        var Room = GameManager.GetRoom(closestPlayer.gameObject);
-        npc.Goal = new AIGoal(Room.transform);
+        npc.Goal = new AIGoal(closestPlayer);
         npc.Agent.destination = npc.Goal.TargetLocation;
-        Debug.LogWarning($"GetRoom: Room [{Room.name}]");
+        npc.Agent.isStopped = false;
+        Debug.LogWarning($"GetRoom: Room [{closestPlayer.name}]");
     }
 
     public override bool Active(AIBase npc)

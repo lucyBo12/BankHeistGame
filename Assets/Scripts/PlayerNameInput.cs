@@ -34,11 +34,11 @@ public class PlayerNameInput : MonoBehaviour
             //show error message
             Debug.Log("NO!");
             warningText.SetText("NO!");
-                }
+        }
         else
         {
             startMenu.SetActive(false);
-            Debug.Log(userInput);
+            LobbyManager.CreateOrJoinLobby();
         }
     }
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
-    [SerializeField] private AudioSource audioSource;
 
     private void Start()
     {
@@ -14,6 +14,14 @@ public class TitleScreen : MonoBehaviour
         }
          
         director.Play();
-        //audioSource.Play();
+    }
+
+    public void Play() {
+        SceneManager.LoadScene("TestRoom005");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

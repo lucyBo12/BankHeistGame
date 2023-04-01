@@ -5,8 +5,6 @@ using TMPro;
 
 public class AmmoUI : MonoBehaviour
 {
-    //public static AmmoUI Instance;
-    //private void Awake() => Instance = this;
     public GameObject player;
     Weapon weapon;
     public TextMeshProUGUI ammoText;

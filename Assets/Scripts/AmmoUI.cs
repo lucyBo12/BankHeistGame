@@ -21,7 +21,7 @@ public class AmmoUI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         weapon = player.GetComponent<InventoryManager>().activeWeapon;
         ammo = weapon.clip.ammo;
-        clip = weapon.clip.clip;
+        clip = weapon.clip.quantity > clip ? weapon.clip.clip : weapon.clip.quantity;
         ammoText.SetText(ammo + "/" + clip);
     }
 }

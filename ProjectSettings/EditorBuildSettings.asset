@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestRooms/TestRoom004.unity
-    guid: b6b1912e53bd41547bf4fdaad85d26d2
-  - enabled: 1
-    path: Assets/Scenes/TestRooms/TestRoom005.unity
-    guid: eb9e18715a8023e4c80ff73dce44dfc3
-  - enabled: 1
     path: Assets/Scenes/BankLevel/BankLevel.unity
     guid: 24cc76579acaafd42946b1bf1d755763
   - enabled: 1
+    path: Assets/Scenes/TestRooms/TestRoom005.unity
+    guid: eb9e18715a8023e4c80ff73dce44dfc3
+  - enabled: 0
+    path: Assets/Scenes/TestRooms/TestRoom004.unity
+    guid: b6b1912e53bd41547bf4fdaad85d26d2
+  - enabled: 0
     path: Assets/Scenes/TestRooms/TestRoom007.unity
     guid: 824b0d4d46e787546bb569f672656f9b
   m_configObjects: {}

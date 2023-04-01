@@ -1,5 +1,4 @@
 using Unity.Netcode;
-using Unity.Tutorials.Core.Editor;
 using UnityEngine;
 
 public class Interactable : NetworkBehaviour
@@ -23,7 +22,7 @@ public class Interactable : NetworkBehaviour
     }
 
     public virtual void ShowPrompt() {
-        if (promptMessage.IsNullOrEmpty()) return;
+        if (string.IsNullOrEmpty(promptMessage)) return;
         if (prompt == null) {
             InteractPromt.CreateNewPrompt(transform, promptOffset);
         }
@@ -32,7 +31,7 @@ public class Interactable : NetworkBehaviour
     }
 
     public virtual void ShowPrompt(string message) {
-        if (promptMessage.IsNullOrEmpty()) return;
+        if (string.IsNullOrEmpty(promptMessage)) return;
         if (prompt == null) {
             InteractPromt.CreateNewPrompt(transform, promptOffset);
         }

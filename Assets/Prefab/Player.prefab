@@ -7239,6 +7239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 3857746680432153320}
+  maskRoot: {fileID: 4452938759072844968}
   health: 100
   safe: 0
   money: 0

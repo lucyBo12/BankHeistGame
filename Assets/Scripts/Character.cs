@@ -5,6 +5,7 @@ public class Character : MonoBehaviour
     public InventoryManager inventoryManager;
 
     CharacterLocomotion player;
+    [SerializeField] Transform maskRoot;
     Animator animator;
 
     //player stats
@@ -49,6 +50,12 @@ public class Character : MonoBehaviour
     public void ResetCharacter() {
         health = 100;
         animator?.SetBool("isDead", dead);
+    }
+
+    public void SetMask(int id) {
+        for (int i = 0; i < maskRoot.childCount; i++) { 
+            maskRoot.GetChild(i).gameObject.SetActive(i == id || i == 2);
+        }
     }
 
 

@@ -39,6 +39,22 @@ public class Interactable : NetworkBehaviour
         prompt.SetPrompt(message);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        var agent = other.GetComponent<InteractableAgent>();
+        if (!agent) return;
+
+        agent.interactables.Add(this);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var agent = other.GetComponent<InteractableAgent>();
+        if (!agent) return;
+        agent.interactables.Remove(this);
+        ClosePrompt();
+    }
+
     public virtual void ClosePrompt() {
         if (prompt == null) return;
         Destroy(prompt.gameObject);

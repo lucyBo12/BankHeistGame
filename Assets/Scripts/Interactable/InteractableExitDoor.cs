@@ -13,6 +13,5 @@ public class InteractableExitDoor : Interactable
         user.GetComponent<Character>().GetComponent<CharacterLocomotion>().enabled = false;
         GameManager.CheckGameState();
         base.Interact(user);
-
     }
 }

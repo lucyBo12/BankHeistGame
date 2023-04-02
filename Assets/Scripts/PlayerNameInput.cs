@@ -7,6 +7,7 @@ public class PlayerNameInput : MonoBehaviour
     public TMP_InputField nameInput;
     public GameObject startMenu;
     public TextMeshProUGUI warningText;
+    public GameObject healthUI;
     
 
     public static string userInput;
@@ -39,6 +40,8 @@ public class PlayerNameInput : MonoBehaviour
         {
             startMenu.SetActive(false);
             LobbyManager.CreateOrJoinLobby();
+            healthUI.SetActive(true);
+
         }
     }
 

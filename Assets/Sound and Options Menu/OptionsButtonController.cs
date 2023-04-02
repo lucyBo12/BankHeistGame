@@ -17,7 +17,7 @@ public class OptionsButtonController : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void Start()
     {
-        
+        text.GetComponent<TextMeshProUGUI>().color = new Color32(0, 0, 0, 255);
     }
 
     //OnHover text color and size will change
@@ -30,7 +30,7 @@ public class OptionsButtonController : MonoBehaviour, IPointerEnterHandler, IPoi
     public void OnPointerExit(PointerEventData eventData)
     {
         text.GetComponent<TextMeshProUGUI>().fontSize = 80;
-        text.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255);
+        text.GetComponent<TextMeshProUGUI>().color = new Color32(0, 0, 0, 255);
 
     }
 

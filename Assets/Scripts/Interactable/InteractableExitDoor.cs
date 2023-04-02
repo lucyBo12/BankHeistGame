@@ -10,7 +10,7 @@ public class InteractableExitDoor : Interactable
     public override void Interact(Transform user)
     {
         highscore.SetActive(true);
-        user.GetComponent<Character>().GetComponent<CharacterLocomotion>().enabled = false;
+        user.GetComponent<Character>().GetComponent<Weapon>().fireSound.enabled = false;
         GameManager.CheckGameState();
         base.Interact(user);
     }

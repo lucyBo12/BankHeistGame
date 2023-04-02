@@ -12,8 +12,7 @@ public class InteractableDoor : Interactable
     {
         //user.GetComponent<Character>();
         //doorSound.Play();
-        //SceneManager.LoadScene("TestRoom007");
-        //vaultMinigame.SetActive(true);
+        vaultMinigame.SetActive(true);
         base.Interact(user);
     }
 }

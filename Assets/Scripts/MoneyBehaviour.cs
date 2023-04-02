@@ -37,21 +37,21 @@ public class MoneyBehaviour : MonoBehaviour
             if(this.tag == "moneyStack")
             {
                 Debug.Log("stack");
-                player.money = player.money + stack;
+              //  player.money = player.money + stack;
             }
 
             if (this.tag == "moneyRoll")
             {
-                player.money = player.money + roll;
+             //   player.money = player.money + roll;
             }
 
             if (this.tag == "moneyNote")
             {
-                player.money = player.money + note;
+             //   player.money = player.money + note;
             }
             if(this.tag == "goldBar")
             {
-                player.money = player.money + bar;
+             //   player.money = player.money + bar;
             }
         }
     }

@@ -18,10 +18,10 @@ public class Bullet : MonoBehaviour
                 target.GetComponent<ShootingRangeTarget>().Hit();
                 break;
                 case "Player":
-                    target.GetComponent<Character>().Damage(5);
+                    target.GetComponent<Character>().Damage(10);
                 break;
                 case "Cop":
-                    target.GetComponent<Character>().Damage(5);
+                    target.GetComponent<Character>().Damage(10);
                 break;
             default:
                 return;

@@ -19,6 +19,7 @@ public class AmmoUI : MonoBehaviour
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
         weapon = player.GetComponent<InventoryManager>().activeWeapon;
         ammo = weapon.clip.ammo;
         clip = weapon.clip.quantity > clip ? weapon.clip.clip : weapon.clip.quantity;

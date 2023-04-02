@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 194532383702247202}
   - component: {fileID: 194532383701405022}
   - component: {fileID: 194532383700313668}
-  - component: {fileID: 168457774191351046}
   - component: {fileID: 6429991184663300901}
   - component: {fileID: 5402526636423639898}
   - component: {fileID: -5994377496585839997}
@@ -89,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &168457774191351046
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194532383702567974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43651764055048456, guid: 32f62b90ddba91745ad4095a73fa9160, type: 2}
 --- !u!135 &6429991184663300901
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -114,7 +99,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 2
   m_Center: {x: 0.00000023841856, y: 0, z: -0.000007688999}
 --- !u!114 &5402526636423639898
 MonoBehaviour:
@@ -131,9 +116,9 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 1
   hoverIdle: 1
-  promptMessage: Pick up {n}
+  promptMessage: Pick up $1000
   promptOffset: {x: 0, y: 90, z: 20}
-  value: 10
+  value: 1000
   moneySound: {fileID: 64030467713698471, guid: 9f43fcb031737c14aa376d08577e8a1c, type: 3}
   moneyText: {fileID: 4297473265722963177, guid: 621a7e4460d759d4783b12936a4d1152, type: 3}
 --- !u!114 &-5994377496585839997
@@ -215,7 +200,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64569232216769972, guid: 06f4d0c1058c516439f4717e83536bb2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 06f4d0c1058c516439f4717e83536bb2, type: 3}
 --- !u!4 &194532383611449942 stripped
 Transform:
@@ -285,7 +271,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64569232216769972, guid: 06f4d0c1058c516439f4717e83536bb2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 06f4d0c1058c516439f4717e83536bb2, type: 3}
 --- !u!4 &194532385006932194 stripped
 Transform:

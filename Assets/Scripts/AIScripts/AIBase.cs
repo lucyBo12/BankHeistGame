@@ -82,7 +82,6 @@ public class AIBase : MonoBehaviour
         }
 
         if (Physics.Raycast(transform.position + Vector3.up, -((transform.position - Target.transform.position).normalized * 100) + Vector3.up, out var hit)) {
-            Debug.LogError($"Hit [{hit.transform.name}]");
             return hit.transform.CompareTag("Player");
         }
 

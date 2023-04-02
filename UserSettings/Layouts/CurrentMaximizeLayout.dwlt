@@ -405,9 +405,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -11.01752, y: 1.4070349, z: 10.055831}
+    m_Target: {x: -4.273321, y: 2.1835833, z: 12.847682}
     speed: 2
-    m_Value: {x: -11.01752, y: 1.4070349, z: 10.055831}
+    m_Value: {x: -4.273321, y: 2.1835833, z: 12.847682}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -454,13 +454,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2324414, y: 0.04957798, z: -0.01186477, w: 0.9712746}
+    m_Target: {x: 0.13336582, y: -0.1333658, z: 0.018114572, w: 0.9818858}
     speed: 2
-    m_Value: {x: 0.23244114, y: 0.04957793, z: -0.011864757, w: 0.9712736}
+    m_Value: {x: 0.13336578, y: -0.13336575, z: 0.018114567, w: 0.98188543}
   m_Size:
-    m_Target: 2.9380445
+    m_Target: 7.417483
     speed: 2
-    m_Value: 2.9380445
+    m_Value: 7.417483
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4256
+  controlID: 10530
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -529,8 +529,8 @@ MonoBehaviour:
     y: 0
     width: 348
     height: 316
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -566,10 +566,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c472ffff
-      m_LastClickedID: -36156
-      m_ExpandedIDs: 5c85fbff2a86fbfff64afeff784bfeffd872ffffdc72ffff5873ffff5c73ffff6073ffffac73ffffb073ffff7274ffffee80ffff14fbfffff4ffffff
+      scrollPos: {x: 0, y: 112}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: b68cf0ff143cf2ffb0f3f9ff06f9f9ff5c85fbfff64afeff784bfeffd872ffffdc72ffff5873ffff5c73ffff6073ffffac73ffffb073ffff7274ffffee80ffff14fbfffff4ffffff709b0000849b0000ea9b00001c9e00004a9f0000a69f00001af202000cf50200eaf60200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -663,22 +663,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/3DAssets/PolygonHeist/Prefab/Items
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/3DAssets/PolygonHeist/Prefab/Items
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\dank-heist
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 24980000
-    m_LastClickedID: 38948
-    m_ExpandedIDs: 00000000089800000a9800000c9800000e980000109800001298000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 86e60400
+    m_LastClickedID: 321158
+    m_ExpandedIDs: 00000000089800000a9800000c9800000e980000109800001298000024980000269800006ee6040078e6040000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -731,8 +731,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c472ffff
-    m_LastClickedInstanceID: -36156
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -857,7 +857,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -36156
+  m_LastSelectedObjectID: 219180
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -877,8 +877,8 @@ MonoBehaviour:
     y: 0
     width: 442
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}

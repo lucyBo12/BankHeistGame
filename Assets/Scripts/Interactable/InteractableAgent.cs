@@ -15,11 +15,10 @@ public class InteractableAgent : MonoBehaviour
 
 
     private void Interact() {
-        Debug.Log($"I: 1 [{(closest ? closest.name : "null")}]");
         if (!active) return;
-
-        Debug.Log("I: 2");
+        if (Vector3.Distance(active.transform.position, transform.position) > 2f) return;
         active.Interact(transform);
+        
     }
 
     private void FixedUpdate()

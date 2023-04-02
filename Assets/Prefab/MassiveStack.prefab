@@ -58,7 +58,7 @@ MonoBehaviour:
   canInteract: 1
   destroyOnInteract: 1
   hoverIdle: 0
-  promptMessage: Use
+  promptMessage: Pick up $10,000
   promptOffset: {x: 0, y: 90, z: 20}
   value: 10000
   moneySound: {fileID: 64030467713698471, guid: 9f43fcb031737c14aa376d08577e8a1c, type: 3}
@@ -87,7 +87,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &336830821810281891
 MonoBehaviour:

@@ -16,6 +16,7 @@ public class InventoryManager : NetworkBehaviour
         if (IsOwner) {
             GameManager.Input.Player.Fire.performed += evt => FireWeapon();
         }
+
         Weapon weapon = sidearm.GetChild(0).GetComponent<Weapon>();
         activeWeapon = weapon;
         WeaponGUI.Instance.UpdateWeapon(weapon);
@@ -24,6 +25,7 @@ public class InventoryManager : NetworkBehaviour
 
     private void FireWeapon() { 
         if(!activeWeapon) return;
+        if (!activeWeapon.canFire) return;
         activeWeapon.Fire();
         gunSound.Play();
     }

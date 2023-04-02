@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Teleporter : MonoBehaviour
 {
     [SerializeField, ShowOnly] private int playersInZone = 0;
-    public int requiredPlayers = 1;
+    public int requiredPlayers => GameManager.Players.Count;
     [SerializeField, ShowOnly] private float time = 0;
     public float countDown = 5;
     public string sceneName = "Game";
@@ -41,6 +41,7 @@ public class Teleporter : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(requiredPlayers == 0) return;
         if (playersInZone != requiredPlayers) {
             time = countDown;
             return;
@@ -54,6 +55,7 @@ public class Teleporter : MonoBehaviour
             }
             teleporterSound.Play();
             SceneManager.LoadScene(sceneName);
+            GameManager.StartNewGame();
         }
     }
 

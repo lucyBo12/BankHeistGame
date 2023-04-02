@@ -16,9 +16,11 @@ public class Interactable : NetworkBehaviour
         LeanTween.moveY(gameObject, transform.position.y + .2f, 1f).setLoopPingPong();
     }
 
-    public virtual void Interact(Transform user) { 
-        if(destroyOnInteract)
-            Destroy(gameObject);
+    public virtual void Interact(Transform user) {
+        if (!destroyOnInteract) return;
+
+        user.GetComponent<InteractableAgent>().interactables.Remove(this);
+        Destroy(gameObject);
     }
 
     public virtual void ShowPrompt() {

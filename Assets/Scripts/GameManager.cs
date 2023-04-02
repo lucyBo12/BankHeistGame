@@ -47,12 +47,12 @@ public static class GameManager
         Characters.ForEach(x => { 
             x.ResetCharacter(); 
         });
-        WantedLevel = 0;
+        WantedLevel = 1;
         State = GameState.Active;
     }
 
     public static void CheckGameState() {
-        if (Characters.All(x => x.dead)) {
+        if (Characters.All(x => x.isDead)) {
             State = GameState.Failed;
         }
         else if (Characters.All(x => x.safe)) {

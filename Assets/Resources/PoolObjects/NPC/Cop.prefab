@@ -2689,7 +2689,7 @@ MonoBehaviour:
   clip:
     ammo: 16
     clip: 16
-    quantity: 64
+    quantity: 999999999
   bulletPrefab: {fileID: 0}
   icon: {fileID: 744310475, guid: 820acfcfcdcf82e4ab2af4343272fcbb, type: 3}
   fireRate: 0.1
@@ -7383,9 +7383,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 3157437079258582251}
-  health: 100
+  maskRoot: {fileID: 0}
+  duffleRoot: {fileID: 0}
+  health: 30
   safe: 0
-  money: 0
   noOfdeaths: 0
   playerName: 
   ammo: 0

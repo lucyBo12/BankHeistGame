@@ -46,7 +46,7 @@ public class ScoreBoard : MonoBehaviour
     {
         for(int i = 0; i<players.Length; i++)
         {
-            players[i].GetComponent<Character>().money = 0;
+           // players[i].GetComponent<Character>().money = 0;
         }
         
         //player.GetComponent<CharacterLocomotion>().enabled = true;
@@ -59,7 +59,6 @@ public class ScoreBoard : MonoBehaviour
     {
         for (int i = 0; i < players.Length; i++)
         {
-            players[i].GetComponent<Character>().money = 0;
             players[i].GetComponent<CharacterLocomotion>().enabled = true;
         }
         GameManager.StartNewGame();

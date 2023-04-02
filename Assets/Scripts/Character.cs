@@ -6,13 +6,14 @@ public class Character : MonoBehaviour
 
     CharacterLocomotion player;
     [SerializeField] Transform maskRoot;
+    [SerializeField] Transform duffleRoot;
     Animator animator;
 
     //player stats
     public int health;
-    public bool dead => health <= 0;
+    public bool isDead => health <= 0;
     public bool safe = false;
-    public int money;
+    public int money { get; private set; }
     public int noOfdeaths;
     public string playerName;
 
@@ -36,20 +37,29 @@ public class Character : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if(CompareTag("Player")) 
+            Debug.Log($"Dead: {isDead}");
+
         health -= damage;
         
-        animator.SetBool("isDead", dead);
-        if (dead)
+        animator.SetBool("isDead", isDead);
+        if (isDead)
         {
+            gameObject.SetActive(false);
             noOfdeaths++;
             player.speed = 0f;
             money = 0;
+
+            if (CompareTag("Cop")) {
+                GameManager.WantedLevel += Mathf.Pow(0.1f, (1f + (GameManager.WantedLevel * 0.1f)));
+            }
         }
     }
 
     public void ResetCharacter() {
         health = 100;
-        animator?.SetBool("isDead", dead);
+        animator?.SetBool("isDead", isDead);
+        ResetMoney();
     }
 
     public void SetMask(int id) {
@@ -58,6 +68,22 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void AddMoney(int value) {
+        money += value;
+        duffleRoot.GetChild(0).gameObject.SetActive(money < 50000);
+        duffleRoot.GetChild(1).gameObject.SetActive(money >= 50000 && money < 100000);
+        duffleRoot.GetChild(2).gameObject.SetActive(money >= 100000);
+    }
+
+    //Set Money to zero
+    public void ResetMoney()
+    {
+        money = 0;
+        foreach (Transform child in duffleRoot)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
 
     /**
      * returns player health

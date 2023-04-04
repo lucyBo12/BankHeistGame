@@ -37,17 +37,13 @@ public class Character : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if(CompareTag("Player")) 
-            Debug.Log($"Dead: {isDead}");
-
         health -= damage;
         
-        animator.SetBool("isDead", isDead);
+        animator?.SetBool("isDead", isDead);
         if (isDead)
         {
             gameObject.SetActive(false);
             noOfdeaths++;
-            player.speed = 0f;
             money = 0;
 
             if (CompareTag("Cop")) {

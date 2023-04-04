@@ -49,6 +49,8 @@ public static class GameManager
         });
         WantedLevel = 1;
         State = GameState.Active;
+
+        LobbyManager.CheckDDOL();
     }
 
     public static void CheckGameState() {

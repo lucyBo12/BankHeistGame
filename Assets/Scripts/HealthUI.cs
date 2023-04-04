@@ -14,6 +14,7 @@ public class HealthUI : MonoBehaviour
     void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (!player) return;
         this.gameObject.transform.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0f,2.5f,0f));
         health = player.GetComponent<Character>().health;
         this.gameObject.GetComponent<Slider>().value = health;

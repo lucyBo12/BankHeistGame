@@ -23,7 +23,6 @@ public static class LobbyManager
     public static async void CreateOrJoinLobby() {
         await Authenticate();
         Current = await QuickJoinLobby() ?? await CreateLobby();
-        CheckDDOL();
     }
 
     public static NetworkObject Self() {
@@ -89,9 +88,12 @@ public static class LobbyManager
         Timeout(lobbyId, expiry);
     }
 
-    private static void CheckDDOL() {
+    public static void CheckDDOL() {
         var players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (var p in players) { 
+        foreach (var p in players) {
+            if (p.scene.name.Equals("DontDestroyOnLoad"))
+                continue;
+
             GameObject.DontDestroyOnLoad(p);
         }
 

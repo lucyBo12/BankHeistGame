@@ -48,6 +48,7 @@ public class Character : MonoBehaviour
 
             if (CompareTag("Cop")) {
                 GameManager.WantedLevel += Mathf.Pow(0.1f, (1f + (GameManager.WantedLevel * 0.1f)));
+                CopSpawner.Instance?.Unlist(gameObject);
             }
         }
     }

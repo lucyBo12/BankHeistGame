@@ -4,8 +4,14 @@ using System.Collections;
 
 public class CopSpawner : MonoBehaviour
 {
+    public static CopSpawner Instance { get; private set; }
+    public void Awake() => Instance = this;
+
+
     [SerializeField] private List<GameObject> activeUnits = new List<GameObject>();
     [SerializeField] private Transform[] spawnPoints = new Transform[0];
+
+
 
     private int unitCount => Mathf.CeilToInt(Mathf.Pow((2 + GameManager.Players.Count), 1 + (GameManager.WantedLevel / 5)));
     private Coroutine coroutine;
@@ -19,6 +25,11 @@ public class CopSpawner : MonoBehaviour
         if (coroutine is not null) return;
 
         coroutine = StartCoroutine(SpawnCor());
+    }
+
+    public void Unlist(GameObject unit) {
+        if (!activeUnits.Contains(unit)) return;
+        activeUnits.Remove(unit);
     }
 
     private IEnumerator SpawnCor() {
